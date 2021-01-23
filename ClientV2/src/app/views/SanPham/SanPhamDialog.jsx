@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { Component } from "react";
 import ConstantList from "../../appConfig";
 import {
@@ -29,7 +30,7 @@ import "react-toastify/dist/ReactToastify.css";
 import EditorForm from "./EditorForm";
 import {searchByPage as getDM} from '../DanhMucSanPham/DanhMucSanPhamService'
 import {searchByPage as getNCC} from '../NhaCungCap/SupplierService'
-
+import UploadImage from "../forms/UploadImage";
 toast.configure({
   autoClose: 2000,
   draggable: false,
@@ -64,6 +65,7 @@ class AgentDialog extends Component {
     imageUrl: "",
     noteAvatarImage: "",
     files: [],
+    mainImageUrl:""
   };
 
   handleDialogClose = () => {
@@ -98,14 +100,71 @@ class AgentDialog extends Component {
         if (id) {
           updateItem({
             ...this.state,
-          }).then(() => {
+          }).then((res) => {
+            if (this.state.file !== null) {
+              this.setState(
+                {
+                  loading: false,
+                  shouldOpenDialog: true,
+                  productId: res.data.id,
+                },
+                () => {
+                }
+              );
+      
+              for (var i = 0; i < this.state.file.length; i++) { 
+                console.log("WWWWWWWWWWWWWW)");
+                const url = ConstantList.API_ENPOINT + "/api/upload/image";
+                let formData = new FormData();
+                formData.append('file', this.state.file[i]);
+                formData.append('productID', res.data.id);
+                const config = {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                }
+                 axios.post(url, formData, config)
+              }
+
+
+            }
             toast.success(t("general.updateSuccess"));
             this.props.handleOKEditClose();
           });
         } else {
             saveItem({
             ...this.state,
-          }).then(() => {
+          }).then((res) => {
+            if (this.state.file !== null) {
+              this.setState(
+                {
+                  loading: false,
+                  shouldOpenDialog: true,
+                  productId: res.data.id,
+                },
+                () => {
+                }
+              );
+      
+              for (var i = 0; i < this.state.file.length; i++) { 
+                console.log("WWWWWWWWWWWWWW)");
+                const url = ConstantList.API_ENPOINT + "/api/upload/image";
+                let formData = new FormData();
+                formData.append('file', this.state.file[i]);
+                formData.append('productID', res.data.id);
+                const config = {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                }
+                 axios.post(url, formData, config)
+              }
+
+
+            }
+            // toast.success(t("general.updateSuccess"));
+            // this.props.handleOKEditClose();
+          // });
             toast.success(t("general.addSuccess"));
             this.props.handleOKEditClose();
           });
@@ -221,13 +280,23 @@ changeSelected = (value, type) =>{
   }
   
 }
+handleImageSelect = (files) => {
+  this.setState({ file: files })
+
+};
+handleImageRemove = () => {
+  this.setState({
+    file: null,
+    imagePreviewUrl: "",
+  });
+};
   render() {
     let {
       id,
       code,
       name,
-      description,
-      shouldOpenNotificationPopup,
+      mainImageUrl,
+      images,
       imageUrl,files,
       noteAvatarImage
     } = this.state;
@@ -329,6 +398,16 @@ changeSelected = (value, type) =>{
                                         </span>
                                     )}
                                 </Grid>
+                            </Grid>
+                            <Grid item md={12} sm={12} xs={12}>
+                              <UploadImage
+                                className="w-30"
+                                handleImageSelect={this.handleImageSelect}
+                                handleImageRemove={this.handleImageRemove}
+                                mainImageUrl={mainImageUrl}
+                                imagePreviewUrl={images}
+                                t={t}
+                              />
                             </Grid>
               <Grid item sm={12} xs={12}>
                 <TextValidator

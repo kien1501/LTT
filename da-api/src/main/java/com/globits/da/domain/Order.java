@@ -37,12 +37,15 @@ public class Order extends BaseObject{
 	@Column(name = "status")
 	private Integer status;
 	@ManyToOne
-	@JoinColumn(name="seller")
-	private Staff seller;
+	@JoinColumn(name="customer_id")
+	private Customer customer;
 	@Column(name = "note")
 	private String note;
 	@OneToMany(mappedBy = "product", cascade=CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true)
 	private Set<ProductOrder> productOrder;
+	@ManyToOne
+	@JoinColumn(name="seller")
+	private Staff seller;
 	
 	public String getName() {
 		return name;
@@ -109,6 +112,12 @@ public class Order extends BaseObject{
 	}
 	public void setProductOrder(Set<ProductOrder> productOrder) {
 		this.productOrder = productOrder;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 	
 

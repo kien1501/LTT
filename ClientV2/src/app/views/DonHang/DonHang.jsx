@@ -17,6 +17,7 @@ import {
   import { createMuiTheme } from "@material-ui/core/styles";
   import React, { Component } from "react";
   import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+  import moment from "moment";
   import MaterialTable, {
     MTableToolbar,
     Chip,
@@ -35,10 +36,10 @@ import {
     getItemById,
     getAllItem,
     deleteCheckItem,
-  } from "./DonViTinhService";
+  } from "./DonHangService";
   
   
-  import AgencyDialog from "./DonViTinhDialog";
+  import AgencyDialog from "./DonHangDialog";
   import { Breadcrumb, ConfirmationDialog } from "egret";
   import { Helmet } from "react-helmet";
   import { withStyles } from "@material-ui/core/styles";
@@ -280,7 +281,7 @@ import {
       console.log(this.state)
       const { t, i18n } = this.props;
       let { keyword, shouldOpenNotificationPopup } = this.state;
-      let TitlePage = t("Đơn Vị Tính");
+      let TitlePage = t("Đơn hàng");
   
       let columns = [
         {
@@ -318,9 +319,20 @@ import {
           ),
         },
         { title: t("general.name"), field: "name", width: "150" },
-        { title: t("general.code"), field: "code", align: "left", width: "150" },    
+        { title: t("general.code"), field: "code", align: "left", width: "150" },
+        { title: t("Ngày giao hàng"), field: "orderDate", align: "left", width: "150",
+        render: rowData =>
+        (rowData.orderDate) ? <span>{moment(rowData.orderDate).format("DD/MM/YYYY")}</span> : ''
+        },
+        { title: t("Ngày nhận hàng"), field: "deliveryDate", align: "left", width: "150",
+        render: rowData =>
+        (rowData.deliveryDate) ? <span>{moment(rowData.deliveryDate).format("DD/MM/YYYY")}</span> : ''
+        },
+        { title: t("Tổng giá"), field: "totalPrice", align: "left", width: "150" },
+        { title: t("Thành tiền"), field: "intoMoney", align: "left", width: "150" },
+        { title: t("Khách hàng"), field: "customer.name", align: "left", width: "150" },    
       ];
-      console.log(this.state.itemList);
+    //   console.log(this.state.itemList);
       return (
         <div className="m-sm-30">
           <Helmet>
@@ -332,7 +344,7 @@ import {
             {/* <Breadcrumb routeSegments={[{ name: t('Supplier.title') }]} /> */}
             <Breadcrumb
               routeSegments={[
-                { name: t("Dashboard.category"), path: "/directory/building" },
+                { name: t("Danh mục"), path: "/directory/building" },
                 { name: TitlePage },
               ]}
             />

@@ -275,7 +275,7 @@ class Product extends Component {
       shouldOpenShowDesDialog,
       shouldOpenCloneProduct,
     } = this.state;
-    let TitlePage = t("SlideShow.title");
+    let TitlePage = t("Danh sách ảnh");
     let columns = [
       {
         title: t("general.action"),
@@ -335,7 +335,7 @@ class Product extends Component {
         ),
       },
       {
-        title: t("SlideShow.url"),
+        title: t("Đường dẫn"),
         field: "url",
         width: "80%",
         align: "left",
@@ -350,7 +350,7 @@ class Product extends Component {
           <title>Offer Pro | {TitlePage}</title>
         </Helmet>
         <div className="mb-sm-30">
-          <Breadcrumb routeSegments={[{ name: t("Product.title") }]} />
+          <Breadcrumb routeSegments={[{ name: t("Danh sách ảnh") }]} />
         </div>
 
         <Grid container spacing={1} xs={12}>
@@ -368,8 +368,8 @@ class Product extends Component {
             >
               {t("general.add")}
             </Button>
-            <TextField
-              label={t("Product.search_products")}
+            {/* <TextField
+              label={t("Tìm kiếm")}
               className=" mr-10 mb-10"
               style={{ width: 250 }}
               fontSize="small"
@@ -389,11 +389,11 @@ class Product extends Component {
               <Icon fontSize="default">search</Icon>
             </Button>
           </Grid>
-          <Grid item md={4} sm={4} xs={4}></Grid>
-          <Grid item md={4} sm={4} xs={4}>
+          <Grid item md={4} sm={4} xs={4}></Grid>*/}
+          {/* <Grid item md={12} sm={12} xs={4}>
             <ValidatorForm ref="form" onSubmit={this.handleFormSubmit}>
               <AsynchronousAutocomplete
-                label={t("general.filter_category")}
+                label={t("Chọn")}
                 searchFunction={categoriesSearchByPage}
                 className=" mr-10 mb-10"
                 multiple={true}
@@ -404,7 +404,8 @@ class Product extends Component {
                 onSelect={this.selectCategories}
               />
             </ValidatorForm>
-          </Grid>
+            </Grid>  */}
+          </Grid> 
 
           <Grid item xs={12}>
             <div>
