@@ -116,7 +116,7 @@ class UrbanAreaTable extends React.Component {
   rowCount = 0;
 
   handleTextChange = (event) => {
-    this.setState({ keyword: event.target.value }, function () {});
+    this.setState({ keyword: event.target.value }, function () { });
   };
 
   handleKeyDownEnterSearch = (e) => {
@@ -160,10 +160,10 @@ class UrbanAreaTable extends React.Component {
     });
   }
   checkData = () => {
-    let {t} = this.props
+    let { t } = this.props
     if (!this.data || this.data.length === 0) {
       toast.warning(t("general.noti_check_data"));
-      
+
     } else if (this.data.length === this.state.itemList.length) {
       this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
     } else {
@@ -392,12 +392,25 @@ class UrbanAreaTable extends React.Component {
           />
         ),
       },
-      
-      { 
-        title: t("general.code"), field: "code", width: "150" 
+      {
+        title: t("general.code"), field: "code", width: "150"
       },
-      { 
-        title: t("general.typeStaff"), field: "type", width: "150" 
+      {
+        title: "Tên nhân viên", field: "displayName", width: "150"
+      },
+      {
+        title: "Số điện thoại", field: "phoneNumber", width: "150"
+      },
+      {
+        title: "Loại nhân viên",
+        field: "",
+        width: "150",
+        render: rowData => {
+          if (rowData.type === 1) return 'Nhân viên viên bán hàng';
+          else if (rowData.type === 2) return 'Nhân viên viên thu ngân';
+          else if (rowData.type === 3) return 'Khác'
+          else return "";
+        }
       },
     ];
 
@@ -450,10 +463,11 @@ class UrbanAreaTable extends React.Component {
               <NotificationPopup
                 title={t("general.noti")}
                 open={shouldOpenNotificationPopup}
-                // onConfirmDialogClose={this.handleDialogClose}
+                onConfirmDialogClose={this.handleDialogClose}
                 onYesClick={this.handleDialogClose}
-                text={t(this.state.Notification)}
-                agree={t("general.agree")}
+                text="Bạn có chắc chắn muốn xóa nhân viên này khỏi hệ thống?"
+                Yes="Đồng ý"
+                No="Hủy"
               />
             )}
 
@@ -462,9 +476,9 @@ class UrbanAreaTable extends React.Component {
                 open={shouldOpenConfirmationDeleteAllDialog}
                 onConfirmDialogClose={this.handleDialogClose}
                 onYesClick={this.handleDeleteAll}
-                text={t("general.deleteAllConfirm")}
-                agree={t("general.agree")}
-                cancel={t("general.cancel")}
+                text="Bạn có chắc chắn muốn xóa nhân viên này khỏi hệ thống?"
+                Yes="Đồng ý"
+                No="Hủy"
               />
             )}
             {this.state.shouldOpenConfirmationDeleteListDialog && (
@@ -472,9 +486,9 @@ class UrbanAreaTable extends React.Component {
                 open={this.state.shouldOpenConfirmationDeleteListDialog}
                 onConfirmDialogClose={this.handleDialogClose}
                 onYesClick={this.handleDeleteAll}
-                text={t("general.deleteConfirm")}
-                agree={t("general.agree")}
-                cancel={t("general.cancel")}
+                text="Bạn có chắc chắn muốn xóa nhân viên này khỏi hệ thống?"
+                Yes="Đồng ý"
+                No="Hủy"
               />
             )}
           </Grid>
@@ -484,7 +498,7 @@ class UrbanAreaTable extends React.Component {
                 className="search_box w-100"
                 onChange={this.handleTextChange}
                 onKeyDown={this.handleKeyDownEnterSearch}
-                placeholder={t("general.enterKeyword")}
+                placeholder="Nhập từ khóa tìm kiếm..."
                 id="search_box"
                 startAdornment={
                   <InputAdornment>
@@ -519,9 +533,9 @@ class UrbanAreaTable extends React.Component {
                   open={shouldOpenConfirmationDialog}
                   onConfirmDialogClose={this.handleDialogClose}
                   onYesClick={this.handleConfirmationResponse}
-                  text={t("general.deleteConfirm")}
-                  agree={t("general.agree")}
-                  cancel={t("general.cancel")}
+                  text="Bạn có chắc chắn muốn xóa nhân viên này khỏi hệ thống?"
+                  Yes="Đồng ý"
+                  No="Hủy"
                 />
               )}
             </div>
@@ -578,8 +592,7 @@ class UrbanAreaTable extends React.Component {
               component="div"
               labelRowsPerPage={t("general.rows_per_page")}
               labelDisplayedRows={({ from, to, count }) =>
-                `${from}-${to} ${t("general.of")} ${
-                  count !== -1 ? count : `more than ${to}`
+                `${from}-${to} ${t("general.of")} ${count !== -1 ? count : `more than ${to}`
                 }`
               }
               count={totalElements}

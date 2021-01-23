@@ -20,13 +20,13 @@ public class Staff extends Person{
 	@Column(name = "code")
 	private String code;
 	@Column(name = "type")
-	private String type;//1: Nhân viên bán hàng, 2: Nhân viên thu ngân, 3: Khác... Constant StaffType 
+	private Integer type;//1: Nhân viên bán hàng, 2: Nhân viên thu ngân, 3: Khác... Constant StaffType 
 	@OneToMany(mappedBy = "staff", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private Set<StaffWorkSchedule> staffWorkSchedule;
-	public String getType() {
+	public Integer getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 	public String getCode() {

@@ -4,10 +4,12 @@ import com.globits.da.domain.Staff;
 
 public class StaffDto extends BaseObjectDto {
 	private String code;
-	private String type;
-	private String displayNane;
+	private Integer type;
+	private String displayName;
 	private String email;
 	private String phoneNumber;
+	private Boolean hasUserName = false;				//Tên đăng nhâp đã tồn tại ( = true)
+	private Boolean hasPhoneNumber = false;				//Số điện thoại đã tồn tại ( = true)
 	
 	public String getCode() {
 		return code;
@@ -15,18 +17,18 @@ public class StaffDto extends BaseObjectDto {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public String getType() {
+	public Integer getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 	
-	public String getDisplayNane() {
-		return displayNane;
+	public String getDisplayName() {
+		return displayName;
 	}
-	public void setDisplayNane(String displayNane) {
-		this.displayNane = displayNane;
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
 	}
 	public String getEmail() {
 		return email;
@@ -40,6 +42,19 @@ public class StaffDto extends BaseObjectDto {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
+	public Boolean getHasUserName() {
+		return hasUserName;
+	}
+	public void setHasUserName(Boolean hasUserName) {
+		this.hasUserName = hasUserName;
+	}
+	public Boolean getHasPhoneNumber() {
+		return hasPhoneNumber;
+	}
+	public void setHasPhoneNumber(Boolean hasPhoneNumber) {
+		this.hasPhoneNumber = hasPhoneNumber;
+	}
 	public StaffDto() {
 		super();
 	}
@@ -48,7 +63,7 @@ public class StaffDto extends BaseObjectDto {
 			this.setId(e.getId());
 			this.code = e.getCode();
 			this.type = e.getType();
-			this.displayNane = e.getDisplayName();
+			this.displayName = e.getDisplayName();
 			this.phoneNumber = e.getPhoneNumber();
 			this.email = e.getEmail();
 		}

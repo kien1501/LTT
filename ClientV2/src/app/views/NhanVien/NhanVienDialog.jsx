@@ -8,6 +8,9 @@ import {
   Paper,
   DialogTitle,
   DialogContent,
+  InputLabel,
+  Select,
+  MenuItem
 } from "@material-ui/core";
 // import Paper from '@material-ui/core/Paper'
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
@@ -43,12 +46,18 @@ class UrbanAreaDialog extends Component {
     id: "",
     code: "",
     type: "",
-    description: "",
+    displayName: "",
     type: "",
+    email:"",
+    phoneNumber:"",
     shouldOpenNotificationPopup: false,
     Notification: "",
   };
-
+  listType = [
+    { id: 1, name: 'Nhân viên bán hàng' },
+    { id: 2, name: 'Nhân viên thu ngân' },
+    { id: 3, name: 'Khác' }
+  ]
   handleDialogClose = () => {
     this.setState({ shouldOpenNotificationPopup: false });
   };
@@ -62,6 +71,12 @@ class UrbanAreaDialog extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
+    if (source === "type") {
+      let { type } = this.state;
+      type = event.target.value;
+      this.setState({ type: type });
+      return;
+    }
   };
 
   handleFormSubmit = () => {
@@ -80,14 +95,14 @@ class UrbanAreaDialog extends Component {
           updateUrbanArea({
             ...this.state,
           }).then(() => {
-            toast.success(t("general.updateSuccess"));
+            toast.success("Cập nhật thành công thông tin nhân viên");
             this.props.handleOKEditClose();
           });
         } else {
           addNewUrbanArea({
             ...this.state,
           }).then(() => {
-            toast.success(t("general.addSuccess"));
+            toast.success("Thêm mới thành công nhân viên");
             this.props.handleOKEditClose();
           });
         }
@@ -106,7 +121,9 @@ class UrbanAreaDialog extends Component {
       id,
       code,
       type,
-      description,
+      displayName,
+      email,
+      phoneNumber,
       shouldOpenNotificationPopup,
     } = this.state;
     let { open, handleClose, handleOKEditClose, t, i18n } = this.props;
@@ -117,14 +134,12 @@ class UrbanAreaDialog extends Component {
         maxWidth="sm"
         fullWidth
       >
-       
         <DialogTitle
           style={{ cursor: "move", paddingBottom: "0px" }}
           id="draggable-dialog-title"
         >
-          <h4 className="">{id ? ("Sửa thông tin nhân viên") : ("Thêm mới nhân viên")}</h4>
+          <h4 className="">{id ? (<span>Sửa thông tin nhân viên</span>) : (<span>Thêm nhân viên</span>)}</h4>
         </DialogTitle>
-
         <ValidatorForm ref="form" onSubmit={this.handleFormSubmit}>
           <DialogContent>
             <Grid className="" container spacing={2}>
@@ -151,16 +166,68 @@ class UrbanAreaDialog extends Component {
                   label={
                     <span>
                       <span style={{ color: "red" }}>*</span>
-                      {t("general.typeStaff")}
+                      {t("general.name")}
                     </span>
                   }
                   onChange={this.handleChange}
                   type="text"
-                  name="type"
-                  value={type}
+                  name="displayName"
+                  value={displayName}
                   validators={["required"]}
                   errorMessages={[t("general.required")]}
                 />
+              </Grid>
+              <Grid item sm={12} xs={12}>
+                <TextValidator
+                  className="w-100 "
+                  label={
+                    <span>
+                      <span style={{ color: "red" }}>*</span>
+                      Điện thoại liên hệ
+                    </span>
+                  }
+                  onChange={this.handleChange}
+                  type="number"
+                  name="phoneNumber"
+                  value={phoneNumber}
+                  validators={["required"]}
+                  errorMessages={[t("general.required")]}
+                />
+              </Grid>
+              <Grid item sm={12} xs={12}>
+                <TextValidator
+                  className="w-100 "
+                  label={
+                    <span>
+                      <span style={{ color: "red" }}>*</span>
+                      Email
+                    </span>
+                  }
+                  onChange={this.handleChange}
+                  type="email"
+                  name="email"
+                  value={email}
+                  validators={["required"]}
+                  errorMessages={[t("general.required")]}
+                />
+              </Grid>
+              <Grid item md={12} sm={12} xs={12} className="mt-10">
+                <FormControl fullWidth={true} variant="outlined"
+                  size="small">
+                  <InputLabel htmlFor="gender-simple">{<span className="font"><span style={{ color: "red" }}>*</span>Loại nhân viên</span>}</InputLabel>
+                  <Select
+                    value={type}
+                    onChange={type => this.handleChange(type, "type")}
+                    inputProps={{
+                      name: "gender",
+                      id: "gender-simple"
+                    }}
+                  >
+                    {this.listType.map(item => {
+                      return <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>;
+                    })}
+                  </Select>
+                </FormControl>
               </Grid>
             </Grid>
           </DialogContent>
