@@ -37,12 +37,6 @@ import authService from "../../services/jwtAuthService";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { searchByPage as getHealthOrg } from "../EQAHealthOrg/EQAHealthOrgService";
-import {
-  checkEmail,
-  saveItem as saveItemHealthOrg,
-  getItemById,
-} from "../EQAHealthOrg/EQAHealthOrgService";
 import "../../../styles/views/_style.scss";
 const API_PATH = ConstantList.API_ENPOINT + "/api/fileUpload/";
 
@@ -145,13 +139,7 @@ class UserProfile extends Component {
           this.setState({ open: false });
         } else this.setState({ open: true });
       });
-    getHealthOrg({ pageSize: 1000000, pageIndex: 0 }).then((res) => {
-      getItemById(res.data.content[0].id).then((data) => {
-        this.setState({
-          ...data.data,
-        });
-      });
-    });
+    
   }
   handleChange = (event, source) => {
     event.persist();
@@ -324,24 +312,25 @@ class UserProfile extends Component {
     //   return
     // }
     if (email != null) {
-      checkEmail(id, email).then((res) => {
-        if (res.data) {
-          toast.warning(t("sign_up.duplicate_email"));
-          this.setState({ loading: false });
-          return;
-        } else {
-          if (id) {
-            saveItemHealthOrg({
-              ...this.state,
-            }).then(() => {
-              // this.props.handleOKEditClose();
-              this.setState({ loading: false });
-              toast.success(t("mess_edit"));
-            });
-          }
-          // console.log(123);
-        }
-      });
+      // checkEmail(id, email).then((res) => {
+      //   if (res.data) {
+      //     toast.warning(t("sign_up.duplicate_email"));
+      //     this.setState({ loading: false });
+      //     return;
+      //   }
+        // } else {
+        //   if (id) {
+        //     saveItemHealthOrg({
+        //       ...this.state,
+        //     }).then(() => {
+        //       // this.props.handleOKEditClose();
+        //       this.setState({ loading: false });
+        //       toast.success(t("mess_edit"));
+        //     });
+        //   }
+        //   // console.log(123);
+        // }
+      // });
     }
 
     // console.log(this.state);

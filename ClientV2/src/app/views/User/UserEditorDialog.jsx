@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import EQAHealthOrgSearchMultipleDialog from "../EQAHealthOrgRoundRegister/EQAHealthOrgSearchMultipleDialog";
 import {
   Dialog,
   Button,
@@ -732,16 +731,6 @@ class UserEditorDialog extends Component {
                   </Grid>
                 </Grid>
               </fieldset>
-              {shouldOpenHealthOrgSearchMultipleDialog && (
-                <EQAHealthOrgSearchMultipleDialog
-                  open={this.state.shouldOpenHealthOrgSearchMultipleDialog}
-                  handleSelect={this.handleSelectHealthOrg}
-                  selectedHealthOrg={selectedHealthOrg}
-                  handleClose={this.handleHealthOrgSearchDialogClose}
-                  t={t}
-                  i18n={i18n}
-                />
-              )}
             </Grid>
           </DialogContent>
 

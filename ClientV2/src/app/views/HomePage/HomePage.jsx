@@ -7,8 +7,6 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import IntroduceTheProgram from '../IntroduceTheProgram/IntroduceTheProgram';
-import LaboratoryInformation from './LaboratoryInformation';
-import Technician from '../Technician/Technician';
 import { useTranslation, withTranslation, Trans } from 'react-i18next';
 import {getCurrentUser} from "../page-layouts/UserProfileService";
 import { Breadcrumb, ConfirmationDialog } from "egret";
@@ -105,12 +103,9 @@ export default function TabsHealthOrgRegisterForm(props) {
         <TabPanel value={value} index={0}>
           <IntroduceTheProgramDemo t={t} i18n={i18n}/>
         </TabPanel>
-        <TabPanel value={value} index={1}>
-          <LaboratoryInformation t={t} i18n={i18n}  />
-        </TabPanel>
-        <TabPanel value={value} index={2}>
+        {/* <TabPanel value={value} index={2}>
           <Technician t={t} i18n={i18n} homepage={true} />
-      </TabPanel>
+      </TabPanel> */}
       </div>
     </div>
   );

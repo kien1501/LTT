@@ -11,43 +11,6 @@ import roleRoutes from "./views/Role/RoleRoutes";
 import ConstantList from "./appConfig";
 import MenuRoutes from "./views/Menus/MenuRoutes";
 import pageLayoutRoutes from "./views/page-layouts/PageLayoutRoutees";
-import eqaPlanningRoutes from "./views/EQAPlanning/EQAPlanningRoutes";
-import eqaRoundRoutes from "./views/EQARound/EQARoundRoutes";
-import eQAHealthOrgTypeRoutes from "./views/EQAHealthOrgType/EQAHealthOrgTypeRoutes";
-import eQAHealthOrgRoutes from "./views/EQAHealthOrg/EQAHealthOrgRoutes";
-import eQAHealthOrgRoundRegisterRoutes from "./views/EQAHealthOrgRoundRegister/EQAHealthOrgRoundRegisterRoutes";
-import healthOrgRegisterFormRoutes from "./views/HealthOrgRegisterForm/HealthOrgRegisterFormRoutes";
-import qualificationRoutes from "./views/Qualification/QualificationRoutes";
-import reagentRoutes from "./views/Reagent/ReagentRoutes";
-import personnelRoutes from "./views/Personnel/PersonnelRoutes";
-import healthOrgLevelRoutes from "./views/HealthOrgLevel/HealthOrgLevelRoutes";
-import testPurposeRoutes from "./views/TestPurpose/TestPurposeRoutes";
-import eQASerumBankRoutes from "./views/EQASerumBank/EQASerumBankRoutes";
-import conceptClassRoutes from "./views/ConceptClass/ConceptClassRoutes";
-import eQASampleRoutes from "./views/EQASamplesList/EQASampleRoutes";
-import eQASampleSetRoutes from "./views/EQASampleSet/EQASampleSetRoutes";
-import testMethodRoutes from "./views/TestMethod/TestMethodRoutes";
-import technicianRoutes from "./views/Technician/TechnicianRoutes";
-import eQASerumBottleRoutes from "./views/EQASerumBottle/EQASerumBottleRoutes";
-import eqaHealthOrgSampleTransferStatusRoutes from "./views/EQAHealthOrgSampleTransferStatus/EQAHealthOrgSampleTransferStatusRoutes";
-import labelPrintingRoutes from "./views/LabelPrinting/LabelPrintingRoutes";
-import eqaResultReportElisaRoute from "./views/EQAResultReportElisa/EQAResultReportElisaRoutes";
-import eQAResultReportSerodiaRoutes from "./views/EQAResultReportSerodia/EQAResultReportSerodiaRoutes";
-import eQAResultReportFastTestRoutes from "./views/EQAResultReportFastTest/EQAResultReportFastTestRoutes";
-import eQAResultReportEcliaRoutes from "./views/EQAResultReportEclia/EQAResultReportEcliaRoutes";
-import eqaResultReportConclusionRoutes from "./views/EQAResultReportConclusion/EQAResultReportConclusionRoutes";
-import eqaResultReportConclusionAllRoutes from "./views/EQAResultReportConclusionAll/EQAResultReportConclusionAllRoutes";
-import resultsOfTheUnitsRoutes from "./views/ResultsOfTheUnits/ResultsOfTheUnitsRoutes";
-import allocationSampleSet from "./views/AllocationSampleSet/AllocationSampleSetRoutes";
-import roundConclusionsRoutes from "./views/EQARoundConclusions/EQARoundConclusionsRoutes";
-import EQAActivityLogRoutes from "./views/EQAActivityLog/EQAActivityLogRoutes";
-import ReferenceResultsRoutes from "./views/ReferenceResults/ReferenceResultsRoutes";
-import ReportSimilarityReagentRoutes from "./views/ReportSimilarityReagent/ReportSimilarityReagentRoutes";
-import CheckPointRoutes from "./views/CheckPoint/CheckPointRoutes";
-import ResultsOfUnitsByReagentGroupRoutes from "./views/ResultsOfUnitsByReagentGroup/ResultsOfUnitsByReagentGroupRoutes";
-import ReferenceResultRoutes from "./views/ReferenceResult/ReferenceResultRoutes";
-import Contact from "./views/Contact/ContactRoutes";
-import EQAReferenceDocument from "./views/EQAReferenceDocument/EQAReferenceDocumentRoutes";
 import DonViTinhRoutes from "./views/DonViTinh/DonViTinhRoutes";
 import khoRoutes from "./views/Kho/KhoRoutes";
 import SanPhamRoutes from "./views/SanPham/SanPhamRoutes";
@@ -77,48 +40,6 @@ const routes = [
   ...administrativeUnitRoutes,
   ...departmentRoutes,
   ...pageLayoutRoutes,
-  ...eQASampleSetRoutes,
-  ...reagentRoutes,
-  ...eQASerumBankRoutes,
-  ...testPurposeRoutes,
-  ...conceptClassRoutes,
-  ...ResultsOfUnitsByReagentGroupRoutes,
-  ...qualificationRoutes,
-  ...eQAHealthOrgTypeRoutes,
-  ...healthOrgLevelRoutes,
-  ...eQAHealthOrgRoutes,
-  ...eQAHealthOrgRoundRegisterRoutes,
-  ...healthOrgRegisterFormRoutes,
-  ...eqaResultReportElisaRoute,
-  ...eQAResultReportSerodiaRoutes,
-  ...eQAResultReportFastTestRoutes,
-  ...roundConclusionsRoutes,
-  ...eQAResultReportEcliaRoutes,
-  ...eqaResultReportConclusionRoutes,
-  ...eqaHealthOrgSampleTransferStatusRoutes,
-  ...eqaResultReportConclusionAllRoutes,
-  ...personnelRoutes,
-  ...eqaRoundRoutes,
-  ...eqaPlanningRoutes,
-  ...eQASampleRoutes,
-  ...labelPrintingRoutes,
-  ...eQASerumBottleRoutes,
-  ...testMethodRoutes,
-  ...technicianRoutes,
-  ...allocationSampleSet,
-  ...UserRoutes,
-  ...CheckPointRoutes,
-  ...roleRoutes,
-  ...MenuRoutes,
-  ...resultsOfTheUnitsRoutes,
-  ...redirectRoute,
-  ...EQAActivityLogRoutes,
-  ...ReferenceResultsRoutes,
-  ...ReportSimilarityReagentRoutes,
-  ...ReferenceResultRoutes,
-  ...Contact,
-  ...DonViTinhRoutes,
-  ...EQAReferenceDocument,
   ...khoRoutes,
   ...SanPhamRoutes,
   ...PhieuNhapKhoRoutes,
