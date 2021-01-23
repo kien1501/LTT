@@ -17,7 +17,10 @@ public class ImageDto extends BaseObjectDto {
 
 	public ImageDto(Image entity) {
 		super();
-		this.url = entity.getUrl();
+		if(entity != null) {
+			this.url = entity.getUrl();
+		}
+
 	}
 public ImageDto() {
 	// TODO Auto-generated constructor stub

@@ -55,7 +55,7 @@ class LanguageSelect extends React.Component {
           >
             <MenuItem value="vi">Tiếng Việt</MenuItem>
             {/* <MenuItem value="de">Deutsch</MenuItem> */}
-            <MenuItem value="en">English</MenuItem>
+            {/* <MenuItem value="en">English</MenuItem> */}
           </Select>
           {hasError && <FormHelperText>This is required!</FormHelperText>}
         </FormControl>

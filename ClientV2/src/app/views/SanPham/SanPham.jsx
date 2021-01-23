@@ -376,7 +376,7 @@ import {
                   className="search_box w-100"
                   onChange={this.handleTextChange}
                   onKeyDown={this.handleKeyDownEnterSearch}
-                  placeholder={t("general.enterKeyword")}
+                  placeholder={t("Nhập từ khóa tìm kiếm")}
                   id="search_box"
                   startAdornment={
                     <InputAdornment>

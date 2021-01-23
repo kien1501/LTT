@@ -111,20 +111,22 @@ class AgentDialog extends Component {
                 () => {
                 }
               );
-      
-              for (var i = 0; i < this.state.file.length; i++) { 
-                console.log("WWWWWWWWWWWWWW)");
-                const url = ConstantList.API_ENPOINT + "/api/upload/image";
-                let formData = new FormData();
-                formData.append('file', this.state.file[i]);
-                formData.append('productID', res.data.id);
-                const config = {
-                  headers: {
-                    'Content-Type': 'multipart/form-data'
-                  }
-                }
-                 axios.post(url, formData, config)
-              }
+      if(this.state.file && this.state.file.length >0){
+        for (var i = 0; i < this.state.file.length; i++) { 
+          console.log("WWWWWWWWWWWWWW)");
+          const url = ConstantList.API_ENPOINT + "/api/upload/image";
+          let formData = new FormData();
+          formData.append('file', this.state.file[i]);
+          formData.append('productID', res.data.id);
+          const config = {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+           axios.post(url, formData, config)
+        }
+      }
+              
 
 
             }
@@ -146,18 +148,20 @@ class AgentDialog extends Component {
                 }
               );
       
-              for (var i = 0; i < this.state.file.length; i++) { 
-                console.log("WWWWWWWWWWWWWW)");
-                const url = ConstantList.API_ENPOINT + "/api/upload/image";
-                let formData = new FormData();
-                formData.append('file', this.state.file[i]);
-                formData.append('productID', res.data.id);
-                const config = {
-                  headers: {
-                    'Content-Type': 'multipart/form-data'
+              if(this.state.file && this.state.file.length >0){
+                for (var i = 0; i < this.state.file.length; i++) { 
+                  console.log("WWWWWWWWWWWWWW)");
+                  const url = ConstantList.API_ENPOINT + "/api/upload/image";
+                  let formData = new FormData();
+                  formData.append('file', this.state.file[i]);
+                  formData.append('productID', res.data.id);
+                  const config = {
+                    headers: {
+                      'Content-Type': 'multipart/form-data'
+                    }
                   }
+                   axios.post(url, formData, config)
                 }
-                 axios.post(url, formData, config)
               }
 
 
