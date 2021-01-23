@@ -122,13 +122,12 @@ class UrbanAreaDialog extends Component {
           style={{ cursor: "move", paddingBottom: "0px" }}
           id="draggable-dialog-title"
         >
-          <h4 className="">{id ? t("general.update") : t("general.addNew")}</h4>
+          <h4 className="">{id ? ("Sửa thông tin nhân viên") : ("Thêm mới nhân viên")}</h4>
         </DialogTitle>
 
         <ValidatorForm ref="form" onSubmit={this.handleFormSubmit}>
           <DialogContent>
             <Grid className="" container spacing={2}>
-
               <Grid item sm={12} xs={12}>
                 <TextValidator
                   className="w-100 "

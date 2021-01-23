@@ -18,6 +18,8 @@ import PhieuNhapKhoRoutes from "./views/PhieuNhapKho/PhieuNhapKhoRoutes";
 import PhieuXuatKhoRoutes from "./views/PhieuXuatKho/PhieuXuatKhoRoutes";
 import SlideshowRoutes from "./views/Slideshow/SlideshowRoutes";
 import DanhMucSanPhamRoutes from "./views/DanhMucSanPham/DanhMucSanPhamRoutes";
+import NhanvienRouters from "./views/NhanVien/NhanVienRoutes";
+
 
 const redirectRoute = [
   {
@@ -46,7 +48,7 @@ const routes = [
   ...PhieuXuatKhoRoutes,
   ...SlideshowRoutes,
   ...DanhMucSanPhamRoutes,
-  // ...EQASubscribeToThePlanRouters,
+  ...NhanvienRouters,
   ...errorRoute
 
 ];

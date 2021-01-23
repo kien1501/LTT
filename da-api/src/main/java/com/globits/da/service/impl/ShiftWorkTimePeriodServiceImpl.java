@@ -119,7 +119,7 @@ public class ShiftWorkTimePeriodServiceImpl extends GenericServiceImpl<ShiftWork
 	@Override
 	public List<ShiftWorkTimePeriodDto> getAllByShiftWorkId(UUID shiftworkId) {
 		String sqlCount ="select count(sw) FROM ShiftWorkTimePeriod as sw WHERE sw.shiftwork.id=:shiftworkId";
-		String sql ="select new com.globits.hr.dto.ShiftWorkTimePeriodDto(sw) FROM ShiftWorkTimePeriod as sw WHERE sw.shiftwork.id=:shiftworkId";
+		String sql ="select new com.globits.da.dto.ShiftWorkTimePeriodDto(sw) FROM ShiftWorkTimePeriod as sw WHERE sw.shiftwork.id=:shiftworkId";
 		
 		Query q = manager.createQuery(sql,ShiftWorkTimePeriodDto.class);
 		Query qCount = manager.createQuery(sqlCount);

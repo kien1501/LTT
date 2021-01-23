@@ -13,8 +13,8 @@ export const navigations = [
     isVisible:true,
     children: [
       {
-        name: "Dashboard.AdministrativeUnit",
-        path: ConstantList.ROOT_PATH+"dashboard/AdministrativeUnits",
+        name: "Nhân Viên",
+        path: ConstantList.ROOT_PATH+"directory/nhanvien",
         icon: "keyboard_arrow_right",
         isVisible:true,
       }
