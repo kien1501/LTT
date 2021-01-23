@@ -6,6 +6,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,6 +25,9 @@ public class Staff extends Person{
 	private Integer type;//1: Nhân viên bán hàng, 2: Nhân viên thu ngân, 3: Khác... Constant StaffType 
 	@OneToMany(mappedBy = "staff", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private Set<StaffWorkSchedule> staffWorkSchedule;
+	@ManyToOne
+	@JoinColumn(name="shift_work_id")
+	private ShiftWork shiftWork;//ca làm việc của nhân viên
 	public Integer getType() {
 		return type;
 	}
@@ -40,6 +45,12 @@ public class Staff extends Person{
 	}
 	public void setStaffWorkSchedule(Set<StaffWorkSchedule> staffWorkSchedule) {
 		this.staffWorkSchedule = staffWorkSchedule;
+	}
+	public ShiftWork getShiftWork() {
+		return shiftWork;
+	}
+	public void setShiftWork(ShiftWork shiftWork) {
+		this.shiftWork = shiftWork;
 	}
 	
 }

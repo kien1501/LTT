@@ -3,6 +3,7 @@ package com.globits.da.service.impl;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Query;
@@ -21,10 +22,15 @@ import com.globits.core.domain.Person;
 import com.globits.core.repository.PersonRepository;
 import com.globits.core.service.impl.GenericServiceImpl;
 import com.globits.core.utils.SecurityUtils;
+import com.globits.da.domain.ShiftWork;
 import com.globits.da.domain.Staff;
+import com.globits.da.domain.StaffWorkSchedule;
 import com.globits.da.dto.StaffDto;
+import com.globits.da.dto.StaffShiftWorkDto;
 import com.globits.da.dto.search.SearchDto;
+import com.globits.da.repository.ShiftWorkRepository;
 import com.globits.da.repository.StaffRepository;
+import com.globits.da.repository.StaffWorkScheduleRepository;
 import com.globits.da.service.StaffService;
 import com.globits.security.domain.Role;
 import com.globits.security.domain.User;
@@ -45,6 +51,10 @@ public class StaffServiceImpl extends GenericServiceImpl<Staff, UUID> implements
 	UserService userService;
 	@Autowired
 	PersonRepository personRepository;
+	@Autowired
+	ShiftWorkRepository shiftWorkRepository;
+	@Autowired
+	StaffWorkScheduleRepository staffWorkScheduleRepository;
 
 	@Override
 	public Page<StaffDto> getPage(int pageSize, int pageIndex) {
@@ -78,7 +88,40 @@ public class StaffServiceImpl extends GenericServiceImpl<Staff, UUID> implements
 			entity.setDisplayName(dto.getDisplayName());
 			entity.setEmail(dto.getEmail());
 			entity.setPhoneNumber(dto.getPhoneNumber());
-			
+			if(dto.getShiftWork() != null && dto.getShiftWork().getId() != null) {
+				ShiftWork sw = shiftWorkRepository.getOne(dto.getShiftWork().getId());
+				if(sw != null) {
+					entity.setShiftWork(sw);
+				}
+			}
+			Set<StaffWorkSchedule> staffWorkSchedule = new HashSet<StaffWorkSchedule>();
+			if (dto.getStaffWorkSchedule() != null && dto.getStaffWorkSchedule().size() > 0) {
+				for (StaffShiftWorkDto sswDto : dto.getStaffWorkSchedule()) {
+					if (sswDto != null) {
+						ShiftWork sw = shiftWorkRepository.getOne(sswDto.getId());
+						if (sw != null) {
+							StaffWorkSchedule sws = new StaffWorkSchedule();
+							sws.setShiftWork(sw);
+							sws.setStaff(entity);
+							staffWorkSchedule.add(sws);
+						}
+					}
+
+				}
+				if (staffWorkSchedule != null && staffWorkSchedule.size() > 0) {
+					if (entity.getStaffWorkSchedule() == null) {
+						entity.setStaffWorkSchedule(staffWorkSchedule);
+					} else {
+						entity.getStaffWorkSchedule().clear();
+						entity.getStaffWorkSchedule().addAll(staffWorkSchedule);
+					}
+				}
+
+			} else {// Nếu submit list trống lên thì xóa hết
+				if (entity.getStaffWorkSchedule() != null) {
+					entity.getStaffWorkSchedule().clear();
+				}
+			}
 			// check userName tồn tại hay chưa
 			UserDto userDto = userService.findByUsername(dto.getPhoneNumber());
 			if (userDto != null) {

@@ -4,8 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import com.globits.da.domain.Staff;
+import com.globits.da.domain.StaffWorkSchedule;
 
-public class StaffShiftWorkDto {
+public class StaffShiftWorkDto extends BaseObjectDto {
 	private StaffDto staff;
 	private ShiftWorkDto shiftWork;
 	private Date workingDate;
@@ -28,7 +29,20 @@ public class StaffShiftWorkDto {
 	public void setStaff(StaffDto staff) {
 		this.staff = staff;
 	}
-	
-	
+	public StaffShiftWorkDto() {
+		super();
+	}
+	public StaffShiftWorkDto(StaffWorkSchedule sws) {
+		super();
+		if(sws != null) {
+			if(sws.getStaff() != null) {
+				this.staff = new StaffDto(sws.getStaff());
+			}
+			if(sws.getShiftWork() != null) {
+				this.shiftWork = new ShiftWorkDto(sws.getShiftWork());
+			}
+			this.workingDate = sws.getWorkingDate();
+		}
+	}
 	
 }
