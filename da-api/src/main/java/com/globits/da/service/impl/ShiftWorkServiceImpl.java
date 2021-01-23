@@ -145,7 +145,7 @@ public class ShiftWorkServiceImpl extends GenericServiceImpl<ShiftWork, UUID> im
 		String orderBy = " ORDER BY entity.createDate ";
 		
 		String sqlCount = "select count(entity.id) from ShiftWork as entity where (1=1) ";
-		String sql = "select new  com.globits.hr.dto.ShiftWorkDto(entity) from ShiftWork as entity where (1=1) ";
+		String sql = "select new  com.globits.da.dto.ShiftWorkDto(entity) from ShiftWork as entity where (1=1) ";
 
 		if (dto.getKeyword() != null && StringUtils.hasText(dto.getKeyword())) {
 			whereClause += " AND ( entity.name LIKE :text OR entity.code LIKE :text OR entity.totalHours LIKE :text) ";
