@@ -239,12 +239,12 @@ class UrbanAreaTable extends React.Component {
     }
     deleteUrbanArea(this.state.id)
       .then((res) => {
-        toast.success(t("general.deleteSuccess"));
+        toast.success("Xóa thành công nhân viên");
         this.handleDialogClose();
         this.updatePageData();
       })
       .catch(() => {
-        toast.warning(t("urbanArea.warning-delete"));
+        toast.warning("Có lỗi xảy ra khi xóa thông tin nhân viên");
       });
   };
 

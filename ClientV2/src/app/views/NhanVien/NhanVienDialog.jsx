@@ -86,7 +86,7 @@ class UrbanAreaDialog extends Component {
     checkCode(id, code).then((result) => {
       //Nếu trả về true là code đã được sử dụng
       if (result.data) {
-        toast.warning(t("general.dupli_code"));
+        toast.warning("Mã nhân viên đã sử dụng, vui lòng điền một mã khác.");
         
         // alert("Code đã được sử dụng");
       } else {
