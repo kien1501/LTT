@@ -9,7 +9,7 @@ import UserRoutes from "./views/User/UserRoutes";
 import departmentRoutes from "./views/Department/DepartmentRoutes";
 import roleRoutes from "./views/Role/RoleRoutes";
 import ConstantList from "./appConfig";
-import MenuRoutes from "./views/Menus/MenuRoutes";
+// import MenuRoutes from "./views/Menus/MenuRoutes";
 import pageLayoutRoutes from "./views/page-layouts/PageLayoutRoutees";
 import DonViTinhRoutes from "./views/DonViTinh/DonViTinhRoutes";
 import khoRoutes from "./views/Kho/KhoRoutes";
@@ -19,7 +19,9 @@ import PhieuXuatKhoRoutes from "./views/PhieuXuatKho/PhieuXuatKhoRoutes";
 import SlideshowRoutes from "./views/Slideshow/SlideshowRoutes";
 import DanhMucSanPhamRoutes from "./views/DanhMucSanPham/DanhMucSanPhamRoutes";
 import NhanvienRouters from "./views/NhanVien/NhanVienRoutes";
-
+import MenuRoutes from "./views/Menus/MenuRoutes";
+import ShiftWorkRouters from "./views/ShiftWork/ShiftWorkRouters";
+import SupplierRoutes from "./views/NhaCungCap/SupplierRoutes";
 
 const redirectRoute = [
   {
@@ -49,6 +51,10 @@ const routes = [
   ...SlideshowRoutes,
   ...DanhMucSanPhamRoutes,
   ...NhanvienRouters,
+  ...MenuRoutes,
+  ...UserRoutes,
+  ...ShiftWorkRouters,
+  ...SupplierRoutes,
   ...errorRoute
 
 ];

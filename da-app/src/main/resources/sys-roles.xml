@@ -6,6 +6,10 @@
 
 <sys-roles>
 	<sys-role>
+		<name>ROLE_SUPER_ADMIN</name>
+		<description>The system super administrative role</description>
+	</sys-role>
+	<sys-role>
 		<name>ROLE_ADMIN</name>
 		<description>The system administrative role</description>
 	</sys-role>

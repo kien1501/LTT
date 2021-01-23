@@ -22,6 +22,7 @@ public class ProductDto extends BaseObjectDto{
 	private SupplierDto supplier;
 	private String imageUrl;//Đường dẫn đến File ảnh tiêu đề bài báo (nếu có)
 	private List<ImageDto> images;
+	private String posts;
 	
 	public String getName() {
 		return name;
@@ -85,6 +86,12 @@ public class ProductDto extends BaseObjectDto{
 	public void setSupplier(SupplierDto supplier) {
 		this.supplier = supplier;
 	}
+	public String getPosts() {
+		return posts;
+	}
+	public void setPosts(String posts) {
+		this.posts = posts;
+	}
 	public ProductDto() {
 		super();
 	}
@@ -94,6 +101,7 @@ public class ProductDto extends BaseObjectDto{
 		this.currentSellingPrice = e.getCurrentSellingPrice();
 		this.name = e.getName();
 		this.imageUrl = e.getImageUrl();
+		this.posts = e.getPosts();
 		if(e.getStockKeepingUnit() != null) {
 			this.stockKeepingUnit = new StockKeepingUnitDto(e.getStockKeepingUnit());
 		}
@@ -126,6 +134,7 @@ public class ProductDto extends BaseObjectDto{
 		this.currentSellingPrice = e.getCurrentSellingPrice();
 		this.name = e.getName();
 		this.imageUrl = e.getImageUrl();
+		this.posts = e.getPosts();
 		if(e.getStockKeepingUnit() != null) {
 			this.stockKeepingUnit = new StockKeepingUnitDto(e.getStockKeepingUnit());
 		}

@@ -40,6 +40,8 @@ public class Product extends BaseObject{
 	private Set<ProductImage> productImage;
 	@Column(name="image_url")
 	private String imageUrl;//Đường dẫn đến File ảnh tiêu đề bài báo (nếu có)
+	@Column(name="posts", columnDefinition = "LONGTEXT")
+	private String posts;
 	
 	public String getName() {
 		return name;
@@ -95,6 +97,12 @@ public class Product extends BaseObject{
 	}
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
+	}
+	public String getPosts() {
+		return posts;
+	}
+	public void setPosts(String posts) {
+		this.posts = posts;
 	}
 
 	

@@ -95,11 +95,19 @@ public class InventoryReceivingVoucherServiceImpl extends GenericServiceImpl< In
 							if(listData != null && listData.size() > 0) {
 								 sanPhamKho = listData.get(0);
 								 if(sanPhamKho != null) {
+									 if(entity.getId() == null) {
 									 if(sanPhamKho.getProductNumber() != null) {
 											sanPhamKho.setProductNumber(sanPhamPhieuNhaplDto.getProductNumber() + sanPhamKho.getProductNumber());
 										}else {
 											sanPhamKho.setProductNumber(sanPhamPhieuNhaplDto.getProductNumber());
 										} 
+									 }else {
+										 if(sanPhamKho.getProductNumber() != null) {
+												sanPhamKho.setProductNumber(sanPhamPhieuNhaplDto.getProductNumber());
+											}else {
+												sanPhamKho.setProductNumber(sanPhamPhieuNhaplDto.getProductNumber());
+											} 
+									 }
 								 }
 								
 							}

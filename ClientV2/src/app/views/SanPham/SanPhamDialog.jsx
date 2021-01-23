@@ -17,15 +17,19 @@ import Draggable from "react-draggable";
 import NotificationPopup from "../Component/NotificationPopup/NotificationPopup";
 import SelectUserPopup from "./SelectUserPopup";
 import SelectAgencyPopup from "./SelectAgencyPopup";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 import {
     saveItem,
   addItem,
   updateItem,
-  checkCode,uploadImage
+  checkCode,uploadImage,
 } from "./SanPhamService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EditorForm from "./EditorForm";
+import {searchByPage as getDM} from '../DanhMucSanPham/DanhMucSanPhamService'
+import {searchByPage as getNCC} from '../NhaCungCap/SupplierService'
+
 toast.configure({
   autoClose: 2000,
   draggable: false,
@@ -110,11 +114,21 @@ class AgentDialog extends Component {
     });
   };
   handleChangeContent = (content) => {
-    this.setState({ baiViet: content });
+    this.setState({ posts: content });
   };
   componentWillMount() {
     //getUserById(this.props.uid).then(data => this.setState({ ...data.data }));
     let { open, handleClose, item } = this.props;
+    var searchObject = {};
+        searchObject.pageIndex = 1;
+        searchObject.pageSize = 100000;
+        getDM(searchObject).then(res => {
+          this.setState({ listDM: [...res.data.content] })
+        })
+        getNCC(searchObject).then(res => {
+          this.setState({ listSupplier: [...res.data.content] })
+        })
+        
     this.setState({...item});
   }
   handleSelectUser =(item)=>{
@@ -195,6 +209,18 @@ getImageNameAndType = (name) => {
   }
   return "";
 };
+changeSelected = (value, type) =>{
+
+  if(type === 'productCategory'){
+    this.setState({productCategory:value ? value:null},()=>{
+    });
+  }
+  if(type === 'supplier'){
+    this.setState({supplier:value ? value:null},()=>{
+    });
+  }
+  
+}
   render() {
     let {
       id,
@@ -356,6 +382,42 @@ getImageNameAndType = (name) => {
                   errorMessages={[t("general.required")]}
                 />
               </Grid>
+              <Grid item sm={12} xs={12}>          
+                      <Autocomplete                  
+                          id="combo-box"
+                          value={this.state.productCategory ?this.state.productCategory: null}
+                          renderInput={(params) => <TextValidator {...params}
+                              value={this.state.productCategory ? this.state.productCategory: null}
+                              label = {<span ><span style={{color:"red"}}></span>{t('Danh mục sản phẩm')}</span>}
+                              variant ="outlined"
+                              size ="small"
+                          />}
+                          options={this.state.listSupplier ? this.state.listSupplier:[]}
+                          getOptionLabel = {(option) => option.name}
+                          getOptionSelected={(option, value) =>
+                            option.id === value.id
+                          }
+                          onChange={(event,value) => {this.changeSelected(value,'productCategory')}}
+                      />
+              </Grid>
+              <Grid item sm={12} xs={12}>          
+                      <Autocomplete                  
+                          id="combo-box"
+                          value={this.state.supplier ? this.state.supplier: null}
+                          renderInput={(params) => <TextValidator {...params}
+                              value={this.state.supplier ? this.state.supplier: null}
+                              label = {<span ><span style={{color:"red"}}></span>{t('Danh mục sản phẩm')}</span>}
+                              variant ="outlined"
+                              size ="small"
+                          />}
+                          options={this.state.listDM ? this.state.listDM:[]}
+                          getOptionLabel = {(option) => option.name}
+                          getOptionSelected={(option, value) =>
+                            option.id === value.id
+                          }
+                          onChange={(event,value) => {this.changeSelected(value,'supplier')}}
+                      />
+              </Grid>
               <Grid item sm={12} xs={12}>
                 <Button
                   size="small"
@@ -372,16 +434,12 @@ getImageNameAndType = (name) => {
                 <TextValidator
                   size="small"
                   InputLabelProps={{ shrink: true }}
-                  // InputProps={{
-                  //   readOnly: true,
-                  // }}
                   label={
                     <span>
                       <span style={{ color: "red" }}></span>
                       {t("Đơn vị tính")}
                     </span>
                   }
-                  // className="w-80"
                   style ={{width: "80%"}}
                   value={
                     this.state.agency != null ? this.state.agency.name : ""
@@ -406,7 +464,7 @@ getImageNameAndType = (name) => {
               
               <Grid item sm={12} xs={12}>
               <EditorForm
-                    content={this.state.baiViet ? this.state.baiViet : ""}
+                    content={this.state.posts ? this.state.posts : ""}
                     handleChangeContent={this.handleChangeContent}
                   />
             </Grid>

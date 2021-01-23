@@ -93,7 +93,7 @@ class User extends Component {
     searchObject.text = this.state.keyword.trim();
     searchObject.pageIndex = this.state.page +1;
     searchObject.pageSize = this.state.rowsPerPage;
-    searchByDto(searchObject).then(({ data }) => {
+    searchByPage(searchObject.pageIndex,searchObject.pageSize).then(({ data }) => {
       this.setState({ itemList: [...data.content], totalElements: data.totalElements })
     });
     })
@@ -107,7 +107,7 @@ class User extends Component {
     searchObject.pageIndex = this.state.page + 1;
     searchObject.pageSize = this.state.rowsPerPage;
 
-    searchByDto(searchObject).then(({ data }) => {
+    searchByPage(searchObject.pageIndex,searchObject.pageSize).then(({ data }) => {
       this.setState({ itemList: [...data.content], totalElements: data.totalElements })
     });
 
@@ -267,7 +267,7 @@ class User extends Component {
               {t('Search')}
             </Button> */}
 
-            <Grid item lg={7} md={7} sm={7} xs={12}>
+            {/* <Grid item lg={7} md={7} sm={7} xs={12}>
             <Input
               label={t('EnterSearch')}
               type="text"
@@ -291,7 +291,7 @@ class User extends Component {
                 </InputAdornment>
               }
             />
-          </Grid>
+          </Grid> */}
 
 
           </Grid>

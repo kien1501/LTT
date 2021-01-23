@@ -644,7 +644,7 @@ class UserEditorDialog extends Component {
                   :
                   <div></div>
               }
-              <fieldset style={{ width: "100%" }}>
+              {/* <fieldset style={{ width: "100%" }}>
                 <legend>{<span className="font">{t("EQAHealthOrgRoundRegister.orgUnit")}</span>}</legend>
                 <Grid item container spacing={3} sm={12} xs={12}>
                   <Grid item xs={12}>
@@ -730,7 +730,7 @@ class UserEditorDialog extends Component {
                     />
                   </Grid>
                 </Grid>
-              </fieldset>
+              </fieldset> */}
             </Grid>
           </DialogContent>
 
