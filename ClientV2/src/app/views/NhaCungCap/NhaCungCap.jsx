@@ -318,6 +318,7 @@ import {
         },
         { title: t("general.name"), field: "name", width: "150" },
         { title: t("general.code"), field: "code", align: "left", width: "150" },    
+        { title: "Địa chỉ", field: "address", align: "left", width: "150" },    
       ];
       console.log(this.state.itemList);
       return (

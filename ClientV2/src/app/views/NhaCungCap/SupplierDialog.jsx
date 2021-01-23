@@ -121,7 +121,7 @@ class RealEstateSourceDialog extends Component {
           style={{ cursor: "move", paddingBottom: "0px" }}
           id="draggable-dialog-title"
         >
-          <h4 className="">{id ? t("general.update") : t("general.addNew")}</h4>
+          <h4 className="">{id ? (<span>Sửa thông tin nhà cung cấp</span>) : (<span>Thêm nhà cung cấp</span>)}</h4>
         </DialogTitle>
 
         <ValidatorForm ref="form" onSubmit={this.handleFormSubmit}>
@@ -168,7 +168,7 @@ class RealEstateSourceDialog extends Component {
                   label={
                     <span>
                       <span style={{ color: "red" }}>*</span>
-                      {t("RealEstateOwner.fullAddress")}
+                     Địa chỉ
                     </span>
                   }
                   onChange={this.handleChange}
