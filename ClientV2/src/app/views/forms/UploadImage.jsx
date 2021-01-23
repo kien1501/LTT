@@ -240,7 +240,7 @@ class UploadImage extends Component {
     }
 
     return (
-      <SimpleCard title={t('Product.mainImageUrl')} className="w-50" style={{ maxWidth: '100' }}>
+      <SimpleCard title={t('Chọn danh sánh ảnh')} className="w-50" style={{ maxWidth: '100' }}>
         <div className="flex flex-center flex-middle">
 
           <Grid
@@ -256,7 +256,7 @@ class UploadImage extends Component {
               imagePreviewUrl.map(imageURI => (
                 <>
                   <Grid item lg={4} md={4} sm={12} xs={12}>
-                    <img className="photo-uploaded" src={imageURI.url} alt="Photo uploaded" />
+                    <img className="photo-uploaded" src={imageURI.url} alt="Ảnh tải lên" />
                   </Grid>
 
                 </>
@@ -265,7 +265,7 @@ class UploadImage extends Component {
               this.state.imageArray?.map(imageURI => (
                 <>
                   <Grid item lg={4} md={4} sm={12} xs={12}>
-                    <img className="photo-uploaded" src={imageURI} alt="Photo uploaded" />
+                    <img className="photo-uploaded" src={imageURI} alt="Ảnh tải lên" />
                   </Grid>
 
                 </>
@@ -290,7 +290,7 @@ class UploadImage extends Component {
               >
                 <div className="flex flex-middle">
                   <Icon className="pr-8">cloud_upload</Icon>
-                  <span>Multiple File</span>
+                  <span>Chọn danh sách ảnh</span>
                 </div>
               </Fab>
             </label>
@@ -303,9 +303,9 @@ class UploadImage extends Component {
               multiple
             />
           </div>
-          <span style={{ marginLeft: '20px' }}>
-            {this.state.imageArray?.length}
-          </span>
+          {/* <span style={{ marginLeft: '20px' }}>
+            {this.state.imageArray.length}
+          </span> */}
         </Card>
       </SimpleCard>
     )

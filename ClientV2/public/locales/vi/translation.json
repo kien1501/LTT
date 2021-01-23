@@ -211,7 +211,9 @@
     "passwordNew": "Mật khẩu mới",
     "otherReagent": "Sinh phẩm chọn là sinh phẩm khác. Vui lòng viết tên sinh phẩm vào ghi chú và đính kèm tài liệu sinh phẩm",
     "programImplementation": "Thực hiện chương trình",
-    "contact": "Liên hệ"
+    "contact": "Liên hệ",
+    "addSuccess":"Thêm thành công",
+    "updateSuccess":"Cập nhật thành công"
   },
   "Download": "Tải về",
   "Dashboard": {
