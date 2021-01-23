@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.globits.da.domain.Customer;
 import com.globits.da.domain.Order;
 import com.globits.da.domain.ProductOrder;
 
@@ -19,7 +20,7 @@ public class OrderDto extends BaseObjectDto {
 	private StaffDto seller;
 	private String note;
 	private Set<ProductOrderDto> productOrder;
-	
+	private CustomerDto customer;
 	
 	
 	public String getName() {
@@ -88,6 +89,12 @@ public class OrderDto extends BaseObjectDto {
 	public void setProductOrder(Set<ProductOrderDto> productOrder) {
 		this.productOrder = productOrder;
 	}
+	public CustomerDto getCustomer() {
+		return customer;
+	}
+	public void setCustomer(CustomerDto customer) {
+		this.customer = customer;
+	}
 	public OrderDto() {
 		super();
 	}
@@ -104,6 +111,9 @@ public class OrderDto extends BaseObjectDto {
 			this.setStatus(entity.getStatus());
 			if(entity.getSeller() != null) {
 				this.setSeller(new StaffDto(entity.getSeller()));
+			}
+			if(entity.getCustomer() != null) {
+				this.setCustomer(new CustomerDto(entity.getCustomer()));
 			}
 			if(entity.getProductOrder() != null && entity.getProductOrder().size() > 0) {
 				this.productOrder = new HashSet<ProductOrderDto>();
