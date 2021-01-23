@@ -7,7 +7,7 @@ export const addItem = (data)=>{
 }
 
 export const pageItem = (page,rowPerPAge)=>{
-    return axios.get(API_PATH+`${page}/${rowPerPAge}/`);
+    return axios.get(API_PATH+`${page}/${rowPerPAge}`);
 }
 
 export const deleteItem = (id) =>{

@@ -23,6 +23,9 @@ import {
 } from "./NhanVienService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { pageItem } from "../ShiftWork/ShiftWorkService";
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 toast.configure({
   autoClose: 2000,
@@ -42,16 +45,26 @@ function PaperComponent(props) {
 }
 
 class UrbanAreaDialog extends Component {
+  constructor(props) {
+    super(props);
+    pageItem(1,1000).then((data) => {
+      let listShiftWork = data.data.content;
+      this.setState({ listShiftWork: listShiftWork });
+      console.log(this.state.listShiftWork);
+    });
+  }
   state = {
     id: "",
     code: "",
     type: "",
     displayName: "",
     type: "",
-    email:"",
-    phoneNumber:"",
+    email: "",
+    phoneNumber: "",
     shouldOpenNotificationPopup: false,
     Notification: "",
+    shiftWork: "",
+    listShiftWork: []
   };
   listType = [
     { id: 1, name: 'Nhân viên bán hàng' },
@@ -78,7 +91,11 @@ class UrbanAreaDialog extends Component {
       return;
     }
   };
-
+  handleSelectShiftWork = (shiftWork) => {
+    this.setState({ shiftWork: shiftWork }, function () {
+    });
+  }
+ 
   handleFormSubmit = () => {
     let { id } = this.state;
     let { code } = this.state;
@@ -87,7 +104,7 @@ class UrbanAreaDialog extends Component {
       //Nếu trả về true là code đã được sử dụng
       if (result.data) {
         toast.warning("Mã nhân viên đã sử dụng, vui lòng điền một mã khác.");
-        
+
         // alert("Code đã được sử dụng");
       } else {
         //Nếu trả về false là code chưa sử dụng có thể dùng
@@ -111,9 +128,11 @@ class UrbanAreaDialog extends Component {
   };
 
   componentWillMount() {
-    //getUserById(this.props.uid).then(data => this.setState({ ...data.data }));
     let { open, handleClose, item } = this.props;
     this.setState(item);
+  }
+  componentDidMount() {
+    let { item } = this.props;
   }
 
   render() {
@@ -124,6 +143,8 @@ class UrbanAreaDialog extends Component {
       displayName,
       email,
       phoneNumber,
+      shiftWork,
+      listShiftWork,
       shouldOpenNotificationPopup,
     } = this.state;
     let { open, handleClose, handleOKEditClose, t, i18n } = this.props;
@@ -228,6 +249,39 @@ class UrbanAreaDialog extends Component {
                     })}
                   </Select>
                 </FormControl>
+              </Grid>
+              <Grid item md={12} sm={12} xs={12} className="mt-10">
+                {listShiftWork && (<Autocomplete
+                  variant="outlined"
+                  size="small"
+                  style={{ width: '100%' }}
+                  id="combo-box-demo"
+                  defaultValue={shiftWork}
+                  value={shiftWork}
+                  options={listShiftWork}
+                  getOptionSelected={(option, value) => option.id === value.id}
+                  getOptionLabel={(option) => option.name}
+                  onChange={(event, value) => {
+                    this.handleSelectShiftWork(value);
+                  }}
+                  renderInput={(params) =>
+                    <TextValidator
+                      {...params}
+                      value={shiftWork}
+                      label={
+                        <span className="font">
+                          <span style={{ color: "red" }}> * </span>
+                          Ca làm việc
+                        </span>
+                      }
+                      fullWidth
+                      validators={["required"]}
+                      errorMessages="Vui lòng chọn ca làm việc"
+                      variant="outlined"
+                      size="small"
+                    />}
+
+                />)}
               </Grid>
             </Grid>
           </DialogContent>
