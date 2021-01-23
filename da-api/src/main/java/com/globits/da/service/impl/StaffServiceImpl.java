@@ -202,7 +202,7 @@ public class StaffServiceImpl extends GenericServiceImpl<Staff, UUID> implements
 		String sql = "select new com.globits.da.dto.StaffDto(entity) from Staff as entity where (1=1)  ";
 
 		if (dto.getKeyword() != null && StringUtils.hasText(dto.getKeyword())) {
-			whereClause += " AND ( entity.code LIKE :text )";
+			whereClause += " AND ( entity.code LIKE :text or entiy.person.displayName :text or entity.phoneNumber :text)";
 		}
 
 		sql += whereClause + orderBy;

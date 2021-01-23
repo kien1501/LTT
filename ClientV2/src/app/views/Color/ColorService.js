@@ -1,7 +1,7 @@
 import axios from "axios";
 import ConstantList from "../../appConfig";
 
-const API_PATH = ConstantList.API_ENPOINT + "/api/nhacungcap";
+const API_PATH = ConstantList.API_ENPOINT + "/api/color";
 
 
 export const addNewSource = User => {

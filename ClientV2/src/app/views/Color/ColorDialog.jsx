@@ -17,7 +17,7 @@ import {
   addNewSource,
   updateSource,
   checkCode,updateKho
-} from "./SupplierService";
+} from "./ColorService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -38,12 +38,12 @@ function PaperComponent(props) {
   );
 }
 
-class RealEstateSourceDialog extends Component {
+class ColorDialog extends Component {
   state = {
     id: "",
     name: "",
     code: "",
-    address: "",
+    description: "",
     type: "",
     shouldOpenNotificationPopup: false,
     Notification: "",
@@ -105,7 +105,7 @@ class RealEstateSourceDialog extends Component {
       id,
       name,
       code,
-      address,
+      description,
       shouldOpenNotificationPopup,
     } = this.state;
     let { open, handleClose, handleOKEditClose, t, i18n } = this.props;
@@ -116,12 +116,11 @@ class RealEstateSourceDialog extends Component {
         maxWidth="sm"
         fullWidth
       >
-        
         <DialogTitle
           style={{ cursor: "move", paddingBottom: "0px" }}
           id="draggable-dialog-title"
         >
-          <h4 className="">{id ? (<span>Sửa thông tin nhà cung cấp</span>) : (<span>Thêm nhà cung cấp</span>)}</h4>
+          <h4 className="">{id ? (<span>Sửa thông tin màu sắc</span>) : (<span>Thêm màu sắc</span>)}</h4>
         </DialogTitle>
 
         <ValidatorForm ref="form" onSubmit={this.handleFormSubmit}>
@@ -168,13 +167,13 @@ class RealEstateSourceDialog extends Component {
                   label={
                     <span>
                       <span style={{ color: "red" }}>*</span>
-                     Địa chỉ
+                      Mô tả
                     </span>
                   }
                   onChange={this.handleChange}
                   type="text"
-                  name="address"
-                  value={address}
+                  name="description"
+                  value={description}
                   validators={["required"]}
                   errorMessages={[t("general.required")]}
                 />
@@ -207,4 +206,4 @@ class RealEstateSourceDialog extends Component {
   }
 }
 
-export default RealEstateSourceDialog;
+export default ColorDialog;

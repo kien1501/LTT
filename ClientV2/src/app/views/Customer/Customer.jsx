@@ -35,10 +35,8 @@ import {
     getSourceById as getItemById,
     getAllItem,
     deleteCheckItem,
-  } from "./SupplierService";
-  
-  
-  import AgencyDialog from "./SupplierDialog";
+  } from "./CustomerService";
+  import CustomerDialog from "./CustomerDialog";
   import { Breadcrumb, ConfirmationDialog } from "egret";
   import { Helmet } from "react-helmet";
   import { withStyles } from "@material-ui/core/styles";
@@ -279,7 +277,7 @@ import {
     render() {
       const { t, i18n } = this.props;
       let { keyword, shouldOpenNotificationPopup } = this.state;
-      let TitlePage = t("Nhà Cung Cấp");
+      let TitlePage = "Khách hàng";
   
       let columns = [
         {
@@ -317,8 +315,9 @@ import {
           ),
         },
         { title: t("general.name"), field: "name", width: "150" },
-        { title: t("general.code"), field: "code", align: "left", width: "150" },    
-        { title: "Địa chỉ", field: "address", align: "left", width: "150" },    
+        { title: t("general.code"), field: "code", align: "left", width: "150" },
+        { title: "Tên khách hàng", field: "displayName", align: "left", width: "150" },    
+        { title: "Số điện thoại", field: "phoneNumber", align: "left", width: "150" },    
       ];
       console.log(this.state.itemList);
       return (
@@ -374,7 +373,7 @@ import {
                   className="search_box w-100"
                   onChange={this.handleTextChange}
                   onKeyDown={this.handleKeyDownEnterSearch}
-                  placeholder={t("general.enterKeyword")}
+                  placeholder="Nhập từ khóa tìm kiếm..."
                   id="search_box"
                   startAdornment={
                     <InputAdornment>
@@ -393,7 +392,7 @@ import {
             <Grid item xs={12}>
               <div>
                 {this.state.shouldOpenEditorDialog && (
-                  <AgencyDialog
+                  <CustomerDialog
                     t={t}
                     i18n={i18n}
                     handleClose={this.handleDialogClose}

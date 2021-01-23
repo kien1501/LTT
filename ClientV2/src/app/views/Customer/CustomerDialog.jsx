@@ -17,7 +17,7 @@ import {
   addNewSource,
   updateSource,
   checkCode,updateKho
-} from "./SupplierService";
+} from "./CustomerService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -38,7 +38,7 @@ function PaperComponent(props) {
   );
 }
 
-class RealEstateSourceDialog extends Component {
+class CustomerDialog extends Component {
   state = {
     id: "",
     name: "",
@@ -121,7 +121,7 @@ class RealEstateSourceDialog extends Component {
           style={{ cursor: "move", paddingBottom: "0px" }}
           id="draggable-dialog-title"
         >
-          <h4 className="">{id ? (<span>Sửa thông tin nhà cung cấp</span>) : (<span>Thêm nhà cung cấp</span>)}</h4>
+          <h4 className="">{id ? (<span>Sửa thông tin khách hàng</span>) : (<span>Thêm khách hàng</span>)}</h4>
         </DialogTitle>
 
         <ValidatorForm ref="form" onSubmit={this.handleFormSubmit}>
@@ -168,7 +168,7 @@ class RealEstateSourceDialog extends Component {
                   label={
                     <span>
                       <span style={{ color: "red" }}>*</span>
-                     Địa chỉ
+                      {t("RealEstateOwner.fullAddress")}
                     </span>
                   }
                   onChange={this.handleChange}
@@ -207,4 +207,4 @@ class RealEstateSourceDialog extends Component {
   }
 }
 
-export default RealEstateSourceDialog;
+export default CustomerDialog;

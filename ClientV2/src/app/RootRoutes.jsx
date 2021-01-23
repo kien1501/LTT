@@ -22,7 +22,10 @@ import NhanvienRouters from "./views/NhanVien/NhanVienRoutes";
 import MenuRoutes from "./views/Menus/MenuRoutes";
 import ShiftWorkRouters from "./views/ShiftWork/ShiftWorkRouters";
 import SupplierRoutes from "./views/NhaCungCap/SupplierRoutes";
+import CustomerRoutes from "./views/Customer/CustomerRoutes"
+import ColorRoutes from "./views/Color/ColorRoutes"
 import DonHangRoutes from "./views/DonHang/DonHangRoutes";
+
 const redirectRoute = [
   {
     path: ConstantList.ROOT_PATH,
@@ -55,6 +58,8 @@ const routes = [
   ...UserRoutes,
   ...ShiftWorkRouters,
   ...SupplierRoutes,
+  ...CustomerRoutes,
+  ...ColorRoutes,
   ...DonHangRoutes,
   ...errorRoute
 

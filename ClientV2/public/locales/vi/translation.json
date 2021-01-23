@@ -13,7 +13,7 @@
   "showing": "Đang hiển thị",
   "notShow": "Không hiển thị",
   "mess_SignUp": "Đăng ký thành công",
-  "web_site": "Phần mềm quản lý Ngoại kiểm",
+  "web_site": "Fashion Store",
   "Rowsperpage": "Số hàng hiển thị",
   "Date/Month": "Ngày/Tháng",
   "Content": "Nội dung",
@@ -135,6 +135,10 @@
     "duplicate_pass": "Mật khẩu không trùng nhau"
   },
   "general": {
+    "dupli_code":"Mã bị trùng, vui lòng nhập mã khác",
+    "updateSuccess":"Cập nhật thành công",
+    "addSuccess":"Thêm mới thành công",
+    "enterKeyword":"Nhập từ khóa tìm kiếm...",
     "notAccess": "Bạn không được điền vào trường này",
     "result":"Xem kết quả",
     "isFloat": "Sai định dạng('a.b')",
