@@ -19,7 +19,7 @@ public class ProductImage extends BaseObject {
 	private Product product;
 
 	@ManyToOne
-	@JoinColumn(name = "category_id")
+	@JoinColumn(name = "image_id")
 	private Image image;
 
 	public Product getProduct() {

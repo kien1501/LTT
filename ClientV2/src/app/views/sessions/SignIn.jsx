@@ -61,7 +61,7 @@ class SignIn extends Component {
             <Grid container>
               <Grid item lg={5} md={5} sm={5} xs={12}>
                 <div className="p-32 flex flex-center flex-middle h-100">
-                  <img src="/assets/images/logo-login-1.png" alt="" />                  
+                  <img src="/assets/images/logo-login-2.jpg" alt="" />                  
                 </div>
                 
                   

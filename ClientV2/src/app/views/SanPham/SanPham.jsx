@@ -36,7 +36,7 @@ import {
     getAllItem,
     deleteCheckItem,
   } from "./SanPhamService";
-  
+  import UploadImage from "../forms/UploadImage";
   
   import AgentDialog from "./SanPhamDialog";
   import { Breadcrumb, ConfirmationDialog } from "egret";

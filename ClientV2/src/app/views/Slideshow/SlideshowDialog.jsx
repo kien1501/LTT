@@ -9,7 +9,7 @@ import {
   DialogActions,
   Tooltip
 } from "@material-ui/core";
-import { ValidatorForm } from "react-material-ui-form-validator";
+import { ValidatorForm,TextValidator } from "react-material-ui-form-validator";
 import UploadImage from "../forms/UploadImage";
 import { editImageSlide, createImageSlide,addNewData } from "./SlideshowService";
 import axios from "axios";
@@ -22,7 +22,8 @@ import Loading from "../../../egret/components/EgretLoadable/Loading";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import localStorageService from "../../../app/services/localStorageService";
-
+import {searchByPage as getSP} from '../SanPham/SanPhamService'
+import Autocomplete from "@material-ui/lab/Autocomplete";
 toast.configure();
 function PaperComponent(props) {
   return (
@@ -69,8 +70,12 @@ class SlideShowDialog extends Component {
 
   handleFormSubmit = () => {
     console.log(this.props);
+    // if(this.state.product == null){
+    //   toast.warning("Chưa chọn sản phẩm");
+    //   return
+    // }
     this.setState({ loading: true });
-
+    
      
       addNewData({
         ...this.state,
@@ -81,7 +86,7 @@ class SlideShowDialog extends Component {
               {
                 loading: false,
                 shouldOpenDialog: true,
-                productId: res.data.id,
+                // productId: res.data.id,
               },
               () => {
               }
@@ -116,6 +121,12 @@ class SlideShowDialog extends Component {
     this.setState({
       ...this.props.item,
     });
+    var searchObject = {};
+        searchObject.pageIndex = 1;
+        searchObject.pageSize = 100000;
+        getSP(searchObject).then(res => {
+          this.setState({ listSP: [...res.data.content] })
+        })
   }
 
   handleImageSelect = (files) => {
@@ -145,7 +156,15 @@ class SlideShowDialog extends Component {
       imagePreviewUrl: "",
     });
   };
+  changeSelected = (value, type) =>{
 
+    if(type === 'product'){
+      this.setState({product:value ? value:null,productId:value ? value.id:""},()=>{
+      });
+    }
+    
+    
+  }
   render() {
     let { mainImageUrl, loading, images } = this.state;
     let { open, t } = this.props;
@@ -176,6 +195,24 @@ class SlideShowDialog extends Component {
           </div>
           <DialogContent>
             <Grid className="mb-10" container spacing={3}>
+            {/* <Grid item sm={12} xs={12}>          
+                      <Autocomplete                  
+                          id="combo-box"
+                          value={this.state.product ?this.state.product: null}
+                          renderInput={(params) => <TextValidator {...params}
+                              value={this.state.product? this.state.product: null}
+                              label = {<span ><span style={{color:"red"}}></span>{t('Sản phẩm')}</span>}
+                              variant ="outlined"
+                              size ="small"
+                          />}
+                          options={this.state.listSP ? this.state.listSP:[]}
+                          getOptionLabel = {(option) => option.code}
+                          getOptionSelected={(option, value) =>
+                            option.id === value.id
+                          }
+                          onChange={(event,value) => {this.changeSelected(value,'product')}}
+                      />
+              </Grid> */}
               <Grid item md={12} sm={12} xs={12}>
                 <UploadImage
                   className="w-30"
