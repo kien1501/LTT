@@ -17,6 +17,36 @@ export const navigations = [
         path: ConstantList.ROOT_PATH+"directory/nhanvien",
         icon: "keyboard_arrow_right",
         isVisible:true,
+      },
+      {
+        name: "Ca làm việc",
+        path: ConstantList.ROOT_PATH+"salary/shiftwork",
+        icon: "keyboard_arrow_right",
+        isVisible:true,
+      },
+      {
+        name: "Nhà cung cấp",
+        path: ConstantList.ROOT_PATH+"directory/nhacungcap",
+        icon: "keyboard_arrow_right",
+        isVisible:true,
+      },
+      {
+        name: "Sản phẩm",
+        path: ConstantList.ROOT_PATH+"directory/sanpham",
+        icon: "keyboard_arrow_right",
+        isVisible:true,
+      },
+      {
+        name: "Khách hàng",
+        path: ConstantList.ROOT_PATH+"directory/customer",
+        icon: "keyboard_arrow_right",
+        isVisible:true,
+      },
+      {
+        name: "Màu sắc",
+        path: ConstantList.ROOT_PATH+"directory/color",
+        icon: "keyboard_arrow_right",
+        isVisible:true,
       }
     ]
   }  

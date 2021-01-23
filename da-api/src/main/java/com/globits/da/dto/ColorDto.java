@@ -30,6 +30,7 @@ public class ColorDto extends BaseObjectDto{
 	public ColorDto(Color color) {
 		super();
 		if(color != null) {
+			this.setId(color.getId());
 			this.name = color.getName();
 			this.code = color.getCode();
 			this.description = color.getDescription();

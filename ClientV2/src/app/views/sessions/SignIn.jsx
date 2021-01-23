@@ -61,7 +61,7 @@ class SignIn extends Component {
             <Grid container>
               <Grid item lg={5} md={5} sm={5} xs={12}>
                 <div className="p-32 flex flex-center flex-middle h-100">
-                  <img src="/assets/images/logo-login-1.png" alt="" />                  
+                  <img src="/assets/images/logos/fashion_store.jpg" alt="" />                  
                 </div>
                 
                   
@@ -135,7 +135,7 @@ class SignIn extends Component {
                         {t("forgot_password")}
                         </Button>
                       </div>
-                    <p class="bold" style={{textAlign: "center", marginBottom: 0}}>Hotline: 034.888.6670</p>
+                    {/* <p class="bold" style={{textAlign: "center", marginBottom: 0}}>Hotline: 034.888.6670</p> */}
                   </ValidatorForm>
                 </div>
               </Grid>
