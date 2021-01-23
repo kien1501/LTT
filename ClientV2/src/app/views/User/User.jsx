@@ -93,7 +93,7 @@ class User extends Component {
     searchObject.text = this.state.keyword.trim();
     searchObject.pageIndex = this.state.page +1;
     searchObject.pageSize = this.state.rowsPerPage;
-    searchByDto(searchObject).then(({ data }) => {
+    searchByPage(searchObject.pageIndex,searchObject.pageSize).then(({ data }) => {
       this.setState({ itemList: [...data.content], totalElements: data.totalElements })
     });
     })
@@ -107,7 +107,7 @@ class User extends Component {
     searchObject.pageIndex = this.state.page + 1;
     searchObject.pageSize = this.state.rowsPerPage;
 
-    searchByDto(searchObject).then(({ data }) => {
+    searchByPage(searchObject.pageIndex,searchObject.pageSize).then(({ data }) => {
       this.setState({ itemList: [...data.content], totalElements: data.totalElements })
     });
 
