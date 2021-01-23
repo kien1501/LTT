@@ -63,8 +63,6 @@ class SignIn extends Component {
                 <div className="p-32 flex flex-center flex-middle h-100">
                   <img src="/assets/images/logos/fashion_store.jpg" alt="" />                  
                 </div>
-                
-                  
               </Grid>
               <Grid item lg={7} md={7} sm={7} xs={12}>
                 <div className="p-36 h-100 bg-light-gray position-relative">

@@ -24,6 +24,7 @@ import ShiftWorkRouters from "./views/ShiftWork/ShiftWorkRouters";
 import SupplierRoutes from "./views/NhaCungCap/SupplierRoutes";
 import CustomerRoutes from "./views/Customer/CustomerRoutes"
 import ColorRoutes from "./views/Color/ColorRoutes"
+import DonHangRoutes from "./views/DonHang/DonHangRoutes";
 
 const redirectRoute = [
   {
@@ -59,6 +60,7 @@ const routes = [
   ...SupplierRoutes,
   ...CustomerRoutes,
   ...ColorRoutes,
+  ...DonHangRoutes,
   ...errorRoute
 
 ];
