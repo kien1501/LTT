@@ -21,8 +21,7 @@ import DanhMucSanPhamRoutes from "./views/DanhMucSanPham/DanhMucSanPhamRoutes";
 import NhanvienRouters from "./views/NhanVien/NhanVienRoutes";
 import MenuRoutes from "./views/Menus/MenuRoutes";
 import ShiftWorkRouters from "./views/ShiftWork/ShiftWorkRouters";
-
-
+import SupplierRoutes from "./views/NhaCungCap/SupplierRoutes";
 
 const redirectRoute = [
   {
@@ -55,6 +54,7 @@ const routes = [
   ...MenuRoutes,
   ...UserRoutes,
   ...ShiftWorkRouters,
+  ...SupplierRoutes,
   ...errorRoute
 
 ];

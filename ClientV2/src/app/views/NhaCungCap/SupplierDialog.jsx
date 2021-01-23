@@ -14,11 +14,10 @@ import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import Draggable from "react-draggable";
 import NotificationPopup from "../Component/NotificationPopup/NotificationPopup";
 import {
-    saveItem,
-  addItem,
-  updateItem,
-  checkCode,
-} from "./DanhMucSanPhamService";
+  addNewSource,
+  updateSource,
+  checkCode,updateKho
+} from "./SupplierService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -39,12 +38,12 @@ function PaperComponent(props) {
   );
 }
 
-class DanhMucSanPhamDialog extends Component {
+class RealEstateSourceDialog extends Component {
   state = {
     id: "",
     name: "",
     code: "",
-    description: "",
+    address: "",
     type: "",
     shouldOpenNotificationPopup: false,
     Notification: "",
@@ -77,14 +76,14 @@ class DanhMucSanPhamDialog extends Component {
       } else {
         //Nếu trả về false là code chưa sử dụng có thể dùng
         if (id) {
-          updateItem({
+          updateSource({
             ...this.state,
           }).then(() => {
             toast.success(t("general.updateSuccess"));
             this.props.handleOKEditClose();
           });
         } else {
-            saveItem({
+          addNewSource({
             ...this.state,
           }).then(() => {
             toast.success(t("general.addSuccess"));
@@ -98,7 +97,7 @@ class DanhMucSanPhamDialog extends Component {
   componentWillMount() {
     //getUserById(this.props.uid).then(data => this.setState({ ...data.data }));
     let { open, handleClose, item } = this.props;
-    this.setState({...item});
+    this.setState(item);
   }
 
   render() {
@@ -106,7 +105,7 @@ class DanhMucSanPhamDialog extends Component {
       id,
       name,
       code,
-      description,
+      address,
       shouldOpenNotificationPopup,
     } = this.state;
     let { open, handleClose, handleOKEditClose, t, i18n } = this.props;
@@ -117,6 +116,7 @@ class DanhMucSanPhamDialog extends Component {
         maxWidth="sm"
         fullWidth
       >
+        
         <DialogTitle
           style={{ cursor: "move", paddingBottom: "0px" }}
           id="draggable-dialog-title"
@@ -162,6 +162,23 @@ class DanhMucSanPhamDialog extends Component {
                   errorMessages={[t("general.required")]}
                 />
               </Grid>
+              <Grid item sm={12} xs={12}>
+                <TextValidator
+                  className="w-100 "
+                  label={
+                    <span>
+                      <span style={{ color: "red" }}>*</span>
+                      {t("RealEstateOwner.fullAddress")}
+                    </span>
+                  }
+                  onChange={this.handleChange}
+                  type="text"
+                  name="address"
+                  value={address}
+                  validators={["required"]}
+                  errorMessages={[t("general.required")]}
+                />
+              </Grid>
             </Grid>
           </DialogContent>
           <DialogActions>
@@ -190,4 +207,4 @@ class DanhMucSanPhamDialog extends Component {
   }
 }
 
-export default DanhMucSanPhamDialog;
+export default RealEstateSourceDialog;

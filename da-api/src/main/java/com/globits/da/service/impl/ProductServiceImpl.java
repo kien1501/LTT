@@ -68,6 +68,7 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, UUID> implem
 			entity.setName(dto.getName());
 			entity.setCurrentSellingPrice(dto.getCurrentSellingPrice());
 			entity.setImageUrl(dto.getImageUrl());
+			entity.setPosts(dto.getPosts());
 			if(dto.getStockKeepingUnit() != null) {
 				StockKeepingUnit nv = donViTinhRepository.getOne(dto.getStockKeepingUnit().getId());
 				entity.setStockKeepingUnit(nv);
