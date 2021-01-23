@@ -351,22 +351,22 @@ import {
           </div>
           <Grid container spacing={2} justify="space-between">
             <Grid item md={3} xs={12}>
-              <Button
+              {/* <Button
                 className="align-bottom mr-16 mb-16"
                 variant="contained"
                 color="primary"
                 onClick={() => this.handleEditItem(null)}
               >
                 {t("general.add")}
-              </Button>
-              <Button
+              </Button> */}
+              {/* <Button
                 className="align-bottom mb-16"
                 variant="contained"
                 color="primary"
                 onClick={this.handleDeleteButtonClick}
               >
                 {t("general.delete")}
-              </Button>
+              </Button> */}
   
               {this.state.shouldOpenConfirmationDeleteAllDialog && (
                 <ConfirmationDialog
@@ -450,7 +450,7 @@ import {
                   },
                 }}
                 options={{
-                  selection: true,
+                  selection: false,
                   actionsColumnIndex: -1,
                   paging: false,
                   search: false,

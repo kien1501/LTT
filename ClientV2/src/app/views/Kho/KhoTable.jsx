@@ -170,13 +170,10 @@ class RealEstateSourceTable extends React.Component {
     });
   }
   checkData = () => {
-    let {t} = this.props
+    let { t } = this.props
     if (!this.data || this.data.length === 0) {
-      toast.warning(t("general.noti_check_data"))
-      // this.setState({
-      //   shouldOpenNotificationPopup: true,
-      //   Notification: "general.noti_check_data",
-      // });
+      toast.warning(t("general.noti_check_data"));
+
     } else if (this.data.length === this.state.itemList.length) {
       this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
     } else {
@@ -481,9 +478,10 @@ class RealEstateSourceTable extends React.Component {
                 open={shouldOpenConfirmationDeleteAllDialog}
                 onConfirmDialogClose={this.handleDialogClose}
                 onYesClick={this.handleDeleteAll}
-                text={t("general.deleteAllConfirm")}
-                agree={t("general.agree")}
-                cancel={t("general.cancel")}
+                title={t("confirm")}
+                text={t('DeleteAllConfirm')}
+                Yes={t('general.Yes')}
+                No={t('general.No')}
               />
             )}
             {this.state.shouldOpenConfirmationDeleteListDialog && (
@@ -491,9 +489,10 @@ class RealEstateSourceTable extends React.Component {
                 open={this.state.shouldOpenConfirmationDeleteListDialog}
                 onConfirmDialogClose={this.handleDialogClose}
                 onYesClick={this.handleDeleteAll}
-                text={t("general.deleteConfirm")}
-                agree={t("general.agree")}
-                cancel={t("general.cancel")}
+                title={t("confirm")}
+                  text={t('DeleteConfirm')}
+                  Yes={t('general.Yes')}
+                  No={t('general.No')}
               />
             )}
           </Grid>
@@ -538,9 +537,10 @@ class RealEstateSourceTable extends React.Component {
                   open={shouldOpenConfirmationDialog}
                   onConfirmDialogClose={this.handleDialogClose}
                   onYesClick={this.handleConfirmationResponse}
-                  text={t("general.deleteConfirm")}
-                  agree={t("general.agree")}
-                  cancel={t("general.cancel")}
+                  title={t("confirm")}
+                  text={t('DeleteConfirm')}
+                  Yes={t('general.Yes')}
+                  No={t('general.No')}
                 />
               )}
             </div>

@@ -61,6 +61,7 @@ const routes = [
   ...CustomerRoutes,
   ...ColorRoutes,
   ...DonHangRoutes,
+  ...DonViTinhRoutes,
   ...errorRoute
 
 ];

@@ -174,10 +174,10 @@ class PhieuNhapKhoDialog extends Component {
     this.setState({...item});
   }
   handleSelectUser =(item)=>{
-      this.setState({kho:item ? item : null,shouldOpenChonKho: false, })
+      this.setState({warehouse:item ? item : null,shouldOpenChonKho: false, })
   }
   handleSelectAgency =(item) =>{
-    this.setState({nguoiNhap:item ? item : null,shouldOpenChonNhanVien: false, })
+    this.setState({receiver:item ? item : null,shouldOpenChonNhanVien: false, })
   }
   handleChangeSL  =(item,e) =>{
     let {productInventoryReceivingVoucher} = this.state
@@ -418,7 +418,7 @@ class PhieuNhapKhoDialog extends Component {
                   // className="w-80"
                   style ={{width: "90%"}}
                   value={
-                    this.state.nguoiNhap != null ? this.state.nguoiNhap.displayName : ""
+                    this.state.receiver != null ? this.state.receiver.displayName : ""
                   }
                   variant="outlined"
                   size ="small"
@@ -429,8 +429,8 @@ class PhieuNhapKhoDialog extends Component {
                     open={this.state.shouldOpenChonNhanVien}
                     handleSelect={this.handleSelectAgency}
                     selectedItem={
-                      this.state.nguoiNhap != null
-                        ? this.state.nguoiNhap
+                      this.state.receiver != null
+                        ? this.state.receiver
                         : {}
                     }
                     handleClose={this.handleDialogClose}
@@ -467,7 +467,7 @@ class PhieuNhapKhoDialog extends Component {
                   // className="w-80"
                   style ={{width: "90%"}}
                   value={
-                    this.state.kho != null ? this.state.kho.tenKho : ""
+                    this.state.warehouse != null ? this.state.warehouse.name : ""
                   }
                   variant="outlined"
                   size ="small"
@@ -478,8 +478,8 @@ class PhieuNhapKhoDialog extends Component {
                     open={this.state.shouldOpenChonKho}
                     handleSelect={this.handleSelectUser}
                     selectedItem={
-                      this.state.kho != null 
-                        ? this.state.kho
+                      this.state.warehouse != null 
+                        ? this.state.warehouse
                         : {}
                     }
                     handleClose={this.handleDialogClose}

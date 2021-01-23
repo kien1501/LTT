@@ -69,10 +69,17 @@ public class InventoryReceivingVoucherServiceImpl extends GenericServiceImpl< In
 			if(entity == null) {
 				entity = new InventoryReceivingVoucher();
 			}
+			if(dto.getReceiver() != null && dto.getReceiver().getId() != null) {
+				nv = nhanVienRepository.getOne(dto.getReceiver().getId());
+			}
+			if(dto.getWarehouse() != null && dto.getWarehouse().getId() != null) {
+				kho = khoRepository.getOne(dto.getWarehouse().getId());
+			}
 			entity.setCode(dto.getCode());
 			entity.setName(dto.getName());
 			entity.setWarehouse(kho);
 			entity.setDateAdded(dto.getDateAdded());
+			entity.setReceiver(nv);
 			//
 			if (dto.getProductInventoryReceivingVoucher() != null && dto.getProductInventoryReceivingVoucher().size() > 0) {
 				Set<ProductInventoryReceivingVoucher> listSanPhamPhieuNhap = new HashSet<ProductInventoryReceivingVoucher>();

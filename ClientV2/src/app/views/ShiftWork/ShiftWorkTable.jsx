@@ -141,19 +141,15 @@ class ShiftWorkTable extends React.Component {
 
   
 checkData = () => {
-  if(!this.data || this.data.length === 0) {
-    this.setState({shouldOpenNotificationPopup: true,
-      Notification:"general.noti_check_data"})
+  let { t } = this.props
+    if (!this.data || this.data.length === 0) {
+      toast.warning(t("general.noti_check_data"));
 
-  } else if(this.data.length === this.state.itemList.length) {
-    // alert("Bạn có muốn xoá toàn bộ");
-    
-    this.setState({ shouldOpenConfirmationDeleteAllDialog: true }) 
-
-  } else {     
-    this.setState({ shouldOpenConfirmationDeleteListDialog: true }) 
-    
-  }
+    } else if (this.data.length === this.state.itemList.length) {
+      this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
+    } else {
+      this.setState({ shouldOpenConfirmationDeleteListDialog: true });
+    }
 }
 
   updatePageData = () => {
@@ -231,7 +227,7 @@ checkData = () => {
     deleteItem(this.state.id).then(() => {
       this.updatePageData();
       this.handleDialogClose();
-      toast.success(t("general.deleteSuccess"))
+      toast.success("Xóa thành công")
     });
   };
 
@@ -297,7 +293,7 @@ checkData = () => {
         listAlert.push(list[i].name);
       }    
     }
-    toast.success(t("general.deleteSuccess"))
+    toast.success("Xóa thành công")
     this.handleDialogClose()
     // if(listAlert.length === list.length) {
     //   this.setState({shouldOpenNotificationPopup: true,
@@ -430,9 +426,10 @@ checkData = () => {
                 open={shouldOpenConfirmationDeleteAllDialog}
                 onConfirmDialogClose={this.handleDialogClose}
                 onYesClick={this.handleDeleteAll}
-                text={t('general.deleteAllConfirm')}
-                agree={t('general.agree')}
-                cancel={t('general.cancel')}
+                title={t("confirm")}
+                  text={t('DeleteAllConfirm')}
+                  Yes={t('general.Yes')}
+                  No={t('general.No')}
               />
             )}
             {this.state.shouldOpenConfirmationDeleteListDialog && (
@@ -440,9 +437,10 @@ checkData = () => {
                 open={this.state.shouldOpenConfirmationDeleteListDialog}
                 onConfirmDialogClose={this.handleDialogClose}
                 onYesClick={this.handleDeleteAll}
-                text={t('general.deleteConfirm')}
-                agree={t('general.agree')}
-                cancel={t('general.cancel')}
+                title={t("confirm")}
+                  text={t('DeleteConfirm')}
+                  Yes={t('general.Yes')}
+                  No={t('general.No')}
               />
             )}
 
@@ -490,9 +488,10 @@ checkData = () => {
                   open={shouldOpenConfirmationDialog}
                   onConfirmDialogClose={this.handleDialogClose}
                   onYesClick={this.handleConfirmationResponse}
-                  text={t('general.deleteConfirm')}
-                  agree={t('general.agree')}
-                  cancel={t('general.cancel')}
+                  title={t("confirm")}
+                  text={t('DeleteConfirm')}
+                  Yes={t('general.Yes')}
+                  No={t('general.No')}
                 />
               )}
             </div>

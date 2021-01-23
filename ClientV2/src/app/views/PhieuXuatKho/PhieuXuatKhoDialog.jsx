@@ -140,9 +140,9 @@ class PhieuXuatKhoDialog extends Component {
 
   handleFormSubmit = () => {
     let { id } = this.state;
-    let { ma } = this.state;
+    let { code } = this.state;
     var { t } = this.props;
-    checkCode(id, ma).then((result) => {
+    checkCode(id, code).then((result) => {
       //Nếu trả về true là code đã được sử dụng
       if (result.data) {
         toast.warning(t("general.dupli_code"));
@@ -184,7 +184,7 @@ class PhieuXuatKhoDialog extends Component {
     if(productInventoryDeliveryVoucher == null ){
       productInventoryDeliveryVoucher =[] 
       let p = {}
-      p.product = item.product;
+      p = item;
       p.productNumber = e.target.value
       productInventoryDeliveryVoucher.push(p)
     }
@@ -192,7 +192,7 @@ class PhieuXuatKhoDialog extends Component {
       productInventoryDeliveryVoucher.forEach(el=>{
         if(el.product.id == item.product.id){
           // let p ={}
-          el.soLuong =e.target.value
+          el.productNumber =e.target.value
         }
       })
     }
@@ -299,7 +299,7 @@ class PhieuXuatKhoDialog extends Component {
                   type="number"
                   value={row.productNumber}
                   validators={["required"]}
-                  errorMessages={[t("general.required")]}
+                  errorMessages={[t("Chưa nhập số lượng")]}
                 />
         
       },
@@ -506,7 +506,7 @@ class PhieuXuatKhoDialog extends Component {
               )}
                 <Grid item sm={12} xs="12" className = "mt-10">
                   <MaterialTable
-                    data={this.state.sanPhamPhieuXuat ? this.state.sanPhamPhieuXuat : []}
+                    data={this.state.productInventoryDeliveryVoucher ? this.state.productInventoryDeliveryVoucher : []}
                     columns={columns}
                     options={{
                       selection: false,

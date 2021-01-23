@@ -237,13 +237,15 @@ import {
       });
     };
     handleDeleteButtonClick = () => {
-      let {t} = this.props
-      if ( this.data === null || this.data.length === 0) {
-        toast.warning(t("general.noti_check_data"));
-        // alert('Chưa chọn dữ liệu')
-      } else {
-        this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
-      }
+      let { t } = this.props
+    if (!this.data || this.data.length === 0) {
+      toast.warning(t("general.noti_check_data"));
+
+    } else if (this.data.length === this.state.itemList.length) {
+      this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
+    } else {
+      this.setState({ shouldOpenConfirmationDeleteListDialog: true });
+    }
     };
     async handleDeleteList(list) {
       let listAlert = [];
@@ -360,9 +362,10 @@ import {
                   open={this.state.shouldOpenConfirmationDeleteAllDialog}
                   onConfirmDialogClose={this.handleDialogClose}
                   onYesClick={this.handleDeleteAll}
-                  text={t("general.deleteAllConfirm")}
-                  cancel={t("general.cancel")}
-                  agree={t("general.agree")}
+                  title={t("confirm")}
+                  text={t('DeleteAllConfirm')}
+                  Yes={t('general.Yes')}
+                  No={t('general.No')}
                 />
               )}
               
@@ -410,9 +413,10 @@ import {
                     open={this.state.shouldOpenConfirmationDialog}
                     onConfirmDialogClose={this.handleDialogClose}
                     onYesClick={this.handleConfirmationResponse}
-                    text={t("general.deleteConfirm")}
-                    agree={t("general.agree")}
-                    cancel={t("general.cancel")}
+                    title={t("confirm")}
+                    text={t('DeleteConfirm')}
+                    Yes={t('general.Yes')}
+                    No={t('general.No')}
                   />
                 )}
               </div>
@@ -459,9 +463,6 @@ import {
                 }}
                 onSelectionChange={(rows) => {
                   this.data = rows;
-  
-                  // this.setState({ data: rows })
-                  console.log(this.data);
                 }}
                 // actions={[
                 //   {

@@ -96,19 +96,27 @@ public class InventoryDeliveryVoucherServiceImpl extends GenericServiceImpl< Inv
 
 					if(sanPhamPhieuXuatlDto.getProduct() != null) {
 						sanPhamPhieuXuat.setProduct(sanPhamRepository.getOne(sanPhamPhieuXuatlDto.getProduct().getId()));
+						ProductWarehouse sanPhamKho  = null;
 						if(kho != null && kho.getId() != null) {
 							List<ProductWarehouse> listData = sanPhamKhoRepository.getListSanPhamKho(sanPhamPhieuXuatlDto.getProduct().getId(),kho.getId());
 							if(listData != null && listData.size() > 0) {
-								ProductWarehouse sanPhamKho = listData.get(0);
-								if(sanPhamKho == null) {
-									return null;
-								}
-								if(sanPhamKho.getProductNumber() >= sanPhamPhieuXuatlDto.getProductNumber()) {
-									sanPhamKho.setProductNumber(sanPhamKho.getProductNumber() - sanPhamPhieuXuatlDto.getProductNumber());
-								}
+								 sanPhamKho = listData.get(0);
 							}
+						}else {
+							return null;
 						}
+						if(sanPhamKho == null) {
+							return null;
+						}
+						if(sanPhamKho.getProductNumber() >= sanPhamPhieuXuatlDto.getProductNumber()) {
+							sanPhamKho.setProductNumber(sanPhamKho.getProductNumber() - sanPhamPhieuXuatlDto.getProductNumber());
+						}else {
+							return null;
+						}
+					}else {
+						return null;
 					}
+					
 					sanPhamPhieuXuat.setProductNumber(sanPhamPhieuXuatlDto.getProductNumber());
 					sanPhamPhieuXuat.setInventoryDeliveryVoucher(entity);
 					listSanPhamPhieuXuat.add(sanPhamPhieuXuat);

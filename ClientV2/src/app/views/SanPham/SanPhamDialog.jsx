@@ -489,7 +489,7 @@ handleImageRemove = () => {
                           value={this.state.supplier ? this.state.supplier: null}
                           renderInput={(params) => <TextValidator {...params}
                               value={this.state.supplier ? this.state.supplier: null}
-                              label = {<span ><span style={{color:"red"}}></span>{t('Danh mục sản phẩm')}</span>}
+                              label = {<span ><span style={{color:"red"}}></span>{t('Nhà cung cấp')}</span>}
                               variant ="outlined"
                               size ="small"
                           />}

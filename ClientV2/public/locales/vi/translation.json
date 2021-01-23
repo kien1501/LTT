@@ -217,7 +217,10 @@
     "programImplementation": "Thực hiện chương trình",
     "contact": "Liên hệ",
     "addSuccess":"Thêm thành công",
-    "updateSuccess":"Cập nhật thành công"
+    "updateSuccess":"Cập nhật thành công",
+    "deleteConfirm":"Bạn có chắc chắn muốn xóa",
+    "addNew":"Thêm mới",
+    "deleteSuccess":"Xoá thành công bản ghi"
   },
   "Download": "Tải về",
   "Dashboard": {
