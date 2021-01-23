@@ -13,10 +13,10 @@ import com.globits.da.dto.ShiftWorkDto;
 
 @Repository
 public interface ShiftWorkRepository extends JpaRepository<ShiftWork, UUID>{
-	@Query("select new com.globits.hr.dto.ShiftWorkDto(shiff) from ShiftWork shiff")
+	@Query("select new com.globits.da.dto.ShiftWorkDto(shiff) from ShiftWork shiff")
 	Page<ShiftWorkDto> getListPage( Pageable pageable);
 	
-	@Query("select new com.globits.hr.dto.ShiftWorkDto(sw) from ShiftWork sw where sw.name like ?1 or sw.code like ?2")
+	@Query("select new com.globits.da.dto.ShiftWorkDto(sw) from ShiftWork sw where sw.name like ?1 or sw.code like ?2")
 	Page<ShiftWorkDto> searchByPage(String name, String code, Pageable pageable);
 }
 

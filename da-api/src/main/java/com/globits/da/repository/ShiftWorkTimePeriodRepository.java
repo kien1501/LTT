@@ -13,7 +13,7 @@ import com.globits.da.dto.ShiftWorkTimePeriodDto;
 
 @Repository
 public interface ShiftWorkTimePeriodRepository extends JpaRepository<ShiftWorkTimePeriod, UUID>{
-	@Query("select new com.globits.hr.dto.ShiftWorkTimePeriodDto(time) from ShiftWorkTimePeriod time")
+	@Query("select new com.globits.da.dto.ShiftWorkTimePeriodDto(time) from ShiftWorkTimePeriod time")
 	Page<ShiftWorkTimePeriodDto> getListPage( Pageable pageable);
 	
 	
