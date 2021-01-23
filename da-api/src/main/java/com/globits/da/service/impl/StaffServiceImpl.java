@@ -44,6 +44,9 @@ public class StaffServiceImpl extends GenericServiceImpl<Staff, UUID> implements
 			}
 			entity.setCode(dto.getCode());
 			entity.setType(dto.getType());
+			entity.setDisplayName(dto.getDisplayNane());
+			entity.setEmail(dto.getEmail());
+			entity.setPhoneNumber(dto.getPhoneNumber());
 			
 			entity = repos.save(entity);
 			if (entity != null) {
