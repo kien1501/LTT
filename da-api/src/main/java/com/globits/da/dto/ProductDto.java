@@ -5,10 +5,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.globits.da.domain.Color;
 import com.globits.da.domain.Product;
 import com.globits.da.domain.ProductCategory;
+import com.globits.da.domain.ProductColor;
 import com.globits.da.domain.ProductImage;
 import com.globits.da.domain.ProductWarehouse;
+import com.globits.da.domain.StaffWorkSchedule;
 import com.globits.da.domain.Supplier;
 
 public class ProductDto extends BaseObjectDto{
@@ -23,6 +26,7 @@ public class ProductDto extends BaseObjectDto{
 	private String imageUrl;//Đường dẫn đến File ảnh tiêu đề bài báo (nếu có)
 	private List<ImageDto> images;
 	private String posts;
+	private Set<ColorDto> productColors = new HashSet<ColorDto>();
 	
 	public String getName() {
 		return name;
@@ -92,6 +96,13 @@ public class ProductDto extends BaseObjectDto{
 	public void setPosts(String posts) {
 		this.posts = posts;
 	}
+	
+	public Set<ColorDto> getProductColors() {
+		return productColors;
+	}
+	public void setProductColors(Set<ColorDto> productColors) {
+		this.productColors = productColors;
+	}
 	public ProductDto() {
 		super();
 	}
@@ -125,6 +136,11 @@ public class ProductDto extends BaseObjectDto{
 			for (ProductImage productCategory : e.getProductImage()) {
 				ImageDto dto = new ImageDto(productCategory.getImage());
 				this.images.add(dto);
+			}
+		}
+		if(e.getProductColors()!=null && e.getProductColors().size()>0){
+			for (ProductColor item : e.getProductColors()) {
+				this.productColors.add(new ColorDto(item.getColor()));				
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 package com.globits.da.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -24,7 +25,7 @@ public class Staff extends Person{
 	@Column(name = "type")
 	private Integer type;//1: Nhân viên bán hàng, 2: Nhân viên thu ngân, 3: Khác... Constant StaffType 
 	@OneToMany(mappedBy = "staff", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	private Set<StaffWorkSchedule> staffWorkSchedule;
+	private Set<StaffWorkSchedule> staffWorkSchedule = new HashSet<StaffWorkSchedule>();
 	@ManyToOne
 	@JoinColumn(name="shift_work_id")
 	private ShiftWork shiftWork;//ca làm việc của nhân viên

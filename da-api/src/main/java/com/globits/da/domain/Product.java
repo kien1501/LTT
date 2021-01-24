@@ -1,5 +1,6 @@
 package com.globits.da.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -42,6 +43,8 @@ public class Product extends BaseObject{
 	private String imageUrl;//Đường dẫn đến File ảnh tiêu đề bài báo (nếu có)
 	@Column(name="posts", columnDefinition = "LONGTEXT")
 	private String posts;
+	@OneToMany(mappedBy = "product",cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	private Set<ProductColor> productColors = new HashSet<ProductColor>();;
 	
 	public String getName() {
 		return name;
@@ -104,6 +107,10 @@ public class Product extends BaseObject{
 	public void setPosts(String posts) {
 		this.posts = posts;
 	}
-
-	
+	public Set<ProductColor> getProductColors() {
+		return productColors;
+	}
+	public void setProductColors(Set<ProductColor> productColors) {
+		this.productColors = productColors;
+	}
 }

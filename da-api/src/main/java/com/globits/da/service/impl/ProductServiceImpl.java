@@ -1,6 +1,8 @@
 package com.globits.da.service.impl;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Query;
@@ -14,14 +16,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.globits.core.service.impl.GenericServiceImpl;
+import com.globits.da.domain.Color;
 import com.globits.da.domain.Image;
 import com.globits.da.domain.Product;
 import com.globits.da.domain.ProductCategory;
+import com.globits.da.domain.ProductColor;
 import com.globits.da.domain.ProductImage;
+import com.globits.da.domain.ShiftWork;
+import com.globits.da.domain.StaffWorkSchedule;
 import com.globits.da.domain.StockKeepingUnit;
 import com.globits.da.domain.Supplier;
+import com.globits.da.dto.ColorDto;
+import com.globits.da.dto.ProductColorDto;
 import com.globits.da.dto.ProductDto;
+import com.globits.da.dto.StaffShiftWorkDto;
 import com.globits.da.dto.search.SearchDto;
+import com.globits.da.repository.ColorRepository;
 import com.globits.da.repository.ImageRepository;
 import com.globits.da.repository.ProductCategoryRepository;
 import com.globits.da.repository.ProductImageRepository;
@@ -45,6 +55,9 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, UUID> implem
 	ProductCategoryRepository productCategoryRepository;
 	@Autowired
 	SupplierRepository supplierRepository;
+	@Autowired
+	ColorRepository colorRepository;
+	
 	@Override
 	public Page<ProductDto> getPage(int pageSize, int pageIndex) {
 		Pageable pageable = PageRequest.of(pageIndex-1, pageSize);
@@ -80,6 +93,33 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, UUID> implem
 			if(dto.getProductCategory() != null) {
 				ProductCategory nv = productCategoryRepository.getOne(dto.getProductCategory().getId());
 				entity.setProductCategory(nv);
+			}
+			Set<ProductColor> prouductColor = new HashSet<ProductColor>();
+			if (dto.getProductColors() != null && dto.getProductColors().size() > 0) {
+				for (ColorDto pcDto : dto.getProductColors()) {
+					if (pcDto != null) {
+						Color c = colorRepository.getOne(pcDto.getId());
+						if (c != null) {
+							ProductColor pc = new ProductColor();
+							pc.setColor(c);
+							pc.setProduct(entity);
+							prouductColor.add(pc);
+						}
+					}
+				}
+				if (prouductColor != null && prouductColor.size() > 0) {
+					if (entity.getProductColors() == null) {
+						entity.setProductColors(prouductColor);
+					} else {
+						entity.getProductColors().clear();
+						entity.getProductColors().addAll(prouductColor);
+					}
+				}
+
+			} else {// Nếu submit list trống lên thì xóa hết
+				if (entity.getProductColors() != null) {
+					entity.getProductColors().clear();
+				}
 			}
 			entity = repos.save(entity);
 			if (entity != null) {
