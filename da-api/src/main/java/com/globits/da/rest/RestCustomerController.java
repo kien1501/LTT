@@ -71,7 +71,7 @@ public class RestCustomerController {
 //	@Secured({ CrmConstants.ROLE_ADMIN,CrmConstants.ROLE_CRM_ADMIN})
 	@RequestMapping(value = "/{customerId}", method = RequestMethod.PUT)
 	public CustomerDto updateCustomer(@RequestBody CustomerDto dto,
-			@PathVariable("customerId") Long customerId) {
+			@PathVariable("customerId") UUID customerId) {
 		return customerService.saveCustomer(dto);
 	}
 	

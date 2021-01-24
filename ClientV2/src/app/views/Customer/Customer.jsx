@@ -235,10 +235,9 @@ import {
       });
     };
     handleDeleteButtonClick = () => {
-      let {t} = this.props
-      if ( this.data === null || this.data.length === 0) {
+      let {t} = this.props;
+      if ( this.data === null || this.data.length === null) {
         toast.warning(t("general.noti_check_data"));
-        // alert('Chưa chọn dữ liệu')
       } else {
         this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
       }
@@ -346,7 +345,8 @@ import {
               >
                 {t("general.add")}
               </Button>
-              <Button
+              {this.data != null && this.data.length > 0 && (
+                <Button
                 className="align-bottom mb-16"
                 variant="contained"
                 color="primary"
@@ -354,15 +354,16 @@ import {
               >
                 {t("general.delete")}
               </Button>
-  
+              )
+              }
               {this.state.shouldOpenConfirmationDeleteAllDialog && (
                 <ConfirmationDialog
                   open={this.state.shouldOpenConfirmationDeleteAllDialog}
                   onConfirmDialogClose={this.handleDialogClose}
                   onYesClick={this.handleDeleteAll}
                   text={t("general.deleteAllConfirm")}
-                  cancel={t("general.cancel")}
-                  agree={t("general.agree")}
+                  No={t("general.cancel")}
+                  Yes={t("general.agree")}
                 />
               )}
               
@@ -411,8 +412,8 @@ import {
                     onConfirmDialogClose={this.handleDialogClose}
                     onYesClick={this.handleConfirmationResponse}
                     text={t("general.deleteConfirm")}
-                    agree={t("general.agree")}
-                    cancel={t("general.cancel")}
+                    Yes={t("general.agree")}
+                    No={t("general.cancel")}
                   />
                 )}
               </div>
