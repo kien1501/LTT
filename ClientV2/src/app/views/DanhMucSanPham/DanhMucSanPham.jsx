@@ -243,7 +243,7 @@ import {
 
     } else if (this.data.length === this.state.itemList.length) {
       this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
-    } else {
+    } else if(this.data.length > 0 && this.data.length < this.state.itemList.length) {
       this.setState({ shouldOpenConfirmationDeleteListDialog: true });
     }
     };

@@ -477,8 +477,8 @@ class AgentDialog extends Component {
                   }
                   onChange={this.handleChange}
                   type="text"
-                  name="currentSellingPrice"
-                  value={this.state.currentSellingPrice}
+                  name="price"
+                  value={this.state.price}
                   validators={["required"]}
                   errorMessages={[t("general.required")]}
                 />

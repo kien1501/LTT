@@ -25,6 +25,7 @@ import SupplierRoutes from "./views/NhaCungCap/SupplierRoutes";
 import CustomerRoutes from "./views/Customer/CustomerRoutes"
 import ColorRoutes from "./views/Color/ColorRoutes"
 import DonHangRoutes from "./views/DonHang/DonHangRoutes";
+import EventRoutes from "./views/Event/EventRoutes";
 
 const redirectRoute = [
   {
@@ -62,6 +63,7 @@ const routes = [
   ...ColorRoutes,
   ...DonHangRoutes,
   ...DonViTinhRoutes,
+  ...EventRoutes,
   ...errorRoute
 
 ];

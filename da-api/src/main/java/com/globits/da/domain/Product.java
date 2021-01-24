@@ -26,6 +26,8 @@ public class Product extends BaseObject{
 	private String code;
 	@Column(name = "current_selling_price")
 	private Double currentSellingPrice;
+	@Column(name = "price")
+	private Double price;
 	@ManyToOne
 	@JoinColumn(name="stock_keepingCunit_id")
 	private StockKeepingUnit stockKeepingUnit;
@@ -112,5 +114,11 @@ public class Product extends BaseObject{
 	}
 	public void setProductColors(Set<ProductColor> productColors) {
 		this.productColors = productColors;
+	}
+	public Double getPrice() {
+		return price;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 }

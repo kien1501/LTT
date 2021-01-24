@@ -27,7 +27,7 @@ public class ProductDto extends BaseObjectDto{
 	private List<ImageDto> images;
 	private String posts;
 	private Set<ColorDto> productColors = new HashSet<ColorDto>();
-	
+	private Double price;
 	public String getName() {
 		return name;
 	}
@@ -103,6 +103,12 @@ public class ProductDto extends BaseObjectDto{
 	public void setProductColors(Set<ColorDto> productColors) {
 		this.productColors = productColors;
 	}
+	public Double getPrice() {
+		return price;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 	public ProductDto() {
 		super();
 	}
@@ -113,6 +119,7 @@ public class ProductDto extends BaseObjectDto{
 		this.name = e.getName();
 		this.imageUrl = e.getImageUrl();
 		this.posts = e.getPosts();
+		this.price = e.getPrice();
 		if(e.getStockKeepingUnit() != null) {
 			this.stockKeepingUnit = new StockKeepingUnitDto(e.getStockKeepingUnit());
 		}
@@ -148,6 +155,7 @@ public class ProductDto extends BaseObjectDto{
 		this.setId(e.getId());
 		this.code = e.getCode();
 		this.currentSellingPrice = e.getCurrentSellingPrice();
+		this.price = e.getPrice();
 		this.name = e.getName();
 		this.imageUrl = e.getImageUrl();
 		this.posts = e.getPosts();
