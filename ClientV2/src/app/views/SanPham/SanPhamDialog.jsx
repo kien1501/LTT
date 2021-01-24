@@ -234,8 +234,7 @@ handleFileSelect = (event) => {
               },
               () => {
                   let file = this.state.files[0];
-                  console.log(file.file);
-                  //alert(file);
+
                   const formData = new FormData();
                   if (file) {
                       formData.append("uploadfile", file.file);
@@ -370,7 +369,7 @@ handleImageRemove = () => {
                                     md={12}
                                     className={"custom-image-article mb-16"}
                                 >
-                                    {!isEmpty && (
+                                    {!isEmpty && imageUrl && (
                                         <span>
                                             <Card className="" elevation={2}>
                                                 {/* {isEmpty && <p className="px-16 py-16">Que is empty</p>} */}
@@ -475,7 +474,7 @@ handleImageRemove = () => {
                               variant ="outlined"
                               size ="small"
                           />}
-                          options={this.state.listSupplier ? this.state.listSupplier:[]}
+                          options={this.state.listDM ? this.state.listDM:[]}
                           getOptionLabel = {(option) => option.name}
                           getOptionSelected={(option, value) =>
                             option.id === value.id
@@ -493,7 +492,7 @@ handleImageRemove = () => {
                               variant ="outlined"
                               size ="small"
                           />}
-                          options={this.state.listDM ? this.state.listDM:[]}
+                          options={this.state.listSupplier ? this.state.listSupplier:[]}
                           getOptionLabel = {(option) => option.name}
                           getOptionSelected={(option, value) =>
                             option.id === value.id
