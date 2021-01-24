@@ -15,7 +15,7 @@ public class Comment extends BaseObject{
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 	
-	@Column(name = "content")
+	@Column(name = "content", columnDefinition = "TEXT")
 	private String content;
 	
 	@Column(name = "is_hide")
