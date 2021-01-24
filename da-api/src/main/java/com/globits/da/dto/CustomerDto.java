@@ -20,7 +20,7 @@ public class CustomerDto extends BaseObjectDto{
 	private Boolean isDefault;						//mặc định của Person
 	private Boolean isDefaultShippingAddress;		//mặc định địa chỉ giao hàng
 	private String fullAddress;					//Địa chỉ đầy đủ để hiển thị ra giao diện
-
+	private Integer age;//tuổi
 	public String getAddress() {
 		return address;
 	}
@@ -132,6 +132,14 @@ public class CustomerDto extends BaseObjectDto{
 		this.birthDate = birthDate;
 	}
 
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
 	public CustomerDto() {
 		super();
 	}
@@ -150,6 +158,7 @@ public class CustomerDto extends BaseObjectDto{
 			this.username = customer.getUsername();
 			this.birthDate = customer.getBirthDate();
 			this.gender = customer.getGender();
+			this.age = customer.getAge();
 			if (customer.isDefault() != null) {
 				this.isDefault = customer.isDefault();
 			}

@@ -18,4 +18,6 @@ public interface CustomerRepository extends JpaRepository<Customer, UUID> {
 	Page<CustomerDto> getListPage(Pageable pageable);
 	@Query("select new com.globits.da.dto.CustomerDto(sw) from Customer sw")
 	List<CustomerDto> getAllCustomers();
+	@Query("select count(entity.id) from Customer entity where entity.code =?1 and (entity.id <> ?2 or ?2 is null) ")
+	Long checkCode(String code, UUID id);
 }

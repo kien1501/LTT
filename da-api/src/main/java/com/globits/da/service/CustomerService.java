@@ -19,4 +19,5 @@ public interface CustomerService extends GenericService<Customer, UUID> {
 	boolean deleteMultiple(CustomerDto[] dtos);
 	Boolean deleteCustomer(UUID id);
 	List<CustomerDto> getAllCustomers();
+	Boolean checkCode (UUID id,String code);
 }

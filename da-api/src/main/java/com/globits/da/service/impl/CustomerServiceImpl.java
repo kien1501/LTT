@@ -84,6 +84,8 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, UUID> impl
 		   if(dto.getEmail() != null) {
 			   cy.setEmail(dto.getEmail());
 		   }
+		   
+		   cy.setAge(dto.getAge());
 		   cy = customerRepository.save(cy);
 		   return new CustomerDto(cy);
 		}
@@ -181,5 +183,13 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, UUID> impl
 		Pageable pageable = PageRequest.of(pageIndex, pageSize);
 		Page<CustomerDto> result = new PageImpl<CustomerDto>(entities, pageable, count);
 		return result;
+	}
+	@Override
+	public Boolean checkCode(UUID id, String code) {
+		if(code != null && StringUtils.hasText(code)) {
+			Long count = customerRepository.checkCode(code,id);
+				return count != 0l;
+			}
+		return null;
 	}
 }

@@ -35,7 +35,8 @@ public class Customer extends BaseObject{
 	private Date birthDate;						//Ngày sinh
 	@Column(name="username")
 	private String username;						//Tên đăng nhập
-	
+	@Column(name="age")
+	private Integer age;//tuổi	
 	@Column(name="customer_type")
 	private Integer customerType;
 	
@@ -130,6 +131,12 @@ public class Customer extends BaseObject{
 	}
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
+	}
+	public Integer getAge() {
+		return age;
+	}
+	public void setAge(Integer age) {
+		this.age = age;
 	}
 	
 }

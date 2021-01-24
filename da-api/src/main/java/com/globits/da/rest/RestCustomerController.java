@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.globits.da.Constants;
@@ -35,7 +36,7 @@ public class RestCustomerController {
 	@Autowired
 	private CustomerService customerService;
 	
-	@RequestMapping(value = "getListByPage/{pageIndex}/{pageSize}", method = RequestMethod.POST)
+	@RequestMapping(value = "/getListByPage", method = RequestMethod.POST)
 //	@Secured({ CrmConstants.ROLE_ADMIN,CrmConstants.ROLE_CRM_ADMIN})
 	public Page<CustomerDto> getListCustomerByPage(@RequestBody SearchDto dto) {
 		Page<CustomerDto> page = customerService.searchCustomer(dto);
@@ -88,5 +89,9 @@ public class RestCustomerController {
 		return new ResponseEntity<Boolean>(result, result ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
 	}
 	
-	
+	@RequestMapping(value = "/checkCode",method = RequestMethod.GET)
+	public ResponseEntity<Boolean> checkCode(@RequestParam(value = "id", required=false) UUID id, @RequestParam("code") String code) {
+		Boolean result = customerService.checkCode(id, code);
+		return new ResponseEntity<Boolean>(result, (result != null) ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
+	}
 }

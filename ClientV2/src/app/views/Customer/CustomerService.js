@@ -1,7 +1,7 @@
 import axios from "axios";
 import ConstantList from "../../appConfig";
 
-const API_PATH = ConstantList.API_ENPOINT + "/api/customer/";
+const API_PATH = ConstantList.API_ENPOINT + "/api/customer";
 
 
 export const addNewSource = User => {
@@ -30,6 +30,6 @@ export const checkCode = (id, code) => {
 };
 
 export const searchByPage = searchObject => {					
-  var url = API_PATH + "/searchByPage";
+  var url = API_PATH + "/getListByPage";
   return axios.post(url, searchObject);
 };

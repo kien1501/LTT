@@ -314,9 +314,9 @@ import {
             />
           ),
         },
-        { title: t("general.name"), field: "name", width: "150" },
+        // { title: t("general.name"), field: "name", width: "150" },
         { title: t("general.code"), field: "code", align: "left", width: "150" },
-        { title: "Tên khách hàng", field: "displayName", align: "left", width: "150" },    
+        { title: "Tên khách hàng", field: "name", align: "left", width: "150" },    
         { title: "Số điện thoại", field: "phoneNumber", align: "left", width: "150" },    
       ];
       console.log(this.state.itemList);

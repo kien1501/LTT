@@ -45,6 +45,8 @@ class CustomerDialog extends Component {
     code: "",
     address: "",
     type: "",
+    age:"",
+    phoneNumber:"",
     shouldOpenNotificationPopup: false,
     Notification: "",
   };
@@ -106,6 +108,8 @@ class CustomerDialog extends Component {
       name,
       code,
       address,
+      age,
+      phoneNumber,
       shouldOpenNotificationPopup,
     } = this.state;
     let { open, handleClose, handleOKEditClose, t, i18n } = this.props;
@@ -168,7 +172,41 @@ class CustomerDialog extends Component {
                   label={
                     <span>
                       <span style={{ color: "red" }}>*</span>
-                      {t("RealEstateOwner.fullAddress")}
+                      Tuổi
+                    </span>
+                  }
+                  onChange={this.handleChange}
+                  type="number"
+                  name="age"
+                  value={age}
+                  validators={["required"]}
+                  errorMessages={[t("general.required")]}
+                />
+              </Grid>
+              <Grid item sm={12} xs={12}>
+                <TextValidator
+                  className="w-100 "
+                  label={
+                    <span>
+                      <span style={{ color: "red" }}>*</span>
+                      Số điện thoại
+                    </span>
+                  }
+                  onChange={this.handleChange}
+                  type="number"
+                  name="phoneNumber"
+                  value={phoneNumber}
+                  validators={["required"]}
+                  errorMessages={[t("general.required")]}
+                />
+              </Grid>
+              <Grid item sm={12} xs={12}>
+                <TextValidator
+                  className="w-100 "
+                  label={
+                    <span>
+                      <span style={{ color: "red" }}>*</span>
+                      Địa chỉ
                     </span>
                   }
                   onChange={this.handleChange}
