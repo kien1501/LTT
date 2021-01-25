@@ -28,6 +28,7 @@ import { Link } from "react-router-dom";
 import NotificationPopup from "../Component/NotificationPopup/NotificationPopup";
 import { isThisSecond } from "date-fns/esm";
 import EventDialog from "./EventDialog";
+import moment from "moment";
 import {
   getAllUrbanArea,
   getItemById,
@@ -400,10 +401,14 @@ class Event extends React.Component {
         title: t("general.name"), field: "name", width: "150" 
       },
       { 
-        title: t("Ngày bắt đầu"), field: "startDate", width: "150" 
+        title: t("Ngày bắt đầu"), field: "startDate", width: "150",
+        render: rowData =>
+          (rowData.startTime) ? <span>{moment(rowData.startTime).format("DD/MM/YYYY, HH:mm")}</span> : '' 
       },
       { 
-        title: t("Ngày kết thúc"), field: "endDate", width: "150" 
+        title: t("Ngày kết thúc"), field: "endDate", width: "150" ,
+        render: rowData =>
+          (rowData.endDate) ? <span>{moment(rowData.endDate).format("DD/MM/YYYY, HH:mm")}</span> : ''
       },
     ];
 

@@ -226,8 +226,9 @@ import {
       deleteItem(this.state.id).then(() => {
         this.updatePageData();
         this.handleDialogClose();
+        toast.success(t("Xóa thành công"));
       }).catch(() => {
-        toast.warning(t("agency.warning-delete"));
+        toast.warning(t("Không thể xóa danh mục này"));
       });
     };
     handleEditItem = (item) => {
@@ -238,13 +239,13 @@ import {
     };
     handleDeleteButtonClick = () => {
       let { t } = this.props
-    if (!this.data || this.data.length === 0) {
+      if (!this.data || this.data.length === 0) {
       toast.warning(t("general.noti_check_data"));
 
     } else if (this.data.length === this.state.itemList.length) {
       this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
-    } else if(this.data.length > 0 && this.data.length < this.state.itemList.length) {
-      this.setState({ shouldOpenConfirmationDeleteListDialog: true });
+    } else {
+      this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
     }
     };
     async handleDeleteList(list) {
@@ -259,10 +260,10 @@ import {
       }
       this.handleDialogClose();
       if (listAlert.length === list.length) {
-        toast.warning(t("agency.use_all"));
+        toast.warning(t("Danh mục đã được sử dụng"));
         // alert("Các trạng thái đều đã sử dụng");
       } else if (listAlert.length > 0) {
-        toast.warning(t("agency.deleted_unused"));
+        toast.warning(t("Đã xoá các danh mục chưa sử dụng"));
         // alert("Đã xoá các trạng thái chưa sử dụng");
       }
     }
@@ -270,7 +271,7 @@ import {
       this.handleDeleteList(this.data)
         .then(() => {
           this.updatePageData();
-          // this.handleDialogClose();
+          toast.success("Xóa thành công");
           this.data = null;
         })
         .catch((err) => {

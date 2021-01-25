@@ -168,7 +168,7 @@ class RealEstateSourceDialog extends Component {
                   label={
                     <span>
                       <span style={{ color: "red" }}>*</span>
-                      {t("RealEstateOwner.fullAddress")}
+                      {t("Địa chỉ")}
                     </span>
                   }
                   onChange={this.handleChange}

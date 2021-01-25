@@ -10,6 +10,9 @@ import {
   DialogContent,
   Icon,
   IconButton,
+  InputLabel,
+  Select,
+  MenuItem
 
 } from "@material-ui/core";
 // import Paper from '@material-ui/core/Paper'
@@ -111,7 +114,11 @@ class DonHangDialog extends Component {
     user:null,
     shouldOpenMultipleDialog : false,
   };
-
+  listType = [
+    { id: 1, name: 'Xác nhận' },
+    { id: 2, name: 'Chờ chuyển' },
+    { id: 3, name: 'Đã chuyển' }
+  ]
   handleDialogClose = () => {
     this.setState({ shouldOpenNotificationPopup: false,
                     shouldOpenChonKho:false,
@@ -128,6 +135,10 @@ class DonHangDialog extends Component {
     event.persist();
     if (source === "switch") {
       this.setState({ isActive: event.target.checked });
+      return;
+    }
+    if (source === "status") {
+      this.setState({ status: event.target.value });
       return;
     }
     this.setState({
@@ -267,6 +278,24 @@ class DonHangDialog extends Component {
         <ValidatorForm ref="form" onSubmit={this.handleFormSubmit}>
           <DialogContent>
             <Grid className="" container spacing={2} >
+            <Grid item md={12} sm={12} xs={12} className="mt-10">
+                <FormControl fullWidth={true} variant="outlined"
+                  size="small">
+                  <InputLabel htmlFor="gender-simple">{<span className="font"><span style={{ color: "red" }}>*</span>Loại nhân viên</span>}</InputLabel>
+                  <Select
+                    value={this.state.status}
+                    onChange={status => this.handleChange(status, "status")}
+                    inputProps={{
+                      name: "status",
+                      id: "gender-simple"
+                    }}
+                  >
+                    {this.listType.map(item => {
+                      return <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>;
+                    })}
+                  </Select>
+                </FormControl>
+              </Grid>
                 <Grid item sm={12} xs="12" className = "mt-10">
                   <MaterialTable
                     data={this.state.productOrder ? this.state.productOrder : []}

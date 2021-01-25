@@ -226,6 +226,7 @@ import {
       deleteItem(this.state.id).then(() => {
         this.updatePageData();
         this.handleDialogClose();
+        toast.success(t("Xóa thành công"));
       }).catch(() => {
         toast.warning(t("agency.warning-delete"));
       });
@@ -244,7 +245,7 @@ import {
     } else if (this.data.length === this.state.itemList.length) {
       this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
     } else {
-      this.setState({ shouldOpenConfirmationDeleteListDialog: true });
+      this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
     }
     };
     async handleDeleteList(list) {

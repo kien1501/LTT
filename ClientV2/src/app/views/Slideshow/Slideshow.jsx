@@ -294,10 +294,8 @@ class Product extends Component {
             onSelect={(rowData, method) => {
               if (method === 0) {
                 deleteItem(rowData.id).then(({ data }) => {
-                  this.setState({
-                    item: data,
-                    shouldOpenEditorDialog: true,
-                  });
+                  toast.success("Xóa thành công")
+                  this.updatePageData();
                 });
               } else if (method === 1) {
                 this.handleHide(rowData.isShow, rowData.id);
@@ -496,13 +494,8 @@ class Product extends Component {
                 maxBodyHeight: "450px",
                 minBodyHeight: "370px",
                 headerStyle: {
-                  color: "#ffffff",
-                  backgroundColor: "#7467ef",
-
-                  whiteSpace: "normal",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  overflowWrap: "break-word",
+                  backgroundColor: "#358600",
+                  color: "#fff",
                 },
                 cellStyle: {
                   whiteSpace: "normal",

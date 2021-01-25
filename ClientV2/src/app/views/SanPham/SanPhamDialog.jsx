@@ -446,6 +446,8 @@ class AgentDialog extends Component {
                   value={name}
                   validators={["required"]}
                   errorMessages={[t("general.required")]}
+                  variant="outlined"
+                  size="small"
                 />
               </Grid>
 
@@ -464,6 +466,8 @@ class AgentDialog extends Component {
                   value={code}
                   validators={["required"]}
                   errorMessages={[t("general.required")]}
+                  variant="outlined"
+                  size="small"
                 />
               </Grid>
               <Grid item sm={12} xs={12}>
@@ -481,6 +485,27 @@ class AgentDialog extends Component {
                   value={this.state.price}
                   validators={["required"]}
                   errorMessages={[t("general.required")]}
+                  variant="outlined"
+                  size="small"
+                />
+              </Grid>
+              <Grid item sm={12} xs={12}>
+                <TextValidator
+                  className="w-100 "
+                  label={
+                    <span>
+                      <span style={{ color: "red" }}>*</span>
+                      {t("Giá Bán hiện tại")}
+                    </span>
+                  }
+                  onChange={this.handleChange}
+                  type="text"
+                  name="currentSellingPrice"
+                  value={this.state.currentSellingPrice}
+                  validators={["required"]}
+                  errorMessages={[t("general.required")]}
+                  variant="outlined"
+                  size="small"
                 />
               </Grid>
               <Grid item sm={12} xs={12}>
@@ -579,6 +604,8 @@ class AgentDialog extends Component {
                   value={
                     this.state.agency != null ? this.state.agency.name : ""
                   }
+                  variant="outlined"
+                  size="small"
                 />
 
                 {this.state.shouldOpenSelectAgencyPopup && (

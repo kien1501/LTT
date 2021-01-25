@@ -254,6 +254,7 @@ class RealEstateSourceTable extends React.Component {
         toast.success(t("general.deleteSuccess"));
         this.handleDialogClose();
         this.updatePageData();
+        toast.success(t("Xóa thành công"));
       })
       .catch(() => {
         toast.warning(t("source.warning-delete"));
@@ -363,7 +364,7 @@ class RealEstateSourceTable extends React.Component {
       shouldOpenConfirmationDeleteAllDialog,
       shouldOpenNotificationPopup,
     } = this.state;
-    let TitlePage = t("title.source");
+    let TitlePage = t("Quản lý kho");
 
     let columns = [
       {
@@ -413,7 +414,7 @@ class RealEstateSourceTable extends React.Component {
         title: t("general.code"), field: "code", width: "150" 
       },
       { 
-        title: t("RealEstateOwner.fullAddress"), field: "address", width: "150" 
+        title: t("Địa chỉ"), field: "address", width: "150" 
       },
     ];
 

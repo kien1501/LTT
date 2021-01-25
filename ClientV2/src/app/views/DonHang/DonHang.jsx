@@ -38,7 +38,7 @@ import {
     deleteCheckItem,
   } from "./DonHangService";
   
-  
+  import DonHangPrint from "./DonHangPrint";
   import AgencyDialog from "./DonHangDialog";
   import { Breadcrumb, ConfirmationDialog } from "egret";
   import { Helmet } from "react-helmet";
@@ -70,6 +70,18 @@ import {
     const item = props.item;
     return (
       <div className="none_wrap">
+        <LightTooltip
+          title={t("general.editIcon")}
+          placement="right-end"
+          enterDelay={300}
+          leaveDelay={200}
+        >
+          <IconButton size="small" onClick={() => props.onSelect(item, 2)}>
+            <Icon fontSize="small" color="primary">
+              print
+            </Icon>
+          </IconButton>
+        </LightTooltip>
         <LightTooltip
           title={t("general.editIcon")}
           placement="right-end"
@@ -110,6 +122,7 @@ import {
       keyword: "",
       shouldOpenNotificationPopup: false,
       Notification: "",
+      shouldOpenPrint:false
     };
     constructor(props) {
       super(props);
@@ -172,6 +185,7 @@ import {
         {
           shouldOpenEditorDialog: false,
           shouldOpenConfirmationDialog: false,
+          shouldOpenPrint:false
         },
         () => {
           this.updatePageData();
@@ -192,6 +206,7 @@ import {
           shouldOpenConfirmationDialog: false,
           shouldOpenConfirmationDeleteAllDialog: false,
           shouldOpenNotificationPopup: false,
+          shouldOpenPrint:false,
           data: [],
         },
         () => {
@@ -205,6 +220,7 @@ import {
         shouldOpenEditorDialog: false,
         shouldOpenConfirmationDialog: false,
         shouldOpenConfirmationDeleteAllDialog: false,
+        shouldOpenPrint:false
       });
       this.setPage(0);
     };
@@ -235,6 +251,7 @@ import {
       this.setState({
         item: item,
         shouldOpenEditorDialog: true,
+        shouldOpenPrint:false
       });
     };
     handleDeleteButtonClick = () => {
@@ -311,6 +328,16 @@ import {
                   });
                 } else if (method === 1) {
                   this.handleDelete(rowData.id);
+                }else if (method === 2) {
+                  getItemById(rowData.id).then(({ data }) => {
+                    if (data.parent === null) {
+                      data.parent = {};
+                    }
+                    this.setState({
+                      item: data,
+                      shouldOpenPrint: true,
+                    });
+                  });
                 } else {
                   alert("Call Selected Here:" + rowData.id);
                 }
@@ -410,6 +437,16 @@ import {
                     i18n={i18n}
                     handleClose={this.handleDialogClose}
                     open={this.state.shouldOpenEditorDialog}
+                    handleOKEditClose={this.handleOKEditClose}
+                    item={this.state.item}
+                  />
+                )}
+                {this.state.shouldOpenPrint && (
+                  <DonHangPrint
+                    t={t}
+                    i18n={i18n}
+                    handleClose={this.handleDialogClose}
+                    open={this.state.shouldOpenPrint}
                     handleOKEditClose={this.handleOKEditClose}
                     item={this.state.item}
                   />

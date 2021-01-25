@@ -187,7 +187,7 @@ class SlideShowDialog extends Component {
                 ? t("SlideShow.clone")
                 : this.state.id
                 ? t("SlideShow.update")
-                : t("SlideShow.add")}
+                : t("Thêm")}
             </h4>
             <IconButton onClick={this.props.handleClose}>
               <Icon className="text-white">clear</Icon>

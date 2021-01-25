@@ -240,7 +240,7 @@ class UploadImage extends Component {
     }
 
     return (
-      <SimpleCard title={t('Chọn danh sánh ảnh')} className="w-50" style={{ maxWidth: '100' }}>
+      <SimpleCard  className="w-50" style={{ maxWidth: '100' }}>
         <div className="flex flex-center flex-middle">
 
           <Grid

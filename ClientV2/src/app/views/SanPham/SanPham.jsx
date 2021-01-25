@@ -239,13 +239,13 @@ import {
     handleDeleteButtonClick = () => {
       let { t } = this.props
       if (!this.data || this.data.length === 0) {
-        toast.warning(t("general.noti_check_data"));
-  
-      } else if (this.data.length === this.state.itemList.length) {
-        this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
-      } else {
-        this.setState({ shouldOpenConfirmationDeleteListDialog: true });
-      }
+      toast.warning(t("general.noti_check_data"));
+
+    } else if (this.data.length === this.state.itemList.length) {
+      this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
+    } else {
+      this.setState({ shouldOpenConfirmationDeleteAllDialog: true });
+    }
     };
     async handleDeleteList(list) {
       let listAlert = [];
@@ -277,7 +277,6 @@ import {
           console.log("loi");
         });
     };
-  
     render() {
       console.log(this.state)
       const { t, i18n } = this.props;

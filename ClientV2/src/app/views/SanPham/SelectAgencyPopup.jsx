@@ -161,7 +161,7 @@ class SelectAgencyPopup extends React.Component {
     return (
       <Dialog onClose={handleClose} open={open} PaperComponent={PaperComponent} maxWidth={'md'} fullWidth>
         <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
-          <span className="mb-20">{t("directory.agency")}</span>
+          <span className="mb-20">{t("Đơn vị tính")}</span>
         </DialogTitle>
         <DialogContent>
           <Grid item container xs={12}>
