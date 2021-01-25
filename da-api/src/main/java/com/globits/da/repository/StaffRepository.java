@@ -17,4 +17,7 @@ public interface StaffRepository extends JpaRepository<Staff, UUID>{
 	Long checkCode(String code, UUID id);
 	@Query("select new com.globits.da.dto.StaffDto(ed) from Staff ed")
 	Page<StaffDto> getListPage( Pageable pageable);
+	@Query("select entity from Staff entity where entity.id =?1")
+	Staff getStaffById(UUID id);
+	
 }

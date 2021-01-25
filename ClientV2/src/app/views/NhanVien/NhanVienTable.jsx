@@ -442,8 +442,7 @@ class UrbanAreaTable extends React.Component {
               color="primary"
               onClick={() => {
                 this.handleEditItem({
-                  startDate: new Date(),
-                  endDate: new Date(),
+                  isEdit:false
                 });
               }}
             >

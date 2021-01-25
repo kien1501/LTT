@@ -16,6 +16,7 @@ public class StaffDto extends BaseObjectDto {
 	private String phoneNumber;
 	private Boolean hasUserName = false;				//Tên đăng nhâp đã tồn tại ( = true)
 	private Boolean hasPhoneNumber = false;				//Số điện thoại đã tồn tại ( = true)
+	private Boolean hasEmail = false;				//Số điện thoại đã tồn tại ( = true)
 	private ShiftWorkDto shiftWork;//ca làm việc của nhân viên
 	private Set<StaffShiftWorkDto> staffWorkSchedule = new HashSet<StaffShiftWorkDto>();
 	
@@ -75,6 +76,12 @@ public class StaffDto extends BaseObjectDto {
 	}
 	public void setStaffWorkSchedule(Set<StaffShiftWorkDto> staffWorkSchedule) {
 		this.staffWorkSchedule = staffWorkSchedule;
+	}
+	public Boolean getHasEmail() {
+		return hasEmail;
+	}
+	public void setHasEmail(Boolean hasEmail) {
+		this.hasEmail = hasEmail;
 	}
 	public StaffDto() {
 		super();

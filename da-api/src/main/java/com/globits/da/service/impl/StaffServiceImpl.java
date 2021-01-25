@@ -67,6 +67,7 @@ public class StaffServiceImpl extends GenericServiceImpl<Staff, UUID> implements
 		LocalDateTime currentDate = LocalDateTime.now();
 		String currentUserName = "Unknown User";
 		StaffDto result = new StaffDto();
+//		boolean isUpdate = false;
 		if (dto != null) {
 			Staff entity = null;
 			User user = null;
@@ -75,22 +76,44 @@ public class StaffServiceImpl extends GenericServiceImpl<Staff, UUID> implements
 				if (dto.getId() != null && !dto.getId().equals(id)) {
 					return null;
 				}
-				entity = repos.getOne(dto.getId());
-				
+				entity = repos.getStaffById(dto.getId());
+//				if (entity != null && entity.getId() != null) {
+//					isUpdate = true;
+//				}
 			}
 			if (entity == null) {
 				entity = new Staff();
 				user = new User();
 				person = new Person();
 			}
+			
+			// check userName tồn tại hay chưa
+			UserDto userDto = userService.findByUsername(dto.getPhoneNumber());
+			if (userDto != null) {
+				result.setHasUserName(true);
+				return result;
+			}
+			// check số điện thoại tồn tại hay chưa
+			List<Person> pPhoneNumber = this.getPersonByPhoneNumber(dto.getPhoneNumber());
+			if (pPhoneNumber != null && pPhoneNumber.size() > 0) {
+				result.setHasPhoneNumber(true);
+				return result;
+			}
+			// check email tồn tại hay chưa
+			List<Person> pEmail = this.getPersonByEmail(dto.getPhoneNumber());
+			if (pEmail != null && pEmail.size() > 0) {
+				result.setHasEmail(true);
+				return result;
+			}
+
 			entity.setCode(dto.getCode());
 			entity.setType(dto.getType());
 			entity.setDisplayName(dto.getDisplayName());
 			entity.setEmail(dto.getEmail());
 			entity.setPhoneNumber(dto.getPhoneNumber());
-			if(dto.getShiftWork() != null && dto.getShiftWork().getId() != null) {
+			if (dto.getShiftWork() != null && dto.getShiftWork().getId() != null) {
 				ShiftWork sw = shiftWorkRepository.getOne(dto.getShiftWork().getId());
-				if(sw != null) {
+				if (sw != null) {
 					entity.setShiftWork(sw);
 				}
 			}
@@ -122,18 +145,6 @@ public class StaffServiceImpl extends GenericServiceImpl<Staff, UUID> implements
 					entity.getStaffWorkSchedule().clear();
 				}
 			}
-			// check userName tồn tại hay chưa
-			UserDto userDto = userService.findByUsername(dto.getPhoneNumber());
-			if (userDto != null) {
-				result.setHasUserName(true);
-				return result;
-			}
-			// check số điện thoại tồn tại hay chưa
-			List<Person> pPhoneNumber = this.getPersonByPhoneNumber(dto.getPhoneNumber());
-			if (pPhoneNumber != null && pPhoneNumber.size() > 0 && pPhoneNumber.get(0).getPhoneNumber().equals(dto.getPhoneNumber())) {
-				result.setHasPhoneNumber(true);
-				return result;
-			}
 			if (dto.getPhoneNumber() != null) {
 				user.setUsername(dto.getPhoneNumber());
 				user.setCreateDate(currentDate);
@@ -146,12 +157,12 @@ public class StaffServiceImpl extends GenericServiceImpl<Staff, UUID> implements
 				user.setRoles(new HashSet<Role>());
 				Role userRole = roleService.findByName(Constants.ROLE_USER);
 				user.getRoles().add(userRole);
-				user = userRepository.save(user); 
+				user = userRepository.save(user);
 				person.setDisplayName(dto.getDisplayName());
 				person.setEmail(dto.getEmail());
 				person.setPhoneNumber(dto.getPhoneNumber());
 				person.setUser(user);
-				person = personRepository.save(person);
+				//person = personRepository.save(person);
 			}
 			entity = repos.save(entity);
 			if (entity != null) {
@@ -202,7 +213,7 @@ public class StaffServiceImpl extends GenericServiceImpl<Staff, UUID> implements
 		String sql = "select new com.globits.da.dto.StaffDto(entity) from Staff as entity where (1=1)  ";
 
 		if (dto.getKeyword() != null && StringUtils.hasText(dto.getKeyword())) {
-			whereClause += " AND ( entity.code LIKE :text or entiy.person.displayName :text or entity.phoneNumber :text)";
+			whereClause += " AND ( entity.code LIKE :text or entity.displayName LIKE :text or entity.phoneNumber LIKE :text)";
 		}
 
 		sql += whereClause + orderBy;
@@ -245,6 +256,14 @@ public class StaffServiceImpl extends GenericServiceImpl<Staff, UUID> implements
 		String sql = "select p from Person p where p.phoneNumber =:phoneNumber ";
 		Query q = manager.createQuery(sql, Person.class);
 		q.setParameter("phoneNumber", phoneNumber);
+		List<Person> entities = q.getResultList();
+		return entities;
+	}
+
+	private List<Person> getPersonByEmail(String email) {
+		String sql = "select p from Person p where (p.Email =:email OR p.user.email =:email ) ";
+		Query q = manager.createQuery(sql, Person.class);
+		q.setParameter("email", email);
 		List<Person> entities = q.getResultList();
 		return entities;
 	}

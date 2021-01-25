@@ -47,7 +47,7 @@ function PaperComponent(props) {
 class UrbanAreaDialog extends Component {
   constructor(props) {
     super(props);
-    pageItem(1,1000).then((data) => {
+    pageItem(1, 1000).then((data) => {
       let listShiftWork = data.data.content;
       this.setState({ listShiftWork: listShiftWork });
       console.log(this.state.listShiftWork);
@@ -64,7 +64,10 @@ class UrbanAreaDialog extends Component {
     shouldOpenNotificationPopup: false,
     Notification: "",
     shiftWork: "",
-    listShiftWork: []
+    listShiftWork: [],
+    isTruePhoneNumer: false,
+    isTrueEmail: false,
+    isEdit:true
   };
   listType = [
     { id: 1, name: 'Nhân viên bán hàng' },
@@ -90,13 +93,21 @@ class UrbanAreaDialog extends Component {
       this.setState({ type: type });
       return;
     }
+    // if(source === "phoneNumber"){
+    //   let phoneNumber = event.target.value;
+    //   let isTruePhoneNumer = true;
+    //   isTruePhoneNumer = this.isVietnamesePhoneNumber(phoneNumber);
+    //   this.setState({isTruePhoneNumer: isTruePhoneNumer});
+    //   // alert("là số điện thoại" + isTruePhoneNumer);
+    // }
   };
   handleSelectShiftWork = (shiftWork) => {
     this.setState({ shiftWork: shiftWork }, function () {
     });
   }
- 
+
   handleFormSubmit = () => {
+    debugger
     let { id } = this.state;
     let { code } = this.state;
     var { t } = this.props;
@@ -104,21 +115,36 @@ class UrbanAreaDialog extends Component {
       //Nếu trả về true là code đã được sử dụng
       if (result.data) {
         toast.warning("Mã nhân viên đã sử dụng, vui lòng điền một mã khác.");
-
         // alert("Code đã được sử dụng");
       } else {
         //Nếu trả về false là code chưa sử dụng có thể dùng
         if (id) {
           updateUrbanArea({
             ...this.state,
-          }).then(() => {
+          }).then((res) => {
+            if(res.data.hasPhoneNumber == true || res.data.hasUserName == true){
+              toast.warning("Số điện thoại này đã được sử dụng");
+              return;
+            }
+            if(res.data.hasEmail == true){
+              toast.warning("Email này đã được sử dụng");
+              return;
+            }
             toast.success("Cập nhật thành công thông tin nhân viên");
             this.props.handleOKEditClose();
           });
         } else {
           addNewUrbanArea({
             ...this.state,
-          }).then(() => {
+          }).then((res) => {
+            if(res.data.hasPhoneNumber == true || res.data.hasUserName == true){
+              toast.warning("Số điện thoại này đã được sử dụng");
+              return;
+            }
+            if(res.data.hasEmail == true){
+              toast.warning("Email này đã được sử dụng");
+              return;
+            }
             toast.success("Thêm mới thành công nhân viên");
             this.props.handleOKEditClose();
           });
@@ -127,13 +153,37 @@ class UrbanAreaDialog extends Component {
     });
   };
 
+
   componentWillMount() {
-    let { open, handleClose, item } = this.props;
-    this.setState(item);
+    let { open, handleClose, item,isEdit } = this.props;
+    debugger
+    this.setState(item,isEdit);
   }
   componentDidMount() {
-    let { item } = this.props;
+    ValidatorForm.addValidationRule('isTruePhoneNumer', (value) => {
+      if (this.isVietnamesePhoneNumber(value)) {
+        return true;
+      }
+      return false;
+    });
+    ValidatorForm.addValidationRule('isTrueEmail', (value) => {
+      if (this.isTestEmail(value)) {
+        return true;
+      }
+      return false;
+    });
   }
+  isVietnamesePhoneNumber = (number) => {
+    return /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/.test(number);
+  }
+  isTestEmail = (email) => {
+    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+    if (pattern.test(email)) {
+      return true;
+    }
+    return false;
+  }
+
 
   render() {
     let {
@@ -145,6 +195,9 @@ class UrbanAreaDialog extends Component {
       phoneNumber,
       shiftWork,
       listShiftWork,
+      isTruePhoneNumer,
+      isTrueEmail,
+      isEdit,
       shouldOpenNotificationPopup,
     } = this.state;
     let { open, handleClose, handleOKEditClose, t, i18n } = this.props;
@@ -207,12 +260,13 @@ class UrbanAreaDialog extends Component {
                       Điện thoại liên hệ
                     </span>
                   }
-                  onChange={this.handleChange}
-                  type="number"
+                  disabled={isEdit}
+                  onChange={phoneNumber => this.handleChange(phoneNumber, "phoneNumber")}
+                  type={isTruePhoneNumer ? "phoneNumber" : "number"}
                   name="phoneNumber"
                   value={phoneNumber}
-                  validators={["required"]}
-                  errorMessages={[t("general.required")]}
+                  validators={['required', 'isTruePhoneNumer']}
+                  errorMessages={[t("general.errorMessages_required"), t("general.isTruePhoneNumer")]}
                 />
               </Grid>
               <Grid item sm={12} xs={12}>
@@ -225,11 +279,11 @@ class UrbanAreaDialog extends Component {
                     </span>
                   }
                   onChange={this.handleChange}
-                  type="email"
+                  type={isTrueEmail ? "email" : "email"}
                   name="email"
                   value={email}
-                  validators={["required"]}
-                  errorMessages={[t("general.required")]}
+                  validators={['required', 'isTrueEmail']}
+                  errorMessages={[t("general.errorMessages_required"), t("general.isTrueEmail")]}
                 />
               </Grid>
               <Grid item md={12} sm={12} xs={12} className="mt-10">

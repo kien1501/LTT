@@ -179,6 +179,8 @@
     "errorMessages_update_password": "Có lỗi trong quá trình đổi mật khẩu",
     "success_update_password": "Bạn đã đổi mật khẩu thành công",
     "isPasswordMatch": "Mật khẩu không khớp",
+    "isTruePhoneNumer": "Số điện thoại không hợp lệ",
+    "isTrueEmail": "Địa chỉ email không hợp lệ",
     "isPasswordMatchOld": "Mật khẩu mới khác với mật khẩu cũ",
     "select_file": "Chọn tệp",
     "size": "Kích thước",
