@@ -179,8 +179,6 @@
     "errorMessages_update_password": "Có lỗi trong quá trình đổi mật khẩu",
     "success_update_password": "Bạn đã đổi mật khẩu thành công",
     "isPasswordMatch": "Mật khẩu không khớp",
-    "isTruePhoneNumer": "Số điện thoại không hợp lệ",
-    "isTrueEmail": "Địa chỉ email không hợp lệ",
     "isPasswordMatchOld": "Mật khẩu mới khác với mật khẩu cũ",
     "select_file": "Chọn tệp",
     "size": "Kích thước",
@@ -222,7 +220,10 @@
     "updateSuccess":"Cập nhật thành công",
     "deleteConfirm":"Bạn có chắc chắn muốn xóa",
     "addNew":"Thêm mới",
-    "deleteSuccess":"Xoá thành công bản ghi"
+    "deleteSuccess":"Xoá thành công bản ghi",
+    "required": "Trường này không được để trống",
+    "isTruePhoneNumer":"Số điện thoại không đúng",
+    "isTrueEmail":"Email không đúng"
   },
   "Download": "Tải về",
   "Dashboard": {
