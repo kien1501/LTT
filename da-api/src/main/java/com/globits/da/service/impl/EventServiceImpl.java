@@ -1,5 +1,6 @@
 package com.globits.da.service.impl;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -54,6 +55,10 @@ public class EventServiceImpl extends GenericServiceImpl< Event, UUID> implement
 			if (entity == null) {
 				entity = new Event();
 			}
+			Date date  = new Date();
+			if(dto.getIsActivate() && !dto.getStartDate().before(date) || !dto.getEndDate().after(date)) {
+				return null;
+			}
 			entity.setName(dto.getName());
 			entity.setCode(dto.getCode());
 			entity.setDescription(dto.getDescription());
@@ -82,6 +87,15 @@ public class EventServiceImpl extends GenericServiceImpl< Event, UUID> implement
 					}
 					sanPhamDonHang.setProduct(sanPham);
 					sanPhamDonHang.setDiscountPercent(sanPhamDonHang.getDiscountPercent());
+					if(dto.getIsActivate()) {
+						if(sanPham.getPrice() > (sanPhamDonHang.getDiscountPercent()/100)*sanPham.getPrice()) {
+							sanPham.setCurrentSellingPrice(sanPham.getPrice() - (sanPhamDonHang.getDiscountPercent()/100)*sanPham.getPrice());
+						}else {
+							sanPham.setCurrentSellingPrice(0.0);
+						}
+						sanPham = sanPhamRepository.save(sanPham);
+					}
+					
 					listSanPhamDonHang.add(sanPhamDonHang);
 				}
 
