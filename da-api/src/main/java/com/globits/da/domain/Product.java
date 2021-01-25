@@ -36,7 +36,7 @@ public class Product extends BaseObject{
 	@ManyToOne
 	@JoinColumn(name="product_category_id")
 	private ProductCategory productCategory;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="supplier_id")
 	private Supplier supplier;
 	@OneToMany(mappedBy = "product", cascade=CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true)
