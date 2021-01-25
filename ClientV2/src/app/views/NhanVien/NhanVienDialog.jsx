@@ -93,13 +93,6 @@ class UrbanAreaDialog extends Component {
       this.setState({ type: type });
       return;
     }
-    // if(source === "phoneNumber"){
-    //   let phoneNumber = event.target.value;
-    //   let isTruePhoneNumer = true;
-    //   isTruePhoneNumer = this.isVietnamesePhoneNumber(phoneNumber);
-    //   this.setState({isTruePhoneNumer: isTruePhoneNumer});
-    //   // alert("là số điện thoại" + isTruePhoneNumer);
-    // }
   };
   handleSelectShiftWork = (shiftWork) => {
     this.setState({ shiftWork: shiftWork }, function () {
@@ -156,10 +149,10 @@ class UrbanAreaDialog extends Component {
 
   componentWillMount() {
     let { open, handleClose, item,isEdit } = this.props;
-    debugger
     this.setState(item,isEdit);
   }
   componentDidMount() {
+    debugger
     ValidatorForm.addValidationRule('isTruePhoneNumer', (value) => {
       if (this.isVietnamesePhoneNumber(value)) {
         return true;

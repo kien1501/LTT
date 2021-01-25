@@ -517,17 +517,18 @@ checkData = () => {
                 actionsColumnIndex: -1,
                 paging: false,
                 search: false,
-                rowStyle: rowData => ({
-                  backgroundColor: (rowData.tableData.id % 2 === 1) ? '#EEE' : '#FFF',
-                }), 
-                maxBodyHeight: '450px',
-                minBodyHeight: '370px',
+                rowStyle: (rowData) => ({
+                  backgroundColor:
+                    rowData.tableData.id % 2 === 1 ? "#EEE" : "#FFF",
+                }),
+                maxBodyHeight: "450px",
+                minBodyHeight: "370px",
                 headerStyle: {
-                  backgroundColor: '#4E4EE7',
-                  color:'#fff',
+                  backgroundColor: "#358600",
+                  color: "#fff",
                 },
-                padding: 'dense',
-                toolbar: false
+                padding: "dense",
+                toolbar: false,
               }}
               components={{
                 Toolbar: props => (

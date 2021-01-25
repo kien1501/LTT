@@ -337,14 +337,14 @@ import {
           </div>
           <Grid container spacing={2} justify="space-between">
             <Grid item md={3} xs={12}>
-              <Button
+              {/* <Button
                 className="align-bottom mr-16 mb-16"
                 variant="contained"
                 color="primary"
                 onClick={() => this.handleEditItem(null)}
               >
                 {t("general.add")}
-              </Button>
+              </Button> */}
               {this.data != null && this.data.length > 0 && (
                 <Button
                 className="align-bottom mb-16"
