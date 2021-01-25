@@ -4,6 +4,7 @@ import com.globits.da.domain.ProductInventoryReceivingVoucher;
 
 public class ProductInventoryReceivingVoucherDto extends BaseObjectDto{
 	private ProductDto product;
+	private ColorDto color;
 	private WarehouseDto warehouse;
 	private Integer productNumber;
 	private Double price;
@@ -39,6 +40,13 @@ public class ProductInventoryReceivingVoucherDto extends BaseObjectDto{
 	public void setInventoryReceivingVoucher(InventoryReceivingVoucherDto inventoryReceivingVoucher) {
 		this.inventoryReceivingVoucher = inventoryReceivingVoucher;
 	}
+	
+	public ColorDto getColor() {
+		return color;
+	}
+	public void setColor(ColorDto color) {
+		this.color = color;
+	}
 	public ProductInventoryReceivingVoucherDto() {
 		super();
 	}
@@ -47,6 +55,9 @@ public class ProductInventoryReceivingVoucherDto extends BaseObjectDto{
 			this.setId(p.getId());
 			if(p.getProduct() != null) {
 				this.product = new ProductDto(p.getProduct());
+			}
+			if(p.getColor() != null) {
+				this.color = new ColorDto(p.getColor());
 			}
 			if(p.getWarehouse() != null) {
 				this.warehouse = new WarehouseDto(p.getWarehouse());

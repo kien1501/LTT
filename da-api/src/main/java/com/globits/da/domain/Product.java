@@ -11,10 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.globits.core.domain.BaseObject;
 @Entity
 @Table(name = "tbl_product")
+@XmlRootElement
 public class Product extends BaseObject{
 	/**
 	 * 

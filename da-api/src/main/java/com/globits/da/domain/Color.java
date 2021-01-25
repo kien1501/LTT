@@ -3,11 +3,13 @@ package com.globits.da.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.globits.core.domain.BaseObject;
 
 @Entity
 @Table(name = "tbl_color")
+@XmlRootElement
 public class Color extends BaseObject{
 	@Column(name = "name")
 	private String name;//tên màu

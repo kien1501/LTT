@@ -11,11 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.globits.core.domain.BaseObject;
 
 @Entity
 @Table(name = "tbl_inventory_delivery_voucher")
+@XmlRootElement
 public class InventoryDeliveryVoucher extends BaseObject{
 	/**
 	 * 
@@ -35,6 +37,8 @@ public class InventoryDeliveryVoucher extends BaseObject{
 	private Date exportDate;
 	@OneToMany(mappedBy = "inventoryDeliveryVoucher", cascade=CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true)
 	private Set<ProductInventoryDeliveryVoucher> productInventoryDeliveryVoucher;
+	@Column(name="voucher_type")
+	private int voucherType = 1;//Nhập kho = 1, Xuất kho =-1
 	public Warehouse getWarehouse() {
 		return warehouse;
 	}

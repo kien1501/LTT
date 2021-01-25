@@ -3,10 +3,12 @@ package com.globits.da.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.globits.core.domain.BaseObject;
 @Entity
 @Table(name = "tbl_product_category")
+@XmlRootElement
 public class ProductCategory extends BaseObject{
 	/**
 	 * 

@@ -5,11 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.globits.core.domain.BaseObject;
 
 @Entity
 @Table(name = "tbl_product_event")
+@XmlRootElement
 public class ProductEvent extends BaseObject{
 	@ManyToOne
 	@JoinColumn(name="event_id")

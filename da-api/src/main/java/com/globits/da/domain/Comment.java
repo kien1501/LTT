@@ -5,11 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.globits.core.domain.BaseObject;
 
 @Entity
 @Table(name = "tbl_comment")
+@XmlRootElement
 public class Comment extends BaseObject{
 	@ManyToOne
 	@JoinColumn(name = "customer_id")

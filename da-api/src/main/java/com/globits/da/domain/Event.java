@@ -10,11 +10,13 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.globits.core.domain.BaseObject;
 
 @Entity
 @Table(name = "tbl_event")
+@XmlRootElement
 public class Event extends BaseObject {
 	@Column(name = "name")
 	private String name;

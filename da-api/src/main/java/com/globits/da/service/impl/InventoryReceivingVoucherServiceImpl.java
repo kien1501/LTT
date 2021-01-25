@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.globits.core.service.impl.GenericServiceImpl;
+import com.globits.da.domain.Color;
 import com.globits.da.domain.InventoryReceivingVoucher;
 import com.globits.da.domain.ProductInventoryReceivingVoucher;
 import com.globits.da.domain.ProductWarehouse;
@@ -24,6 +25,7 @@ import com.globits.da.domain.Warehouse;
 import com.globits.da.dto.InventoryReceivingVoucherDto;
 import com.globits.da.dto.ProductInventoryReceivingVoucherDto;
 import com.globits.da.dto.search.SearchDto;
+import com.globits.da.repository.ColorRepository;
 import com.globits.da.repository.InventoryReceivingVoucherRepository;
 import com.globits.da.repository.ProductInventoryReceivingVoucherRepository;
 import com.globits.da.repository.ProductRepository;
@@ -46,7 +48,8 @@ public class InventoryReceivingVoucherServiceImpl extends GenericServiceImpl< In
 	StaffRepository nhanVienRepository;
 	@Autowired
 	ProductWarehouseRepository sanPhamKhoRepository;
-	
+	@Autowired
+	ColorRepository colorRepository;
 	
 	@Override
 	public Page<InventoryReceivingVoucherDto> getPage(int pageSize, int pageIndex) {
@@ -93,9 +96,7 @@ public class InventoryReceivingVoucherServiceImpl extends GenericServiceImpl< In
 					if (sanPhamPhieuNhap == null) {
 						sanPhamPhieuNhap = new ProductInventoryReceivingVoucher();
 					}
-					
-
-					if(sanPhamPhieuNhaplDto.getProduct() != null) {
+					if(sanPhamPhieuNhaplDto.getProduct() != null && sanPhamPhieuNhaplDto.getProduct().getId() != null) {
 						sanPhamPhieuNhap.setProduct(sanPhamRepository.getOne(sanPhamPhieuNhaplDto.getProduct().getId()));
 						if(kho != null && kho.getId() != null) {
 							List<ProductWarehouse> listData = sanPhamKhoRepository.getListSanPhamKho(sanPhamPhieuNhaplDto.getProduct().getId(),kho.getId());
@@ -127,12 +128,17 @@ public class InventoryReceivingVoucherServiceImpl extends GenericServiceImpl< In
 						}
 						
 					}
+					if(sanPhamPhieuNhaplDto.getColor() != null && sanPhamPhieuNhaplDto.getColor().getId() != null) {
+						Color color = colorRepository.getOne(sanPhamPhieuNhaplDto.getColor().getId());
+						if(color != null && color.getId() != null) {
+							sanPhamPhieuNhap.setColor(color);
+						}
+					}
 					if(sanPhamKho !=null) {
 						sanPhamKho = sanPhamKhoRepository.save(sanPhamKho);
 					}
 					sanPhamPhieuNhap.setWarehouse(kho);
 					sanPhamPhieuNhap.setProductNumber(sanPhamPhieuNhaplDto.getProductNumber());
-
 					sanPhamPhieuNhap.setPrice(sanPhamPhieuNhaplDto.getPrice());
 					sanPhamPhieuNhap.setInventoryReceivingVoucher(entity);
 					listSanPhamPhieuNhap.add(sanPhamPhieuNhap);

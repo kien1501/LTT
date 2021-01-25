@@ -18,6 +18,9 @@ public class ProductInventoryDeliveryVoucher extends BaseObject{
 	@JoinColumn(name="product_id")
 	private Product product;
 	@ManyToOne
+	@JoinColumn(name="color_id")
+	private Color color;
+	@ManyToOne
 	@JoinColumn(name="phieu_id")
 	private InventoryDeliveryVoucher inventoryDeliveryVoucher;
 	@Column(name = "product_number")
@@ -41,6 +44,10 @@ public class ProductInventoryDeliveryVoucher extends BaseObject{
 	public void setProductNumber(Integer productNumber) {
 		this.productNumber = productNumber;
 	}
-	
-	
+	public Color getColor() {
+		return color;
+	}
+	public void setColor(Color color) {
+		this.color = color;
+	}
 }

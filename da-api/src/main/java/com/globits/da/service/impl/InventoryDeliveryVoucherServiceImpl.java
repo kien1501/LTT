@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.globits.core.service.impl.GenericServiceImpl;
+import com.globits.da.domain.Color;
 import com.globits.da.domain.InventoryDeliveryVoucher;
 import com.globits.da.domain.ProductInventoryDeliveryVoucher;
 import com.globits.da.domain.ProductWarehouse;
@@ -24,6 +25,7 @@ import com.globits.da.domain.Warehouse;
 import com.globits.da.dto.InventoryDeliveryVoucherDto;
 import com.globits.da.dto.ProductInventoryDeliveryVoucherDto;
 import com.globits.da.dto.search.SearchDto;
+import com.globits.da.repository.ColorRepository;
 import com.globits.da.repository.InventoryDeliveryVoucherRepository;
 import com.globits.da.repository.ProductInventoryDeliveryVoucherRepository;
 import com.globits.da.repository.ProductRepository;
@@ -46,7 +48,8 @@ public class InventoryDeliveryVoucherServiceImpl extends GenericServiceImpl< Inv
 	StaffRepository nhanVienRepository;
 	@Autowired
 	ProductWarehouseRepository sanPhamKhoRepository;
-	
+	@Autowired
+	ColorRepository colorRepository;
 	
 	@Override
 	public Page<InventoryDeliveryVoucherDto> getPage(int pageSize, int pageIndex) {
@@ -116,7 +119,12 @@ public class InventoryDeliveryVoucherServiceImpl extends GenericServiceImpl< Inv
 					}else {
 						return null;
 					}
-					
+					if(sanPhamPhieuXuat.getColor() != null && sanPhamPhieuXuatlDto.getColor().getId() != null) {
+						Color color = colorRepository.getOne(sanPhamPhieuXuatlDto.getColor().getId());
+						if(color != null && color.getId() != null) {
+							sanPhamPhieuXuat.setColor(color);
+						}
+					}
 					sanPhamPhieuXuat.setProductNumber(sanPhamPhieuXuatlDto.getProductNumber());
 					sanPhamPhieuXuat.setInventoryDeliveryVoucher(entity);
 					listSanPhamPhieuXuat.add(sanPhamPhieuXuat);

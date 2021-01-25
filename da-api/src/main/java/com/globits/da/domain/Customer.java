@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
@@ -19,6 +20,7 @@ import com.globits.core.domain.Person;
  */
 @Entity
 @Table(name = "tbl_customer")
+@XmlRootElement
 public class Customer extends BaseObject{
 	private static final long serialVersionUID = 1L;
 	@Column(name="name")
