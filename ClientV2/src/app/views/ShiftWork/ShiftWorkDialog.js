@@ -405,6 +405,7 @@ class ShiftWorkDialog extends React.Component {
                     onChange={(startTime) => this.handleChangeDate(startTime, "startTime")}
                     type={isTrueTime ? "startTime" : "datetime"}
                     validators={['required', 'isTrueTime']}
+                    invalidDateMessage={"Không đúng định dạng"}
                     errorMessages={[t("general.errorMessages_required"), t("general.isTruePhoneNumer")]}
                     KeyboardButtonProps={{
                       'aria-label': 'change date',
@@ -426,6 +427,7 @@ class ShiftWorkDialog extends React.Component {
                     value={endTime}
                     type={isTrueTime ? "endTime" : "datetime"}
                     validators={['required', 'isTrueTime']}
+                    invalidDateMessage={"Không đúng định dạng"}
                     errorMessages={[t("general.errorMessages_required"), t("general.isTruePhoneNumer")]}
                     onChange={(endTime) => this.handleChangeDate(endTime, "endTime")}
                     KeyboardButtonProps={{

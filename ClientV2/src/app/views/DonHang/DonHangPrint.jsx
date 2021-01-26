@@ -234,19 +234,19 @@ class DonHangPrint extends React.Component {
                     }}
                   >
                     <tr>
-                      <th style={{ border: "1px solid" }}>
+                      <th style={{ border: "1px solid",width: "20%" }}>
                         {t("Tên sản phẩm")}
                       </th>
-                      <th style={{ border: "1px solid" }}>
+                      <th style={{ border: "1px solid",width: "20%" }}>
                         {t("Đơn giá")}
                       </th>
-                      <th style={{ border: "1px solid", width: "30%" }}>
+                      <th style={{ border: "1px solid", width: "20%" }}>
                         {t("Số lượng")}
                       </th>
-                      <th style={{ border: "1px solid", width: "30%" }}>
+                      <th style={{ border: "1px solid", width: "20%" }}>
                         {t("Giảm giá")}
                       </th>
-                      <th style={{ border: "1px solid", width: "30%" }}>
+                      <th style={{ border: "1px solid", width: "20%" }}>
                         {t("Thành tiền")}
                       </th>
                       
@@ -318,7 +318,7 @@ class DonHangPrint extends React.Component {
               >
                 {t("general.cancel")}
               </Button>
-              {this.props.print && (
+              {(
                 <Button variant="contained" color="primary" type="submit">
                   {t("In")}
                 </Button>
