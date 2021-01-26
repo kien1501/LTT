@@ -100,7 +100,7 @@ public class EventServiceImpl extends GenericServiceImpl< Event, UUID> implement
 				}
 
 				if (entity.getProductEvent() == null) {
-					entity.setProductEvent(listSanPhamDonHang);;
+					entity.setProductEvent(listSanPhamDonHang);
 				} else {
 					entity.getProductEvent().clear();
 					entity.getProductEvent().addAll(listSanPhamDonHang);
