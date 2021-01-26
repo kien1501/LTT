@@ -91,17 +91,17 @@ class DonHangPrint extends React.Component {
     pri.focus();
     pri.print();
   };
-  handleExportPdf = () => {
-    let content = document.getElementById("divcontents");
-    html2canvas(content).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, "JPEG", 0, 0);
-      // pdf.output('dataurlnewwindow');
-      pdf.save("download.pdf");
-    });
-    this.props.handleOKEditClose();
-  };
+  // handleExportPdf = () => {
+  //   let content = document.getElementById("divcontents");
+  //   html2canvas(content).then((canvas) => {
+  //     const imgData = canvas.toDataURL("image/png");
+  //     const pdf = new jsPDF();
+  //     pdf.addImage(imgData, "JPEG", 0, 0);
+  //     // pdf.output('dataurlnewwindow');
+  //     pdf.save("download.pdf");
+  //   });
+  //   this.props.handleOKEditClose();
+  // };
 
   render() {
     const { t, i18n } = this.props;
@@ -160,6 +160,14 @@ class DonHangPrint extends React.Component {
                       {t("SĐT khách hàng")} :{" "}
                       {this.state.customer
                         ? this.state.customer.phoneNumber
+                        : ""}
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      {t("Địa chỉ")} :{" "}
+                      {this.state.customer
+                        ? this.state.customer.fullAddress
                         : ""}
                     </p>
                   </li>
