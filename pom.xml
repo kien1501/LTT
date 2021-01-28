@@ -28,6 +28,7 @@
 	<modules>
 		<module>da-api</module>
 		<module>da-app</module>
+		<module>da-view</module>
 	</modules>
 	<properties>
 		<skipTests>true</skipTests>
