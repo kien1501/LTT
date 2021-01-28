@@ -1,31 +1,26 @@
 package com.globits.da.view.utils;
 
-import java.util.Hashtable;
-
-import com.globits.cms.view.dto.WebsiteDto;
-import com.globits.cms.view.service.ServerService;
-
 public class SystemUtil {
-	public static Hashtable<String, WebsiteDto> hashWebsite= new Hashtable<String, WebsiteDto>(); 
-	public static String getTemplate(String domainPath) {
-		String template ="template3";
-	   if(domainPath!=null) {
-		   String domainName = getDomainName(domainPath);
-		   WebsiteDto website =null;
-//		   website = SystemUtil.hashWebsite.get(domainName);
-//		   if(website==null) {
-//			   website=  ServerService.getWebsiteByDomain(domainName);
-//			   if(website!=null) {
-//				   SystemUtil.hashWebsite.put(domainName, website);
-//			   }			   
+//	public static Hashtable<String, WebsiteDto> hashWebsite= new Hashtable<String, WebsiteDto>(); 
+//	public static String getTemplate(String domainPath) {
+//		String template ="template3";
+//	   if(domainPath!=null) {
+//		   String domainName = getDomainName(domainPath);
+//		   WebsiteDto website =null;
+////		   website = SystemUtil.hashWebsite.get(domainName);
+////		   if(website==null) {
+////			   website=  ServerService.getWebsiteByDomain(domainName);
+////			   if(website!=null) {
+////				   SystemUtil.hashWebsite.put(domainName, website);
+////			   }			   
+////		   }
+//		   website=  ServerService.getWebsiteByDomain(domainName);
+//		   if(website!=null) {
+//			   template = website.getTemplate();
 //		   }
-		   website=  ServerService.getWebsiteByDomain(domainName);
-		   if(website!=null) {
-			   template = website.getTemplate();
-		   }
-	   }
-	   return template;
-	}
+//	   }
+//	   return template;
+//	}
 	public static String getDomainName(String path) {
 		   String[] parts = path.split("//");
 		   if(parts!=null && parts.length>1) {
