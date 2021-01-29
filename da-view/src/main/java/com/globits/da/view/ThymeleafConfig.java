@@ -11,11 +11,7 @@ public class ThymeleafConfig {
     @Bean
     public ClassLoaderTemplateResolver secondaryTemplateResolver() {
         ClassLoaderTemplateResolver secondaryTemplateResolver = new ClassLoaderTemplateResolver();
-        //secondaryTemplateResolver.setPrefix("home/");
-        //secondaryTemplateResolver.setPrefix("/");
-        //secondaryTemplateResolver.setPrefix("vinazine-template/");
-        //secondaryTemplateResolver.setPrefix("studypress-template/");
-        secondaryTemplateResolver.setPrefix("nuce-new-template/");
+        //secondaryTemplateResolver.setPrefix("fashion-store-template/");
         secondaryTemplateResolver.setSuffix(".html");
         secondaryTemplateResolver.setTemplateMode(TemplateMode.HTML);
         secondaryTemplateResolver.setCharacterEncoding("UTF-8");

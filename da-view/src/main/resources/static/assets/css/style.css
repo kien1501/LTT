@@ -422,6 +422,35 @@ section#columns{
 	background: #ffffff;
 }
 
+.owl-nav {
+    top: 40%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+.owl-prev {
+    float: left;
+    left: -60px;
+}
+.owl-next {
+    float: right;
+    right: -40px;
+}
+.owl-next img {
+    height: 40px;
+    opacity: 0.85;
+}
+.owl-prev img {
+    height: 40px;
+    opacity: 0.85;
+}
+
+
+
+
 @media screen and (max-width: 1200px) {
 
 }
@@ -2560,7 +2589,6 @@ span.notify-left{
 .product-list li .product-name{
 	padding-bottom: 0px;
 	line-height: 1.3;
-	max-height: 40px;
 	overflow: hidden;
 }
 .product-list li .product-info{
@@ -2610,7 +2638,7 @@ span.notify-left{
 .product-list li .price-percent-reduction2{
 	width: 52px;
 	height: 44px;
-	background: url("images/price-percent-br.png?v=37") no-repeat center center;
+	background: url("../images/price-percent-br.png?v=37") no-repeat center center;
 	color: #fff;
 	line-height: normal !important;
 	text-align: center;
@@ -5785,6 +5813,7 @@ span.notify-left{
 	border: 1px solid #eaeaea;
 	overflow: hidden;
 	padding-bottom: 5px;
+	list-style: none;
 }
 .latest-deals-product .product-list li:hover{
 	border: 1px solid #958457;

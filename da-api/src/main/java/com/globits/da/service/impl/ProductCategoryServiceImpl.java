@@ -28,7 +28,6 @@ public class ProductCategoryServiceImpl extends GenericServiceImpl<ProductCatego
 		Pageable pageable = PageRequest.of(pageIndex-1, pageSize);
 		return repos.getListPage(pageable);
 	}
-
 	@Override
 	public ProductCategoryDto saveOrUpdate(UUID id, ProductCategoryDto dto) {
 		if(dto != null ) {
@@ -132,6 +131,11 @@ public class ProductCategoryServiceImpl extends GenericServiceImpl<ProductCatego
 	public Boolean deleteCheckById(UUID id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public List<ProductCategoryDto> getAllCategory() {
+		
+		return repos.getAllCategory() ;
 	}
 
 }

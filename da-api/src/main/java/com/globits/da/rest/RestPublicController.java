@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,8 +22,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.globits.core.service.FileDescriptionService;
+import com.globits.da.dto.EventDto;
+import com.globits.da.dto.ProductCategoryDto;
 import com.globits.da.dto.ProductDto;
 import com.globits.da.dto.search.SearchDto;
+import com.globits.da.service.EventService;
+import com.globits.da.service.ProductCategoryService;
 import com.globits.da.service.ProductService;
 
 @RestController
@@ -34,11 +39,25 @@ public class RestPublicController {
 	FileDescriptionService fileDescriptionService;
 	@Autowired
 	ProductService sanPhamService;
+	@Autowired
+	ProductCategoryService productCategoryService;
+	@Autowired
+	EventService eventService;
 	
 	@RequestMapping(value = "/getListProductByPage", method = RequestMethod.POST)
-	public ResponseEntity<Page<ProductDto>> getPage(@RequestBody SearchDto dto ) {
-		Page<ProductDto> results = sanPhamService.searchByPage(dto);
-		return new ResponseEntity<Page<ProductDto>>(results, HttpStatus.OK);
+	public ResponseEntity<List<ProductDto>> getPage(@RequestBody SearchDto dto ) {
+		List<ProductDto> results = sanPhamService.searchByPage(dto).getContent();
+		return new ResponseEntity<List <ProductDto>>(results, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/getProductCategory", method = RequestMethod.GET)
+	public List<ProductCategoryDto> getAllCategory() {
+		return productCategoryService.getAllCategory();
+	}
+	
+	@RequestMapping(value="/getProductEvent", method = RequestMethod.GET)
+	public List<EventDto> getProductEvent() {
+		return eventService.getPage(9, 1).getContent();
 	}
 	
 	@RequestMapping(path = "/getImage/{filename}/{type}", method = RequestMethod.GET)
