@@ -93,10 +93,10 @@ public class EventServiceImpl extends GenericServiceImpl< Event, UUID> implement
 						}else {
 							sanPham.setCurrentSellingPrice(0.0);
 						}
-						sanPham = sanPhamRepository.save(sanPham);
 					}else {
 						sanPham.setCurrentSellingPrice(sanPham.getPrice());
 					}
+					sanPham = sanPhamRepository.save(sanPham);
 					sanPhamDonHang.setEvent(entity);
 					listSanPhamDonHang.add(sanPhamDonHang);
 				}
