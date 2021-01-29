@@ -187,7 +187,7 @@ class EventDialog extends Component {
     if(productEvent == null ){
       productEvent =[] 
       let p = {}
-      p.product = item;
+      p.product = item.product;
       p.discountPercent = e.target.value
       productEvent.push(p)
     }
