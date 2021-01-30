@@ -38,6 +38,8 @@ public class Customer extends BaseObject{
 	private Date birthDate;						//Ngày sinh
 	@Column(name="username")
 	private String username;						//Tên đăng nhập
+	@Column(name="password")
+	private String password;
 	@Column(name="age")
 	private Integer age;//tuổi	
 	@Column(name="customer_type")
@@ -141,6 +143,12 @@ public class Customer extends BaseObject{
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }

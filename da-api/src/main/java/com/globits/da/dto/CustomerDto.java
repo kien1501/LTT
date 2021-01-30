@@ -14,7 +14,8 @@ public class CustomerDto extends BaseObjectDto{
 	private String email;
 	private Integer customerType;
 	private UserDto user;
-	private String username;						//Tên đăng nhập
+	private String username;
+	private String password;//Tên đăng nhập
 	private String gender;						//Giới tính
 	private Date birthDate;						//Ngày sinh
 	private Boolean isDefault;						//mặc định của Person
@@ -138,6 +139,14 @@ public class CustomerDto extends BaseObjectDto{
 
 	public void setAge(Integer age) {
 		this.age = age;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public CustomerDto() {

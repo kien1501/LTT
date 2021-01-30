@@ -36,13 +36,13 @@ public class RestCustomerController {
 	private CustomerService customerService;
 	
 	@RequestMapping(value = "/getListByPage", method = RequestMethod.POST)
-@Secured({ HrConstants.ROLE_HR_MANAGEMENT, HrConstants.ROLE_ADMIN,HrConstants.ROLE_SUPER_ADMIN })
+	@Secured({ HrConstants.ROLE_HR_MANAGEMENT, HrConstants.ROLE_ADMIN,HrConstants.ROLE_SUPER_ADMIN })
 	public Page<CustomerDto> getListCustomerByPage(@RequestBody SearchDto dto) {
 		Page<CustomerDto> page = customerService.searchCustomer(dto);
 		return page;
 	}
 	@RequestMapping(value = "/{pageIndex}/{pageSize}", method = RequestMethod.GET)
-@Secured({ HrConstants.ROLE_HR_MANAGEMENT, HrConstants.ROLE_ADMIN,HrConstants.ROLE_SUPER_ADMIN })
+	@Secured({ HrConstants.ROLE_HR_MANAGEMENT, HrConstants.ROLE_ADMIN,HrConstants.ROLE_SUPER_ADMIN })
 	public Page<CustomerDto> getList(@PathVariable int pageIndex, @PathVariable int pageSize) {
 		Page<CustomerDto> page = customerService.getListPage(pageIndex, pageSize);
 		return page;
@@ -61,7 +61,7 @@ public class RestCustomerController {
 		return customerService.getCustomerDto(customerId);
 	}
 
-@Secured({ HrConstants.ROLE_HR_MANAGEMENT, HrConstants.ROLE_ADMIN,HrConstants.ROLE_SUPER_ADMIN })
+	@Secured({ HrConstants.ROLE_HR_MANAGEMENT, HrConstants.ROLE_ADMIN,HrConstants.ROLE_SUPER_ADMIN })
 	@RequestMapping(method = RequestMethod.POST)
 	public CustomerDto saveCustomer(@RequestBody CustomerDto customerDto) {
 		return customerService.saveCustomer(customerDto);
