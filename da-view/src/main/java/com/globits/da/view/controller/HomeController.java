@@ -34,7 +34,7 @@ public class HomeController {
 		EventDto[] eventItem = restTemplate.getForObject(eventList, EventDto[].class);
 		List<EventDto> event = (List<EventDto>) Arrays.asList(eventItem);
 		
-		String newsList = ServerService.ServerURL + "da/public/getProductEvent";
+		String newsList = ServerService.ServerURL + "da/public/getAllNews";
 		EQAProgramIntroductionDto[] newsItem = restTemplate.getForObject(newsList, EQAProgramIntroductionDto[].class);
 		List<EQAProgramIntroductionDto> news = (List<EQAProgramIntroductionDto>) Arrays.asList(newsItem);
 		
