@@ -23,10 +23,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.globits.core.service.FileDescriptionService;
 import com.globits.da.dto.EQAProgramIntroductionDto;
+import com.globits.da.dto.CustomerDto;
 import com.globits.da.dto.EventDto;
 import com.globits.da.dto.ProductCategoryDto;
 import com.globits.da.dto.ProductDto;
 import com.globits.da.dto.search.SearchDto;
+import com.globits.da.service.EQAProgramIntroductionService;
 import com.globits.da.service.EQAProgramIntroductionService;
 import com.globits.da.service.EventService;
 import com.globits.da.service.ProductCategoryService;
@@ -46,8 +48,9 @@ public class RestPublicController {
 	@Autowired
 	EventService eventService;
 	@Autowired
+	private CustomerService customerService;
+	@Autowired
 	EQAProgramIntroductionService eQAProgramIntroductionService;
-	
 	@RequestMapping(value = "/getListProductByPage", method = RequestMethod.POST)
 	public ResponseEntity<List<ProductDto>> getPage(@RequestBody SearchDto dto ) {
 		List<ProductDto> results = sanPhamService.searchByPage(dto).getContent();
@@ -110,7 +113,10 @@ public class RestPublicController {
 	        throw new FileNotFoundException();
 	    }
 	}
-
+	@RequestMapping(method = RequestMethod.POST)
+	public CustomerDto saveCustomer(@RequestBody CustomerDto customerDto) {
+		return customerService.saveCustomer(customerDto);
+	}
 	
 
 }

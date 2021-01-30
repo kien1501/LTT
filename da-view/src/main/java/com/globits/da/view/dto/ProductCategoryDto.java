@@ -3,12 +3,10 @@ package com.globits.da.view.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.globits.da.view.dto.ProductDto;
-
-public class ProductCategoryDto {
+import com.globits.da.view.dto.ProductDto;public class ProductCategoryDto {
 	private String name;
 	private String code;
-	private List<ProductDto> listProduct = new ArrayList<ProductDto>();
+private List<ProductDto> listProduct = new ArrayList<ProductDto>();
 	public String getName() {
 		return name;
 	}
