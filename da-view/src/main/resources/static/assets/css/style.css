@@ -2476,7 +2476,7 @@ span.notify-left{
 	transform: scale(1,1);
 	margin: 0 auto;
 }
-.product-list li:hover img{
+/* .product-list li:hover img{
 
 	-webkit-transform: scale(1.2,1.2);
 	-webkit-transform-origin: top right;
@@ -2486,7 +2486,7 @@ span.notify-left{
 	-o-transform-origin: top right;
 	transform: scale(1.2,1.2);
 	transform-origin: top right;
-}
+} */
 .product-list li .right-block{
 	padding: 0 15px;
 	margin-top: 5px;
@@ -5249,7 +5249,7 @@ span.notify-left{
 	color: #919191;
 	font-size: 13px;
 }
-.blog-list .blog-list-wapper ul li .post-desc .post-meta .date:before{
+.post-desc .post-meta .date:before{
 	font: normal normal normal 13px/1 FontAwesome;
 	content: "\f1ec";
 	padding-right: 5px;

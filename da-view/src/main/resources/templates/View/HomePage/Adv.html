@@ -13,34 +13,32 @@
                         <div class="latest-deals-product">
                         	<div id="fashion-store-slider" class="owl-carousel product-list">
                     		<th:block th:each="productItem : ${event[0].productEvent}">
-                    			<div class="col-md-12 col-xs-10" >
+                    			<div class="col-md-12" >
 									<li>
 									<div class="left-block">
                                         <a href="">
-                                        	<img class="img-responsive" th:src="${'http://localhost:8085/da/public/image/' + productItem.product.imageUrl}">
+                                        	<img class="img-responsive" th:src="${'http://localhost:8085/da/public/image/' + productItem.product.imageUrl}" style="height: 211px; object-fit:cover;">
                                         </a>
                                         <div class="quick-view">
                                             <a title="Add to my wishlist" class="heart" href="#"></a>
-                                            <a title="Xem chi tiết" class="compare" href="/san-pham/ghe-kieu-cho-nhan-vien-van-phong.html"></a>
-                                            <a href="javascript:void(0);" class="qv-e-button btn-quickview-1 search" title="Xem nhanh" data-handle="/san-pham/ghe-kieu-cho-nhan-vien-van-phong.html"></a>
+                                            <a title="Xem chi tiết" class="compare" href=""></a>
+                                            <a href="javascript:void(0);" class="qv-e-button btn-quickview-1 search" title="Xem nhanh" data-handle=""></a>
                                         </div>
                                         <div class="add-to-cart">
                                             <a class="add-to-car" href="javascript:void(0);" ng-click="AddToCard(item)">Thêm vào giỏ</a>
                                         </div>
                                         <div class="price-percent-reduction2 ng-binding">
                                             Sale
-                                            <br>-8<strong>%</strong>
+                                            <br>-[[${productItem.discountPercent}]]<strong>%</strong>
                                         </div>
                                     </div>
                                     <div class="right-block">
-                                        <h5 class="product-name"><a href="/san-pham/noi-com-dien-panasonic-sr-ga721wra.html" class="ng-binding">[[${productItem.product.name}]]</a></h5>
-                                        <!-- ngIf: ConfigProduct.ShowPrice==true --><div class="content_price ng-scope" ng-if="ConfigProduct.ShowPrice==true">
-                                            <!-- ngIf: item.IsPromotion==true&&item.Price>0 --><span class="price product-price ng-binding ng-scope" ng-if="item.IsPromotion==true&amp;&amp;item.Price>0">[[${productItem.product.currentSellingPrice}]]&nbsp;₫</span><!-- end ngIf: item.IsPromotion==true&&item.Price>0 -->
-                                            <!-- ngIf: item.IsPromotion==true&&item.Price>0 --><span class="price old-price ng-binding ng-scope" ng-if="item.IsPromotion==true&amp;&amp;item.Price>0">[[${productItem.product.price}]]&nbsp;₫</span><!-- end ngIf: item.IsPromotion==true&&item.Price>0 -->
-                                            <!-- ngIf: item.IsPromotion==false&&item.Price>0 -->
-                                            <!-- ngIf: item.Price<=0 -->
-                                        </div><!-- end ngIf: ConfigProduct.ShowPrice==true -->
-                                        <!-- ngIf: ConfigProduct.ShowPrice==false -->
+                                        <h5 class="product-name"><a href="" class="ng-binding">[[${productItem.product.name}]]</a></h5>
+                                        <div class="content_price ng-scope" ng-if="ConfigProduct.ShowPrice==true">
+                                            <span class="price product-price ng-binding ng-scope" ng-if="item.IsPromotion==true&amp;&amp;item.Price>0">[[${productItem.product.currentSellingPrice}]]&nbsp;₫</span>
+                                            <span class="price old-price ng-binding ng-scope" ng-if="item.IsPromotion==true&amp;&amp;item.Price>0">[[${productItem.product.price}]]&nbsp;₫</span>
+                                            
+                                        </div>
                                     </div>
 									</li>
 									

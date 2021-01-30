@@ -1,21 +1,20 @@
 <th:block th:fragment="category-featured">
-	<div class="category-featured featured1">
+	<div class="row">
+                    <div class="col-md-12">
+
+                        <div class="content-page">
+                            <div class="container">
+                            <th:block th:each="category,itrStat : ${productCategory}">
+                            	<div class="category-featured featured1">
                                     <nav class="navbar nav-menu show-brand">
                                         <div class="container">
                                             <!-- Brand and toggle get grouped for better mobile display -->
-                                            <div class="navbar-brand">
-                                            	<a href="/san-pham/thoi-trang-40412"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/icon/s5.png">Thời trang</a>
-                                            </div>
-                                            <span class="toggle-menu"></span>
+                                            <div class="navbar-brand"><a href="/san-pham/thoi-trang-40412"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/icon/s5.png">[[${category.name}]]</a></div>
+                                            
                                             <!-- Collect the nav links, forms, and other content for toggling -->
-                                            <div class="collapse navbar-collapse">
-                                                
-                                            </div><!-- /.navbar-collapse -->
+                                            
                                         </div><!-- /.container-fluid -->
-                                        <div id="elevator-1" class="floor-elevator">
-                                            <a href="#" class="btn-elevator up disabled fa fa-angle-up"></a>
-                                            <a href="#elevator-2" class="btn-elevator down fa fa-angle-down"></a>
-                                        </div>
+                                        
                                     </nav>
                                     <div class="product-featured clearfix">
                                         <div class="row">
@@ -24,19 +23,28 @@
                                                 <div class="product-featured-tab-content">
                                                     <div class="tab-container">
                                                         <div class="tab-panel active" id="tab_1">
-                                                            
+                                                            <div class="box-left">
+                                                                <div class="banner-img">
+                                                                    <a href="">
+                                                                    	<img src="http://runecom02.runtime.vn/Uploads/shop2198/images/banner/banner-product1.jpg" alt="Thời trang">
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                             <div class="box-right">
                                                                 <ul class="product-list row">
-                                                                    <li class="col-sm-4">
+                                                                <th:block th:each="product,itrStat : ${category.listProduct}">
+                                                                	<li class="col-sm-4">
                                                                         <div class="right-block">
-                                                                            <h5 class="product-name"><a href="/san-pham/dam-body-ca-tinh-voi-nhieu-mau-sac-hien-dai-tre-trung.html">Đầm body cá tình với nhiều màu sắc hiện đại, trẻ trung</a></h5>
+                                                                            <h5 class="product-name"><a href="/san-pham/dam-body-ca-tinh-voi-nhieu-mau-sac-hien-dai-tre-trung.html">[[${product.name}]]</a></h5>
                                                                             <div class="content_price">
-                                                                                <span class="price product-price">400.000₫</span>
-                                                                                <span class="price old-price">620.000₫</span>
+                                                                                <span class="price product-price">[[${product.currentSellingPrice}]]₫</span>
+                                                                                <span class="price old-price">[[${product.price}]]₫</span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="left-block">
-                                                                            <a href="/san-pham/dam-body-ca-tinh-voi-nhieu-mau-sac-hien-dai-tre-trung.html"><img class="img-responsive" alt="product" src="http://runecom02.runtime.vn/Uploads/shop2198/images/product/p35_large.jpg"></a>
+                                                                            <a href="/san-pham/dam-body-ca-tinh-voi-nhieu-mau-sac-hien-dai-tre-trung.html">
+                                                                            	<img class="img-responsive" th:src="${'http://localhost:8085/da/public/image/' + product.imageUrl}" style="height: 211px; object-fit:cover;">
+                                                                            </a>
                                                                             <div class="quick-view">
                                                                                 <a title="Add to my wishlist" class="heart" href="#"></a>
                                                                                 <a title="Xem chi tiết" class="compare" href="/san-pham/dam-body-ca-tinh-voi-nhieu-mau-sac-hien-dai-tre-trung.html"></a>
@@ -47,200 +55,26 @@
                                                                             </div>
                                                                         </div>
                                                                     </li>
-                                                                    <li class="col-sm-4">
-                                                                        <div class="right-block">
-                                                                            <h5 class="product-name"><a href="/san-pham/dam-maxi-du-tiec-hoa-hong-nh028.html">Đầm maxi dự tiệc hoa hồng - NH028</a></h5>
-                                                                            <div class="content_price">
-                                                                                <span class="price product-price">190.000₫</span>
-                                                                                <span class="price old-price">240.000₫</span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="left-block">
-                                                                            <a href="/san-pham/dam-maxi-du-tiec-hoa-hong-nh028.html"><img class="img-responsive" alt="product" src="http://runecom02.runtime.vn/Uploads/shop2198/images/product/p49_large.jpg"></a>
-                                                                            <div class="quick-view">
-                                                                                <a title="Add to my wishlist" class="heart" href="#"></a>
-                                                                                <a title="Xem chi tiết" class="compare" href="/san-pham/dam-maxi-du-tiec-hoa-hong-nh028.html"></a>
-                                                                                <a href="javascript:void(0);" class="qv-e-button btn-quickview-1 search" title="Xem nhanh" data-handle="/san-pham/dam-maxi-du-tiec-hoa-hong-nh028.html"></a>
-                                                                            </div>
-                                                                            <div class="add-to-cart">
-                                                                                <a class="add-to-car" href="javascript:void(0);" onclick="AddToCard(51002,1)">Thêm vào giỏ</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="col-sm-4">
-                                                                        <div class="right-block">
-                                                                            <h5 class="product-name"><a href="/san-pham/dam-body-lap-the-tay-dai.html">Đầm body lập thể tay dài</a></h5>
-                                                                            <div class="content_price">
-                                                                                <span class="price product-price">310.000₫</span>
-                                                                                <span class="price old-price">560.000₫</span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="left-block">
-                                                                            <a href="/san-pham/dam-body-lap-the-tay-dai.html"><img class="img-responsive" alt="product" src="http://runecom02.runtime.vn/Uploads/shop2198/images/product/p50_large.jpg"></a>
-                                                                            <div class="quick-view">
-                                                                                <a title="Add to my wishlist" class="heart" href="#"></a>
-                                                                                <a title="Xem chi tiết" class="compare" href="/san-pham/dam-body-lap-the-tay-dai.html"></a>
-                                                                                <a href="javascript:void(0);" class="qv-e-button btn-quickview-1 search" title="Xem nhanh" data-handle="/san-pham/dam-body-lap-the-tay-dai.html"></a>
-                                                                            </div>
-                                                                            <div class="add-to-cart">
-                                                                                <a class="add-to-car" href="javascript:void(0);" onclick="AddToCard(51003,1)">Thêm vào giỏ</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="col-sm-4">
-                                                                        <div class="right-block">
-                                                                            <h5 class="product-name"><a href="/san-pham/dam-mac-nha-tay-lo-nitimo-2001.html">Đầm mặc nhà tay lỡ NITIMO 2001</a></h5>
-                                                                            <div class="content_price">
-                                                                                <span class="price product-price">190.000₫</span>
-                                                                                <span class="price old-price">280.000₫</span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="left-block">
-                                                                            <a href="/san-pham/dam-mac-nha-tay-lo-nitimo-2001.html"><img class="img-responsive" alt="product" src="http://runecom02.runtime.vn/Uploads/shop2198/images/product/p51_large.jpg"></a>
-                                                                            <div class="quick-view">
-                                                                                <a title="Add to my wishlist" class="heart" href="#"></a>
-                                                                                <a title="Xem chi tiết" class="compare" href="/san-pham/dam-mac-nha-tay-lo-nitimo-2001.html"></a>
-                                                                                <a href="javascript:void(0);" class="qv-e-button btn-quickview-1 search" title="Xem nhanh" data-handle="/san-pham/dam-mac-nha-tay-lo-nitimo-2001.html"></a>
-                                                                            </div>
-                                                                            <div class="add-to-cart">
-                                                                                <a class="add-to-car" href="javascript:void(0);" onclick="AddToCard(51004,1)">Thêm vào giỏ</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="col-sm-4">
-                                                                        <div class="right-block">
-                                                                            <h5 class="product-name"><a href="/san-pham/dam-mac-nha-phoi-no-xinh-xan-twins.html">Đầm mặc nhà phối nơ xinh xắn Twins</a></h5>
-                                                                            <div class="content_price">
-                                                                                <span class="price product-price">2.400.000₫</span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="left-block">
-                                                                            <a href="/san-pham/dam-mac-nha-phoi-no-xinh-xan-twins.html"><img class="img-responsive" alt="product" src="http://runecom02.runtime.vn/Uploads/shop2198/images/product/p52_large.jpg"></a>
-                                                                            <div class="quick-view">
-                                                                                <a title="Add to my wishlist" class="heart" href="#"></a>
-                                                                                <a title="Xem chi tiết" class="compare" href="/san-pham/dam-mac-nha-phoi-no-xinh-xan-twins.html"></a>
-                                                                                <a href="javascript:void(0);" class="qv-e-button btn-quickview-1 search" title="Xem nhanh" data-handle="/san-pham/dam-mac-nha-phoi-no-xinh-xan-twins.html"></a>
-                                                                            </div>
-                                                                            <div class="add-to-cart">
-                                                                                <a class="add-to-car" href="javascript:void(0);" onclick="AddToCard(51005,1)">Thêm vào giỏ</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="col-sm-4">
-                                                                        <div class="right-block">
-                                                                            <h5 class="product-name"><a href="/san-pham/dam-dao-pho-hoa-tiet-style-a1.html">Đầm dạo phố họa tiết style - A1</a></h5>
-                                                                            <div class="content_price">
-                                                                                <span class="price product-price">220.000₫</span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="left-block">
-                                                                            <a href="/san-pham/dam-dao-pho-hoa-tiet-style-a1.html"><img class="img-responsive" alt="product" src="http://runecom02.runtime.vn/Uploads/shop2198/images/product/p53_large.jpg"></a>
-                                                                            <div class="quick-view">
-                                                                                <a title="Add to my wishlist" class="heart" href="#"></a>
-                                                                                <a title="Xem chi tiết" class="compare" href="/san-pham/dam-dao-pho-hoa-tiet-style-a1.html"></a>
-                                                                                <a href="javascript:void(0);" class="qv-e-button btn-quickview-1 search" title="Xem nhanh" data-handle="/san-pham/dam-dao-pho-hoa-tiet-style-a1.html"></a>
-                                                                            </div>
-                                                                            <div class="add-to-cart">
-                                                                                <a class="add-to-car" href="javascript:void(0);" onclick="AddToCard(51006,1)">Thêm vào giỏ</a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
+                                                                </th:block>
+                                                                    
+                                                                    
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-panel" id="tab_1_0">
-                                                            <div class="box-left">
-                                                                <div class="banner-img">
-                                                                    <a href="/san-pham/thoi-trang-40412"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/banner/banner-product1.jpg" alt="Thời trang"></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="box-right">
-                                                                <div class="loading" style="display:none;text-align:center;padding:20px;"><img src="http://runecom02.runtime.vn/assets/100002/img/ajax-loader.gif"></div>
-                                                                <ul class="product-list row"></ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-panel" id="tab_1_1">
-                                                            <div class="box-left">
-                                                                <div class="banner-img">
-                                                                    <a href="/san-pham/thoi-trang-40412"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/banner/banner-product1.jpg" alt="Thời trang"></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="box-right">
-                                                                <div class="loading" style="display:none;text-align:center;padding:20px;"><img src="http://runecom02.runtime.vn/assets/100002/img/ajax-loader.gif"></div>
-                                                                <ul class="product-list row"></ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-panel" id="tab_1_2">
-                                                            <div class="box-left">
-                                                                <div class="banner-img">
-                                                                    <a href="/san-pham/thoi-trang-40412"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/banner/banner-product1.jpg" alt="Thời trang"></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="box-right">
-                                                                <div class="loading" style="display:none;text-align:center;padding:20px;"><img src="http://runecom02.runtime.vn/assets/100002/img/ajax-loader.gif"></div>
-                                                                <ul class="product-list row"></ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-panel" id="tab_1_3">
-                                                            <div class="box-left">
-                                                                <div class="banner-img">
-                                                                    <a href="/san-pham/thoi-trang-40412"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/banner/banner-product1.jpg" alt="Thời trang"></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="box-right">
-                                                                <div class="loading" style="display:none;text-align:center;padding:20px;"><img src="http://runecom02.runtime.vn/assets/100002/img/ajax-loader.gif"></div>
-                                                                <ul class="product-list row"></ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-panel" id="tab_1_4">
-                                                            <div class="box-left">
-                                                                <div class="banner-img">
-                                                                    <a href="/san-pham/thoi-trang-40412"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/banner/banner-product1.jpg" alt="Thời trang"></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="box-right">
-                                                                <div class="loading" style="display:none;text-align:center;padding:20px;"><img src="http://runecom02.runtime.vn/assets/100002/img/ajax-loader.gif"></div>
-                                                                <ul class="product-list row"></ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-panel" id="tab_1_5">
-                                                            <div class="box-left">
-                                                                <div class="banner-img">
-                                                                    <a href="/san-pham/thoi-trang-40412"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/banner/banner-product1.jpg" alt="Thời trang"></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="box-right">
-                                                                <div class="loading" style="display:none;text-align:center;padding:20px;"><img src="http://runecom02.runtime.vn/assets/100002/img/ajax-loader.gif"></div>
-                                                                <ul class="product-list row"></ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-panel" id="tab_1_6">
-                                                            <div class="box-left">
-                                                                <div class="banner-img">
-                                                                    <a href="/san-pham/thoi-trang-40412"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/banner/banner-product1.jpg" alt="Thời trang"></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="box-right">
-                                                                <div class="loading" style="display:none;text-align:center;padding:20px;"><img src="http://runecom02.runtime.vn/assets/100002/img/ajax-loader.gif"></div>
-                                                                <ul class="product-list row"></ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-panel" id="tab_1_7">
-                                                            <div class="box-left">
-                                                                <div class="banner-img">
-                                                                    <a href="/san-pham/thoi-trang-40412"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/banner/banner-product1.jpg" alt="Thời trang"></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="box-right">
-                                                                <div class="loading" style="display:none;text-align:center;padding:20px;"><img src="http://runecom02.runtime.vn/assets/100002/img/ajax-loader.gif"></div>
-                                                                <ul class="product-list row"></ul>
-                                                            </div>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </th:block>
+                                
+                                
+                            </div>
+                        </div>
+
+                </div>
+            </div>
 </th:block>
                                 

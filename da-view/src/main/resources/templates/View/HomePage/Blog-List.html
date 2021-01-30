@@ -1,239 +1,53 @@
 <th:block th:fragment="blog-list">
-	<div class="container">
-                    <div class="row">
-
-                            <!-- blog list -->
-                            <div class="blog-list news-home">
-                                <h2 class="page-heading">
-                                    <span class="page-heading-title">Tin tức nổi bật</span>
-                                </h2>
-                                <div class="blog-list-wapper">
-                                    <ul class="owl-carousel owl-theme owl-loaded" data-dots="false" data-loop="true" data-nav="true" data-margin="30" data-autoplaytimeout="1000" data-autoplayhoverpause="true" data-responsive="{&quot;0&quot;:{&quot;items&quot;:1},&quot;600&quot;:{&quot;items&quot;:3},&quot;1000&quot;:{&quot;items&quot;:4}}">
-
-
-
-
-                                        <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1200px, 0px, 0px); transition: all 0s ease 0s; width: 3600px;"><div class="owl-item cloned" style="width: 270px; margin-right: 30px;"><li>
-                                            <div class="post-thumb image-hover2">
-                                                <a href="/tin-tuc/dien-vay-xe-cao-quyen-ru-nhu-miranda-kerr-10103.html"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/news/blog4.jpg" alt="Diện váy xẻ cao quyến rũ như Miranda Kerr"></a>
-                                            </div>
-                                            <div class="post-desc">
+	<div class="adv">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12"> 
+                    <!--Begin-->
+                    <div class="product-content ng-scope" ng-controller="productController" ng-init="initProductPromotionSlideController('ProductPromotionSlides')">
+                        <h2 class="page-heading">
+                            <span class="page-heading-title">
+                                Tin tức nổi bật
+                            </span>
+                        </h2>
+                        <div class="blog-list-wapper">
+                        	<div id="blog-list-slider" class="owl-carousel product-list">
+                    		<th:block th:each="newsItem : ${news}">
+                    			<div class="col-md-12" >
+									<li style="list-style: none;">
+										<div class="post-thumb image-hover2">
+                                        	<a href=""><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/news/blog4.jpg" alt="Diện váy xẻ cao quyến rũ như Miranda Kerr"></a>
+                                        </div>
+                                    	<div class="post-desc">
                                                 <h5 class="post-title">
-                                                    <a href="/tin-tuc/dien-vay-xe-cao-quyen-ru-nhu-miranda-kerr-10103.html">Diện váy xẻ cao quyến rũ như Miranda Kerr</a>
+                                                    <a href="">[[${newsItem.name}]]</a>
                                                 </h5>
                                                 <div class="post-meta">
+                                                    
                                                     <span class="date">
                                                         12/08/2017
                                                     </span>
                                                     <span class="comment">0<span> Bình luận</span></span>
                                                 </div>
                                                 <div class="readmore">
-                                                    <a href="/tin-tuc/dien-vay-xe-cao-quyen-ru-nhu-miranda-kerr-10103.html">Xem thêm</a>
+                                                    <a href="">Xem thêm</a>
                                                 </div>
                                             </div>
-                                        </li></div><div class="owl-item cloned" style="width: 270px; margin-right: 30px;"><li>
-                                            <div class="post-thumb image-hover2">
-                                                <a href="/tin-tuc/nhung-chiec-vong-co-tao-dang-cap-cho-sao-ngoai-tren-tham-do-10102.html"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/news/blog2.jpg" alt="Những chiếc vòng cổ tạo đẳng cấp cho sao ngoại trên thảm đỏ"></a>
-                                            </div>
-                                            <div class="post-desc">
-                                                <h5 class="post-title">
-                                                    <a href="/tin-tuc/nhung-chiec-vong-co-tao-dang-cap-cho-sao-ngoai-tren-tham-do-10102.html">Những chiếc vòng cổ tạo đẳng cấp cho sao ngoại trên thảm đỏ</a>
-                                                </h5>
-                                                <div class="post-meta">
-                                                    <span class="date">
-                                                        12/08/2017
-                                                    </span>
-                                                    <span class="comment">0<span> Bình luận</span></span>
-                                                </div>
-                                                <div class="readmore">
-                                                    <a href="/tin-tuc/nhung-chiec-vong-co-tao-dang-cap-cho-sao-ngoai-tren-tham-do-10102.html">Xem thêm</a>
-                                                </div>
-                                            </div>
-                                        </li></div><div class="owl-item cloned" style="width: 270px; margin-right: 30px;"><li>
-                                            <div class="post-thumb image-hover2">
-                                                <a href="/tin-tuc/20-bo-vay-dep-cua-cac-dien-vien-tung-doat-giai-oscar-10101.html"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/news/blog1.jpg" alt="20 bộ váy đẹp của các diễn viên từng đoạt giải Oscar"></a>
-                                            </div>
-                                            <div class="post-desc">
-                                                <h5 class="post-title">
-                                                    <a href="/tin-tuc/20-bo-vay-dep-cua-cac-dien-vien-tung-doat-giai-oscar-10101.html">20 bộ váy đẹp của các diễn viên từng đoạt giải Oscar</a>
-                                                </h5>
-                                                <div class="post-meta">
-                                                    <span class="date">
-                                                        12/08/2017
-                                                    </span>
-                                                    <span class="comment">0<span> Bình luận</span></span>
-                                                </div>
-                                                <div class="readmore">
-                                                    <a href="/tin-tuc/20-bo-vay-dep-cua-cac-dien-vien-tung-doat-giai-oscar-10101.html">Xem thêm</a>
-                                                </div>
-                                            </div>
-                                        </li></div><div class="owl-item cloned" style="width: 270px; margin-right: 30px;"><li>
-                                            <div class="post-thumb image-hover2">
-                                                <a href="/tin-tuc/phoi-quan-jeans-cap-cao-theo-phong-cach-thap-nien-1970-10100.html"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/news/blog3.jpg" alt="Phối quần jeans cạp cao theo phong cách thập niên 1970"></a>
-                                            </div>
-                                            <div class="post-desc">
-                                                <h5 class="post-title">
-                                                    <a href="/tin-tuc/phoi-quan-jeans-cap-cao-theo-phong-cach-thap-nien-1970-10100.html">Phối quần jeans cạp cao theo phong cách thập niên 1970</a>
-                                                </h5>
-                                                <div class="post-meta">
-                                                    <span class="date">
-                                                        12/08/2017
-                                                    </span>
-                                                    <span class="comment">0<span> Bình luận</span></span>
-                                                </div>
-                                                <div class="readmore">
-                                                    <a href="/tin-tuc/phoi-quan-jeans-cap-cao-theo-phong-cach-thap-nien-1970-10100.html">Xem thêm</a>
-                                                </div>
-                                            </div>
-                                        </li></div><div class="owl-item active" style="width: 270px; margin-right: 30px;"><li>
-                                            <div class="post-thumb image-hover2">
-                                                <a href="/tin-tuc/dien-vay-xe-cao-quyen-ru-nhu-miranda-kerr-10103.html"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/news/blog4.jpg" alt="Diện váy xẻ cao quyến rũ như Miranda Kerr"></a>
-                                            </div>
-                                            <div class="post-desc">
-                                                <h5 class="post-title">
-                                                    <a href="/tin-tuc/dien-vay-xe-cao-quyen-ru-nhu-miranda-kerr-10103.html">Diện váy xẻ cao quyến rũ như Miranda Kerr</a>
-                                                </h5>
-                                                <div class="post-meta">
-                                                    <span class="date">
-                                                        12/08/2017
-                                                    </span>
-                                                    <span class="comment">0<span> Bình luận</span></span>
-                                                </div>
-                                                <div class="readmore">
-                                                    <a href="/tin-tuc/dien-vay-xe-cao-quyen-ru-nhu-miranda-kerr-10103.html">Xem thêm</a>
-                                                </div>
-                                            </div>
-                                        </li></div><div class="owl-item active" style="width: 270px; margin-right: 30px;"><li>
-                                            <div class="post-thumb image-hover2">
-                                                <a href="/tin-tuc/nhung-chiec-vong-co-tao-dang-cap-cho-sao-ngoai-tren-tham-do-10102.html"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/news/blog2.jpg" alt="Những chiếc vòng cổ tạo đẳng cấp cho sao ngoại trên thảm đỏ"></a>
-                                            </div>
-                                            <div class="post-desc">
-                                                <h5 class="post-title">
-                                                    <a href="/tin-tuc/nhung-chiec-vong-co-tao-dang-cap-cho-sao-ngoai-tren-tham-do-10102.html">Những chiếc vòng cổ tạo đẳng cấp cho sao ngoại trên thảm đỏ</a>
-                                                </h5>
-                                                <div class="post-meta">
-                                                    <span class="date">
-                                                        12/08/2017
-                                                    </span>
-                                                    <span class="comment">0<span> Bình luận</span></span>
-                                                </div>
-                                                <div class="readmore">
-                                                    <a href="/tin-tuc/nhung-chiec-vong-co-tao-dang-cap-cho-sao-ngoai-tren-tham-do-10102.html">Xem thêm</a>
-                                                </div>
-                                            </div>
-                                        </li></div><div class="owl-item active" style="width: 270px; margin-right: 30px;"><li>
-                                            <div class="post-thumb image-hover2">
-                                                <a href="/tin-tuc/20-bo-vay-dep-cua-cac-dien-vien-tung-doat-giai-oscar-10101.html"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/news/blog1.jpg" alt="20 bộ váy đẹp của các diễn viên từng đoạt giải Oscar"></a>
-                                            </div>
-                                            <div class="post-desc">
-                                                <h5 class="post-title">
-                                                    <a href="/tin-tuc/20-bo-vay-dep-cua-cac-dien-vien-tung-doat-giai-oscar-10101.html">20 bộ váy đẹp của các diễn viên từng đoạt giải Oscar</a>
-                                                </h5>
-                                                <div class="post-meta">
-                                                    <span class="date">
-                                                        12/08/2017
-                                                    </span>
-                                                    <span class="comment">0<span> Bình luận</span></span>
-                                                </div>
-                                                <div class="readmore">
-                                                    <a href="/tin-tuc/20-bo-vay-dep-cua-cac-dien-vien-tung-doat-giai-oscar-10101.html">Xem thêm</a>
-                                                </div>
-                                            </div>
-                                        </li></div><div class="owl-item active" style="width: 270px; margin-right: 30px;"><li>
-                                            <div class="post-thumb image-hover2">
-                                                <a href="/tin-tuc/phoi-quan-jeans-cap-cao-theo-phong-cach-thap-nien-1970-10100.html"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/news/blog3.jpg" alt="Phối quần jeans cạp cao theo phong cách thập niên 1970"></a>
-                                            </div>
-                                            <div class="post-desc">
-                                                <h5 class="post-title">
-                                                    <a href="/tin-tuc/phoi-quan-jeans-cap-cao-theo-phong-cach-thap-nien-1970-10100.html">Phối quần jeans cạp cao theo phong cách thập niên 1970</a>
-                                                </h5>
-                                                <div class="post-meta">
-                                                    <span class="date">
-                                                        12/08/2017
-                                                    </span>
-                                                    <span class="comment">0<span> Bình luận</span></span>
-                                                </div>
-                                                <div class="readmore">
-                                                    <a href="/tin-tuc/phoi-quan-jeans-cap-cao-theo-phong-cach-thap-nien-1970-10100.html">Xem thêm</a>
-                                                </div>
-                                            </div>
-                                        </li></div><div class="owl-item cloned" style="width: 270px; margin-right: 30px;"><li>
-                                            <div class="post-thumb image-hover2">
-                                                <a href="/tin-tuc/dien-vay-xe-cao-quyen-ru-nhu-miranda-kerr-10103.html"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/news/blog4.jpg" alt="Diện váy xẻ cao quyến rũ như Miranda Kerr"></a>
-                                            </div>
-                                            <div class="post-desc">
-                                                <h5 class="post-title">
-                                                    <a href="/tin-tuc/dien-vay-xe-cao-quyen-ru-nhu-miranda-kerr-10103.html">Diện váy xẻ cao quyến rũ như Miranda Kerr</a>
-                                                </h5>
-                                                <div class="post-meta">
-                                                    <span class="date">
-                                                        12/08/2017
-                                                    </span>
-                                                    <span class="comment">0<span> Bình luận</span></span>
-                                                </div>
-                                                <div class="readmore">
-                                                    <a href="/tin-tuc/dien-vay-xe-cao-quyen-ru-nhu-miranda-kerr-10103.html">Xem thêm</a>
-                                                </div>
-                                            </div>
-                                        </li></div><div class="owl-item cloned" style="width: 270px; margin-right: 30px;"><li>
-                                            <div class="post-thumb image-hover2">
-                                                <a href="/tin-tuc/nhung-chiec-vong-co-tao-dang-cap-cho-sao-ngoai-tren-tham-do-10102.html"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/news/blog2.jpg" alt="Những chiếc vòng cổ tạo đẳng cấp cho sao ngoại trên thảm đỏ"></a>
-                                            </div>
-                                            <div class="post-desc">
-                                                <h5 class="post-title">
-                                                    <a href="/tin-tuc/nhung-chiec-vong-co-tao-dang-cap-cho-sao-ngoai-tren-tham-do-10102.html">Những chiếc vòng cổ tạo đẳng cấp cho sao ngoại trên thảm đỏ</a>
-                                                </h5>
-                                                <div class="post-meta">
-                                                    <span class="date">
-                                                        12/08/2017
-                                                    </span>
-                                                    <span class="comment">0<span> Bình luận</span></span>
-                                                </div>
-                                                <div class="readmore">
-                                                    <a href="/tin-tuc/nhung-chiec-vong-co-tao-dang-cap-cho-sao-ngoai-tren-tham-do-10102.html">Xem thêm</a>
-                                                </div>
-                                            </div>
-                                        </li></div><div class="owl-item cloned" style="width: 270px; margin-right: 30px;"><li>
-                                            <div class="post-thumb image-hover2">
-                                                <a href="/tin-tuc/20-bo-vay-dep-cua-cac-dien-vien-tung-doat-giai-oscar-10101.html"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/news/blog1.jpg" alt="20 bộ váy đẹp của các diễn viên từng đoạt giải Oscar"></a>
-                                            </div>
-                                            <div class="post-desc">
-                                                <h5 class="post-title">
-                                                    <a href="/tin-tuc/20-bo-vay-dep-cua-cac-dien-vien-tung-doat-giai-oscar-10101.html">20 bộ váy đẹp của các diễn viên từng đoạt giải Oscar</a>
-                                                </h5>
-                                                <div class="post-meta">
-                                                    <span class="date">
-                                                        12/08/2017
-                                                    </span>
-                                                    <span class="comment">0<span> Bình luận</span></span>
-                                                </div>
-                                                <div class="readmore">
-                                                    <a href="/tin-tuc/20-bo-vay-dep-cua-cac-dien-vien-tung-doat-giai-oscar-10101.html">Xem thêm</a>
-                                                </div>
-                                            </div>
-                                        </li></div><div class="owl-item cloned" style="width: 270px; margin-right: 30px;"><li>
-                                            <div class="post-thumb image-hover2">
-                                                <a href="/tin-tuc/phoi-quan-jeans-cap-cao-theo-phong-cach-thap-nien-1970-10100.html"><img src="http://runecom02.runtime.vn/Uploads/shop2198/images/news/blog3.jpg" alt="Phối quần jeans cạp cao theo phong cách thập niên 1970"></a>
-                                            </div>
-                                            <div class="post-desc">
-                                                <h5 class="post-title">
-                                                    <a href="/tin-tuc/phoi-quan-jeans-cap-cao-theo-phong-cach-thap-nien-1970-10100.html">Phối quần jeans cạp cao theo phong cách thập niên 1970</a>
-                                                </h5>
-                                                <div class="post-meta">
-                                                    <span class="date">
-                                                        12/08/2017
-                                                    </span>
-                                                    <span class="comment">0<span> Bình luận</span></span>
-                                                </div>
-                                                <div class="readmore">
-                                                    <a href="/tin-tuc/phoi-quan-jeans-cap-cao-theo-phong-cach-thap-nien-1970-10100.html">Xem thêm</a>
-                                                </div>
-                                            </div>
-                                        </li></div></div></div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style=""><i class="fa fa-angle-left"></i></div><div class="owl-next" style=""><i class="fa fa-angle-right"></i></div></div><div class="owl-dots" style="display: none;"></div></div></ul>
-                                    </div>
-                                </div>
-                                <!-- ./blog list -->
-                                
+									</li>
+									
+									
+								</div>
+								
+								
+                    		</th:block>
+                    		
+							
+                    	</div>
                         </div>
+                    	
+                        <!--End-->
                     </div>
+                </div>
+            </div>
+        </div>
 </th:block>
