@@ -51,6 +51,8 @@ public class Customer extends BaseObject{
 	@Column(name="is_default")
 	private Boolean isDefault;						//mặc định của Person
 	
+	@Column(name="is_create") // có tạo user hay không
+	private Boolean isCreate;
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	@NotFound(action = NotFoundAction.IGNORE)
@@ -149,6 +151,12 @@ public class Customer extends BaseObject{
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public Boolean getIsCreate() {
+		return isCreate;
+	}
+	public void setIsCreate(Boolean isCreate) {
+		this.isCreate = isCreate;
 	}
 	
 }

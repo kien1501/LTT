@@ -92,8 +92,9 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, UUID> impl
 		   }
 		   
 		   cy.setAge(dto.getAge());
-		   
+		   cy.setIsCreate(dto.getIsCreate());
 		   //
+		   if(dto.getIsCreate() == true) {
 		   User user = userRepository.findByUsername(cy.getCode());
 			Person person = null;
 			if(user==null) {
@@ -120,6 +121,7 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, UUID> impl
 				user.setPerson(person);
 				user = userRepository.save(user);
 			}
+		   }
 		   
 		   cy = customerRepository.save(cy);
 		   return new CustomerDto(cy);
