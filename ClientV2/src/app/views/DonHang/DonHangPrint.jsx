@@ -242,19 +242,22 @@ class DonHangPrint extends React.Component {
                     }}
                   >
                     <tr>
-                      <th style={{ border: "1px solid",width: "20%" }}>
+                      <th style={{ border: "1px solid",width: "16%" }}>
                         {t("Tên sản phẩm")}
                       </th>
-                      <th style={{ border: "1px solid",width: "20%" }}>
+                      <th style={{ border: "1px solid",width: "16%" }}>
+                        {t("Màu sản phẩm")}
+                      </th>
+                      <th style={{ border: "1px solid",width: "16%" }}>
                         {t("Đơn giá")}
                       </th>
-                      <th style={{ border: "1px solid", width: "20%" }}>
+                      <th style={{ border: "1px solid", width: "16%" }}>
                         {t("Số lượng")}
                       </th>
-                      <th style={{ border: "1px solid", width: "20%" }}>
+                      <th style={{ border: "1px solid", width: "17%" }}>
                         {t("Giảm giá")}
                       </th>
-                      <th style={{ border: "1px solid", width: "20%" }}>
+                      <th style={{ border: "1px solid", width: "17%" }}>
                         {t("Thành tiền")}
                       </th>
                       
@@ -270,8 +273,18 @@ class DonHangPrint extends React.Component {
                                   textAlign: "center",
                                 }}
                               >
-                                {row.product !== null
-                                  ? row.product.name
+                                {row.productColor !== null
+                                  ? row.productColor.product.name
+                                  : ""}
+                              </td>
+                              <td
+                                style={{
+                                  border: "1px solid",
+                                  textAlign: "center",
+                                }}
+                              >
+                                {row.productColor !== null
+                                  ? row.productColor.color.name
                                   : ""}
                               </td>
                               <td

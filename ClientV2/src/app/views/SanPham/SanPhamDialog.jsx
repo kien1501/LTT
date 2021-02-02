@@ -127,7 +127,7 @@ class AgentDialog extends Component {
               if (this.state.file && this.state.file.length > 0) {
                 for (var i = 0; i < this.state.file.length; i++) {
                   console.log("WWWWWWWWWWWWWW)");
-                  const url = ConstantList.API_ENPOINT + "/api/upload/image";
+                  const url = ConstantList.API_ENPOINT + "/public/image";
                   let formData = new FormData();
                   formData.append('file', this.state.file[i]);
                   formData.append('productID', res.data.id);
@@ -163,7 +163,7 @@ class AgentDialog extends Component {
               if (this.state.file && this.state.file.length > 0) {
                 for (var i = 0; i < this.state.file.length; i++) {
                   console.log("WWWWWWWWWWWWWW)");
-                  const url = ConstantList.API_ENPOINT + "/api/upload/image";
+                  const url = ConstantList.API_ENPOINT + "/public/image";
                   let formData = new FormData();
                   formData.append('file', this.state.file[i]);
                   formData.append('productID', res.data.id);
@@ -404,7 +404,7 @@ class AgentDialog extends Component {
                           }
                         />
                       </Card>
-                      <TextValidator
+                      {/* <TextValidator
                         size="small"
                         className="w-100 mb-16 mt-16"
                         label={t(
@@ -416,7 +416,7 @@ class AgentDialog extends Component {
                         value={noteAvatarImage}
                         variant="outlined"
                         size="small"
-                      />
+                      /> */}
                     </span>
                   )}
                 </Grid>
